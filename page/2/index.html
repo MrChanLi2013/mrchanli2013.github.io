@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    
+    <title>
+        
+        陈立的blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="/css/amazeui.min.css" type="text/css">
+<link rel="stylesheet" href="/css/prettify.css" type="text/css">
+<link rel="stylesheet" href="/css/site.css" type="text/css">
+</head>
+<body>
+<header>
+    <div class="cl-banner">
+        <div class="cl-container am-scrollspy-init am-scrollspy-inview am-animation-scale-up"
+             data-am-scrollspy="{animation: 'scale-up', repeat: false}">
+            <h1><a href="/">陈立的blog</a></h1>
+
+            <p>任何一个人都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码。</p>
+        </div>
+    </div>
+</header>
+<div class="cl-mian-content am-g am-g-fixed">
+    <div class="main am-u-sm-12 am-u-md-7 am-u-lg-7">
+        <section id="main">
+<article>
+    <h3 class="cl-art-title">
+        <a href="#">pl/sql入门</a>
+    </h3>
+
+    <div class="cl-art-content">
+        <div class="author">
+            <span class="cl-avatar-span">
+                <img src="/css/images/avatar.jpg" alt="头像"
+                     class="avatar avatar-72" height="72" width="72">
+            </span>
+            <span class="cl-blog-auth">
+                
+                
+                <a href="/categories/sql/" class="pull-right">sql</a>
+                
+                
+            </span>
+            <span class="cl-blog-date">2014-08-14</span>
+        </div>
+        <div class="content">
+            
+            <h2 id="pl/sql是什么?">pl/sql是什么?</h2><p>pl/sql (procedural language / sql) 该语句可以对数据库编程，它可以定义常量，变量..<br>,也有条件控制语句和循环语句.</p>
+<h2 id="为什么需要pl/sql">为什么需要pl/sql</h2><ol>
+<li>可以提高效率</li>
+<li>可以实现模块化编程</li>
+<li>可以减少网络传输量</li>
+<li>安全性提高</li>
+<li>缺点是不能移植</li>
+</ol>
+<h2 id="pl/sql编程快速入门">pl/sql编程快速入门</h2><p>举一个简单案例:<br>编写一个存储过程，该过程可以向某表中添加记录.</p>
+<pre><code>create procedure p1(in_empno number,in_empname varchar2) is
+begin
+    insert into emp(empno,empname) value(in_empno,inempname);
+end;
+</code></pre><p>调用: exec p1(100,”smith”);</p>
+            
+        </div>
+    </div>
+    <div class="cl-art-footer">
+        
+        <a class="cl-more-link" href="/2014/08/14/plsql入门/">阅读全文...</a>
+        
+    </div>
+
+    
+</article>
+
+<article>
+    <h3 class="cl-art-title">
+        <a href="#">Oracle中多行子查询中使用any和all操作</a>
+    </h3>
+
+    <div class="cl-art-content">
+        <div class="author">
+            <span class="cl-avatar-span">
+                <img src="/css/images/avatar.jpg" alt="头像"
+                     class="avatar avatar-72" height="72" width="72">
+            </span>
+            <span class="cl-blog-auth">
+                
+                
+                <a href="/categories/sql/" class="pull-right">sql</a>
+                
+                
+            </span>
+            <span class="cl-blog-date">2014-08-10</span>
+        </div>
+        <div class="content">
+            
+            <p>Oracle中多行子查询中使用all和any操作:</p>
+<h3 id="请思考:如何显示工资比部门30的所有员工的工资高的员工的姓名?">请思考:如何显示工资比部门30的所有员工的工资高的员工的姓名?</h3><p>不使用all，可以这样做：</p>
+<pre><code>select ename form emp where sal&gt;(select max(sal) from emp where deptno=30)
+</code></pre><p>使用all，可以这样做：</p>
+<pre><code>select ename form emp where sal&gt;all(select sal from emp where deptno=30)
+</code></pre>
+            
+        </div>
+    </div>
+    <div class="cl-art-footer">
+        
+        <a class="cl-more-link" href="/2014/08/10/Oracle中多行子查询中使用any和all操作/">阅读全文...</a>
+        
+    </div>
+
+    
+</article>
+
+<div class="cl-pagination">
+  <ul class="am-pagination">
+    
+    <li class="am-pagination-prev"><a href="/">← 上一页</a></li>
+    
+    
+    <li class="am-pagination-next"><a href="/page/3/">下一页 →</a></li>
+    
+  </ul>
+</div></section>
+    </div>
+    <div class="cl-sidebar am-u-lg-4 am-u-md-4 am-u-sm-12">
+    <ul class="cl-sidebar-ul">
+        <li id="search">
+            <form class="am-form am-form-inline">
+                <div class="am-form-group am-form-icon">
+                    <i class="am-icon-search"></i>
+                    <input type="text" class="am-form-field" id="am-form-field" placeholder="搜索">
+                </div>
+            </form>
+        </li>
+
+        <li class="recent-posts">
+            <h2>最新文章</h2>
+            <ul>
+                
+                <li>
+                    <a href="/2014/09/11/Mysql按照首字母查询的函数/">Mysql按照拼音首字母查询数据库函数</a>
+                </li>
+                
+                <li>
+                    <a href="/2014/08/18/plsql编程基础/">pl/sql编程基础</a>
+                </li>
+                
+                <li>
+                    <a href="/2014/08/14/plsql入门/">pl/sql入门</a>
+                </li>
+                
+                <li>
+                    <a href="/2014/08/10/Oracle中多行子查询中使用any和all操作/">Oracle中多行子查询中使用any和all操作</a>
+                </li>
+                
+                <li>
+                    <a href="/2014/08/10/js验证总结/">js常用验证总结</a>
+                </li>
+                
+            </ul>
+        </li>
+
+        <li class="category">
+            <h2>分类目录</h2>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/default/">default</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sql/">sql</a><span class="category-list-count">4</span></li></ul>
+        </li>
+        <li class="friends">
+            <h2>友情链接 </h2>
+            <ul>
+                <li><a href="http://www.songyuchao.com/">小宋的博客</a></li>
+                <li><a href="http://blog.tangjiujun.com/">唐久军的博客</a></li>
+            </ul>
+        </li>
+
+    </ul>
+</div>
+</div>
+<footer class="cl-footer">
+    <div class="am-g am-g-fixed">
+        <ul class="cl-footer-links">
+            <li>
+                <a href="#">&copy; 2015 陈立</a>
+                | Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+                | Theme by <a href="http://amazeui.org/">Amaze UI</a>
+            </li>
+        </ul>
+        <p>
+            Developed with <a href="http://www.jetbrains.com/webstorm/" target="_blank">WebStorm</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/jquery.min.js" type="text/javascript"></script>
+<script src="/js/amazeui.min.js" type="text/javascript"></script>
+<script src="/js/prettify.js" type="text/javascript"></script>
+<script src="/js/site.js" type="text/javascript"></script>
+
+</body>
+</html>
