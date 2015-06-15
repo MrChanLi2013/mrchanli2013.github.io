@@ -5,7 +5,7 @@
     
     <title>
         
-        pl/sql入门 |
+        MySQL优化方案笔记 |
         
         陈立的blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -29,7 +29,7 @@
     <div class="main am-u-sm-12 am-u-md-7 am-u-lg-7">
         <section id="main"><article>
     <h3 class="cl-art-title">
-        <a href="#">pl/sql入门</a>
+        <a href="#">MySQL优化方案笔记</a>
     </h3>
 
     <div class="cl-art-content">
@@ -45,35 +45,38 @@
                 
                 
             </span>
-            <span class="cl-blog-date">2014-08-14</span>
+            <span class="cl-blog-date">2015-03-08</span>
         </div>
         <div class="content">
             
-            <h2 id="pl/sql是什么?">pl/sql是什么?</h2><p>pl/sql (procedural language / sql) 该语句可以对数据库编程，它可以定义常量，变量..<br>,也有条件控制语句和循环语句.</p>
-<h2 id="为什么需要pl/sql">为什么需要pl/sql</h2><ol>
-<li>可以提高效率</li>
-<li>可以实现模块化编程</li>
-<li>可以减少网络传输量</li>
-<li>安全性提高</li>
-<li>缺点是不能移植</li>
+            <h4 id="一些常用的优化手段">一些常用的优化手段</h4><ol>
+<li><p>选择优化的数据类型</p>
+<ul>
+<li><p>更小通常便好</p>
+<p>一般来说，要试着使用能正确的储存和表示的数据类型。因为他们使用了更少的磁盘空间。</p>
+</li>
+<li><p>简单就好</p>
+<p>越简单的数据类型，需要的CPU周期就越少。例如：应该使用数据库时间类型保存时间而不要使用字符串；应该使用整数来保存IP地址，<strong> IP地址本质就是无符号的32位整数，之所以用添加小数点是为了可读性。 </strong>MySql中提供了INET_ATON()和INET_NTOA()。</p>
+</li>
+<li><p>尽量避免使用NULL</p>
+</li>
+</ul>
+</li>
 </ol>
-<h2 id="pl/sql编程快速入门">pl/sql编程快速入门</h2><p>举一个简单案例:<br>编写一个存储过程，该过程可以向某表中添加记录.</p>
-<pre><code>create procedure p1(in_empno number,in_empname varchar2) is
-begin
-    insert into emp(empno,empname) value(in_empno,inempname);
-end;
-</code></pre><p>调用: exec p1(100,”smith”);</p>
 <a id="more"></a>
-<h3 id="这里说到存储过程，那么在oracl中如何创建存储过程呢?">这里说到存储过程，那么在oracl中如何创建存储过程呢?</h3><p>创建过程的语法:</p>
-<pre><code>create procedure 过程名(参数列表) is
-begin
-    //执行语句..
-    //执行语句
-end;
-</code></pre><p>在控制台调用的语句:<br>exec 过程名(参数的值…) </p>
-<h3 id="这里需要主要的地方">这里需要主要的地方</h3><ol>
-<li><em>在创建过程的时候 可以在 create 后 带 or replace ，这样就是说，如果该过程存在了,就替换.希望小心使用.</em></li>
-<li><em>如果在创建过程中发生错误，可以 show error 来 查看错误信息.</em></li>
+<ol>
+<li><p>使用高性能的索引</p>
+<ul>
+<li><p>如果在查询没有隔离索引的列，MySQL通常不会使用索引。隔离列意味着它不是表达式的一部分，也没有位于函数中。</p>
+<p> 下面的查询不会使用p_id上的索引，p_id属于了表达式的一部分：</p>
+<pre><code> mysql&gt; select p_id from table where p_id + 1 = 4;
+</code></pre><p> 下面也是一种常见的错误：</p>
+<pre><code> mysql&gt; select ... from table where TO_DAYS(&#39;2015-09-09&#39;)-TO_DAYS(date_col) &lt;= 10;
+</code></pre><p> 这个查询会查找date_col值离今天不超过10天的所有行，但它不会使用索引，因为使用了TO_DAYS函数。可以优化为：</p>
+<pre><code> mysql&gt; select ... from table where date_col &gt;= DATE_SUB(&#39;2015-09-09&#39;,INTERVAL 10 DAY)
+</code></pre></li>
+</ul>
+</li>
 </ol>
 
             
@@ -86,7 +89,7 @@ end;
     
     <hr class="am-article-divider blog-hr">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="undefined" data-title="pl/sql入门" data-url="2014/08/14/plsql入门/"></div>
+    <div class="ds-thread" data-thread-key="undefined" data-title="MySQL优化方案笔记" data-url="2015/03/08/MySQL优化方案笔记/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">

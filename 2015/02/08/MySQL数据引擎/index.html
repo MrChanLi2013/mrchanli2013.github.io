@@ -5,7 +5,7 @@
     
     <title>
         
-        pl/sql入门 |
+        MySQL数据引擎笔记 |
         
         陈立的blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -29,7 +29,7 @@
     <div class="main am-u-sm-12 am-u-md-7 am-u-lg-7">
         <section id="main"><article>
     <h3 class="cl-art-title">
-        <a href="#">pl/sql入门</a>
+        <a href="#">MySQL数据引擎笔记</a>
     </h3>
 
     <div class="cl-art-content">
@@ -45,35 +45,39 @@
                 
                 
             </span>
-            <span class="cl-blog-date">2014-08-14</span>
+            <span class="cl-blog-date">2015-02-08</span>
         </div>
         <div class="content">
             
-            <h2 id="pl/sql是什么?">pl/sql是什么?</h2><p>pl/sql (procedural language / sql) 该语句可以对数据库编程，它可以定义常量，变量..<br>,也有条件控制语句和循环语句.</p>
-<h2 id="为什么需要pl/sql">为什么需要pl/sql</h2><ol>
-<li>可以提高效率</li>
-<li>可以实现模块化编程</li>
-<li>可以减少网络传输量</li>
-<li>安全性提高</li>
-<li>缺点是不能移植</li>
+            <h3 id="MySQL数据引擎分类">MySQL数据引擎分类</h3><ol>
+<li><p>ISAM</p>
+<p> 优点：ISAM执行读取操作的速度很快，而且不占用大量的内存和存储资源。</p>
+<p> 缺点：不支持事务处理，也不能够容错。<em> 如果你的硬盘坏了，那么数据文件就无法恢复了。 </em></p>
+</li>
+<li><p>MyISAM（MySQL的ISAM扩展格式和缺省的数据库引擎，MySQL 5.0 之前的默认数据库引擎）</p>
+<p> 优点：MyISAM使用了一种表格锁定的机制，来优化多个并发的读写操作，其代价是你需要经常运行OPTIMIZE TABLE命令，来恢复被更新机制所浪费的空间。MyISAM强调了快速读取操作。</p>
+<p> 缺点：不能在表损坏后恢复数据。</p>
+</li>
+<li><p>HEAP</p>
+<p> 优点：HEAP允许只驻留在内存里的临时表格。驻留在内存里让HEAP要比ISAM和MYISAM都快。</p>
+<p> 缺点：管理的数据是不稳定的，而且如果在关机之前没有进行保存，那么所有的数据都会丢失。</p>
+</li>
+<li><p>InnoDB（MySQL 5.5 起成为默认数据库引擎）</p>
+<p> InnoDB包括了对事务处理和外来键的支持，这两点都是前两个引擎所没有的。</p>
+</li>
 </ol>
-<h2 id="pl/sql编程快速入门">pl/sql编程快速入门</h2><p>举一个简单案例:<br>编写一个存储过程，该过程可以向某表中添加记录.</p>
-<pre><code>create procedure p1(in_empno number,in_empname varchar2) is
-begin
-    insert into emp(empno,empname) value(in_empno,inempname);
-end;
-</code></pre><p>调用: exec p1(100,”smith”);</p>
 <a id="more"></a>
-<h3 id="这里说到存储过程，那么在oracl中如何创建存储过程呢?">这里说到存储过程，那么在oracl中如何创建存储过程呢?</h3><p>创建过程的语法:</p>
-<pre><code>create procedure 过程名(参数列表) is
-begin
-    //执行语句..
-    //执行语句
-end;
-</code></pre><p>在控制台调用的语句:<br>exec 过程名(参数的值…) </p>
-<h3 id="这里需要主要的地方">这里需要主要的地方</h3><ol>
-<li><em>在创建过程的时候 可以在 create 后 带 or replace ，这样就是说，如果该过程存在了,就替换.希望小心使用.</em></li>
-<li><em>如果在创建过程中发生错误，可以 show error 来 查看错误信息.</em></li>
+<h3 id="项目中常用的两种引擎">项目中常用的两种引擎</h3><p>在实际项目中最常用的就是MyISAM和InnoDB，通常来说这两种引擎的应用场景如下：</p>
+<p>一般来说，MyISAM适合：</p>
+<ol>
+<li>做很多count 的计算；</li>
+<li>插入不频繁，查询非常频繁；</li>
+<li>没有事务。</li>
+</ol>
+<p>InnoDB适合：</p>
+<ol>
+<li>可靠性要求比较高，或者要求事务；</li>
+<li>表更新和查询都相当的频繁，并且表锁定的机会比较大的情况。</li>
 </ol>
 
             
@@ -86,7 +90,7 @@ end;
     
     <hr class="am-article-divider blog-hr">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="undefined" data-title="pl/sql入门" data-url="2014/08/14/plsql入门/"></div>
+    <div class="ds-thread" data-thread-key="undefined" data-title="MySQL数据引擎笔记" data-url="2015/02/08/MySQL数据引擎/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">

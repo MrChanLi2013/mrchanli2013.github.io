@@ -5,8 +5,6 @@
     
     <title>
         
-        pl/sql入门 |
-        
         陈立的blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="renderer" content="webkit">
@@ -27,9 +25,10 @@
 </header>
 <div class="cl-mian-content am-g am-g-fixed">
     <div class="main am-u-sm-12 am-u-md-7 am-u-lg-7">
-        <section id="main"><article>
+        <section id="main">
+<article>
     <h3 class="cl-art-title">
-        <a href="#">pl/sql入门</a>
+        <a href="#">js常用验证总结</a>
     </h3>
 
     <div class="cl-art-content">
@@ -41,70 +40,48 @@
             <span class="cl-blog-auth">
                 
                 
-                <a href="/categories/sql/" class="pull-right">sql</a>
+                <a href="/categories/default/" class="pull-right">default</a>
                 
                 
             </span>
-            <span class="cl-blog-date">2014-08-14</span>
+            <span class="cl-blog-date">2014-08-10</span>
         </div>
         <div class="content">
             
-            <h2 id="pl/sql是什么?">pl/sql是什么?</h2><p>pl/sql (procedural language / sql) 该语句可以对数据库编程，它可以定义常量，变量..<br>,也有条件控制语句和循环语句.</p>
-<h2 id="为什么需要pl/sql">为什么需要pl/sql</h2><ol>
-<li>可以提高效率</li>
-<li>可以实现模块化编程</li>
-<li>可以减少网络传输量</li>
-<li>安全性提高</li>
-<li>缺点是不能移植</li>
-</ol>
-<h2 id="pl/sql编程快速入门">pl/sql编程快速入门</h2><p>举一个简单案例:<br>编写一个存储过程，该过程可以向某表中添加记录.</p>
-<pre><code>create procedure p1(in_empno number,in_empname varchar2) is
-begin
-    insert into emp(empno,empname) value(in_empno,inempname);
-end;
-</code></pre><p>调用: exec p1(100,”smith”);</p>
-<a id="more"></a>
-<h3 id="这里说到存储过程，那么在oracl中如何创建存储过程呢?">这里说到存储过程，那么在oracl中如何创建存储过程呢?</h3><p>创建过程的语法:</p>
-<pre><code>create procedure 过程名(参数列表) is
-begin
-    //执行语句..
-    //执行语句
-end;
-</code></pre><p>在控制台调用的语句:<br>exec 过程名(参数的值…) </p>
-<h3 id="这里需要主要的地方">这里需要主要的地方</h3><ol>
-<li><em>在创建过程的时候 可以在 create 后 带 or replace ，这样就是说，如果该过程存在了,就替换.希望小心使用.</em></li>
-<li><em>如果在创建过程中发生错误，可以 show error 来 查看错误信息.</em></li>
-</ol>
+            <p>一些常用的js正则验证：</p>
+<p>example：</p>
+<pre><code>var validateRegExp = {
+    chinese: &quot;^[\\u4e00-\\u9fa5]+$&quot; //仅中文
+};
 
+var validateRules = {
+ isChinese: function (str) {
+    return new RegExp(validateRegExp.chinese).test(str);
+  }
+};
+
+validateRules.isChinese(str);
+</code></pre>
             
         </div>
     </div>
     <div class="cl-art-footer">
         
+        <a class="cl-more-link" href="/2014/08/10/js验证总结/">阅读全文...</a>
+        
     </div>
 
     
-    <hr class="am-article-divider blog-hr">
-    <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="undefined" data-title="pl/sql入门" data-url="2014/08/14/plsql入门/"></div>
-    <!-- 多说评论框 end -->
-    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-    <script type="text/javascript">
-        var duoshuoQuery = {short_name: "lvelyn"};
-        (function () {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';
-            ds.async = true;
-            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
-    <!-- 多说公共JS代码 end -->
+</article>
 
+<div class="cl-pagination">
+  <ul class="am-pagination">
     
-</article></section>
+    <li class="am-pagination-prev"><a href="/page/3/">← 上一页</a></li>
+    
+    
+  </ul>
+</div></section>
     </div>
     <div class="cl-sidebar am-u-lg-4 am-u-md-4 am-u-sm-12">
     <ul class="cl-sidebar-ul">

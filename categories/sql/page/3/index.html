@@ -5,7 +5,7 @@
     
     <title>
         
-        pl/sql入门 |
+        Category: sql |
         
         陈立的blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -27,7 +27,8 @@
 </header>
 <div class="cl-mian-content am-g am-g-fixed">
     <div class="main am-u-sm-12 am-u-md-7 am-u-lg-7">
-        <section id="main"><article>
+        <section id="main">
+<article>
     <h3 class="cl-art-title">
         <a href="#">pl/sql入门</a>
     </h3>
@@ -63,48 +64,66 @@ begin
     insert into emp(empno,empname) value(in_empno,inempname);
 end;
 </code></pre><p>调用: exec p1(100,”smith”);</p>
-<a id="more"></a>
-<h3 id="这里说到存储过程，那么在oracl中如何创建存储过程呢?">这里说到存储过程，那么在oracl中如何创建存储过程呢?</h3><p>创建过程的语法:</p>
-<pre><code>create procedure 过程名(参数列表) is
-begin
-    //执行语句..
-    //执行语句
-end;
-</code></pre><p>在控制台调用的语句:<br>exec 过程名(参数的值…) </p>
-<h3 id="这里需要主要的地方">这里需要主要的地方</h3><ol>
-<li><em>在创建过程的时候 可以在 create 后 带 or replace ，这样就是说，如果该过程存在了,就替换.希望小心使用.</em></li>
-<li><em>如果在创建过程中发生错误，可以 show error 来 查看错误信息.</em></li>
-</ol>
-
             
         </div>
     </div>
     <div class="cl-art-footer">
         
+        <a class="cl-more-link" href="/2014/08/14/plsql入门/">阅读全文...</a>
+        
     </div>
 
     
-    <hr class="am-article-divider blog-hr">
-    <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="undefined" data-title="pl/sql入门" data-url="2014/08/14/plsql入门/"></div>
-    <!-- 多说评论框 end -->
-    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-    <script type="text/javascript">
-        var duoshuoQuery = {short_name: "lvelyn"};
-        (function () {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';
-            ds.async = true;
-            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
-    <!-- 多说公共JS代码 end -->
+</article>
+
+<article>
+    <h3 class="cl-art-title">
+        <a href="#">Oracle中多行子查询中使用any和all操作</a>
+    </h3>
+
+    <div class="cl-art-content">
+        <div class="author">
+            <span class="cl-avatar-span">
+                <img src="/css/images/avatar.jpg" alt="头像"
+                     class="avatar avatar-72" height="72" width="72">
+            </span>
+            <span class="cl-blog-auth">
+                
+                
+                <a href="/categories/sql/" class="pull-right">sql</a>
+                
+                
+            </span>
+            <span class="cl-blog-date">2014-08-10</span>
+        </div>
+        <div class="content">
+            
+            <p>Oracle中多行子查询中使用all和any操作:</p>
+<h3 id="请思考:如何显示工资比部门30的所有员工的工资高的员工的姓名?">请思考:如何显示工资比部门30的所有员工的工资高的员工的姓名?</h3><p>不使用all，可以这样做：</p>
+<pre><code>select ename form emp where sal&gt;(select max(sal) from emp where deptno=30)
+</code></pre><p>使用all，可以这样做：</p>
+<pre><code>select ename form emp where sal&gt;all(select sal from emp where deptno=30)
+</code></pre>
+            
+        </div>
+    </div>
+    <div class="cl-art-footer">
+        
+        <a class="cl-more-link" href="/2014/08/10/Oracle中多行子查询中使用any和all操作/">阅读全文...</a>
+        
+    </div>
 
     
-</article></section>
+</article>
+
+<div class="cl-pagination">
+  <ul class="am-pagination">
+    
+    <li class="am-pagination-prev"><a href="/categories/sql/page/2/">← 上一页</a></li>
+    
+    
+  </ul>
+</div></section>
     </div>
     <div class="cl-sidebar am-u-lg-4 am-u-md-4 am-u-sm-12">
     <ul class="cl-sidebar-ul">

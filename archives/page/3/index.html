@@ -30,7 +30,7 @@
         <section id="main">
 <article>
     <h3 class="cl-art-title">
-        <a href="#">js常用验证总结</a>
+        <a href="#">pl/sql入门</a>
     </h3>
 
     <div class="cl-art-content">
@@ -42,7 +42,55 @@
             <span class="cl-blog-auth">
                 
                 
-                <a href="/categories/default/" class="pull-right">default</a>
+                <a href="/categories/sql/" class="pull-right">sql</a>
+                
+                
+            </span>
+            <span class="cl-blog-date">2014-08-14</span>
+        </div>
+        <div class="content">
+            
+            <h2 id="pl/sql是什么?">pl/sql是什么?</h2><p>pl/sql (procedural language / sql) 该语句可以对数据库编程，它可以定义常量，变量..<br>,也有条件控制语句和循环语句.</p>
+<h2 id="为什么需要pl/sql">为什么需要pl/sql</h2><ol>
+<li>可以提高效率</li>
+<li>可以实现模块化编程</li>
+<li>可以减少网络传输量</li>
+<li>安全性提高</li>
+<li>缺点是不能移植</li>
+</ol>
+<h2 id="pl/sql编程快速入门">pl/sql编程快速入门</h2><p>举一个简单案例:<br>编写一个存储过程，该过程可以向某表中添加记录.</p>
+<pre><code>create procedure p1(in_empno number,in_empname varchar2) is
+begin
+    insert into emp(empno,empname) value(in_empno,inempname);
+end;
+</code></pre><p>调用: exec p1(100,”smith”);</p>
+            
+        </div>
+    </div>
+    <div class="cl-art-footer">
+        
+        <a class="cl-more-link" href="/2014/08/14/plsql入门/">阅读全文...</a>
+        
+    </div>
+
+    
+</article>
+
+<article>
+    <h3 class="cl-art-title">
+        <a href="#">Oracle中多行子查询中使用any和all操作</a>
+    </h3>
+
+    <div class="cl-art-content">
+        <div class="author">
+            <span class="cl-avatar-span">
+                <img src="/css/images/avatar.jpg" alt="头像"
+                     class="avatar avatar-72" height="72" width="72">
+            </span>
+            <span class="cl-blog-auth">
+                
+                
+                <a href="/categories/sql/" class="pull-right">sql</a>
                 
                 
             </span>
@@ -50,26 +98,18 @@
         </div>
         <div class="content">
             
-            <p>一些常用的js正则验证：</p>
-<p>example：</p>
-<pre><code>var validateRegExp = {
-    chinese: &quot;^[\\u4e00-\\u9fa5]+$&quot; //仅中文
-};
-
-var validateRules = {
- isChinese: function (str) {
-    return new RegExp(validateRegExp.chinese).test(str);
-  }
-};
-
-validateRules.isChinese(str);
+            <p>Oracle中多行子查询中使用all和any操作:</p>
+<h3 id="请思考:如何显示工资比部门30的所有员工的工资高的员工的姓名?">请思考:如何显示工资比部门30的所有员工的工资高的员工的姓名?</h3><p>不使用all，可以这样做：</p>
+<pre><code>select ename form emp where sal&gt;(select max(sal) from emp where deptno=30)
+</code></pre><p>使用all，可以这样做：</p>
+<pre><code>select ename form emp where sal&gt;all(select sal from emp where deptno=30)
 </code></pre>
             
         </div>
     </div>
     <div class="cl-art-footer">
         
-        <a class="cl-more-link" href="/2014/08/10/js验证总结/">阅读全文...</a>
+        <a class="cl-more-link" href="/2014/08/10/Oracle中多行子查询中使用any和all操作/">阅读全文...</a>
         
     </div>
 
@@ -81,6 +121,8 @@ validateRules.isChinese(str);
     
     <li class="am-pagination-prev"><a href="/archives/page/2/">← 上一页</a></li>
     
+    
+    <li class="am-pagination-next"><a href="/archives/page/4/">下一页 →</a></li>
     
   </ul>
 </div></section>
@@ -101,7 +143,15 @@ validateRules.isChinese(str);
             <ul>
                 
                 <li>
-                    <a href="/2014/09/11/Mysql按照首字母查询的函数/">Mysql按照拼音首字母查询数据库函数</a>
+                    <a href="/2015/03/08/MySQL优化方案笔记/">MySQL优化方案笔记</a>
+                </li>
+                
+                <li>
+                    <a href="/2015/02/08/MySQL数据引擎/">MySQL数据引擎笔记</a>
+                </li>
+                
+                <li>
+                    <a href="/2014/09/11/MySQL按照首字母查询的函数/">Mysql按照拼音首字母查询数据库函数</a>
                 </li>
                 
                 <li>
@@ -112,20 +162,12 @@ validateRules.isChinese(str);
                     <a href="/2014/08/14/plsql入门/">pl/sql入门</a>
                 </li>
                 
-                <li>
-                    <a href="/2014/08/10/Oracle中多行子查询中使用any和all操作/">Oracle中多行子查询中使用any和all操作</a>
-                </li>
-                
-                <li>
-                    <a href="/2014/08/10/js验证总结/">js常用验证总结</a>
-                </li>
-                
             </ul>
         </li>
 
         <li class="category">
             <h2>分类目录</h2>
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/default/">default</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sql/">sql</a><span class="category-list-count">4</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/default/">default</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sql/">sql</a><span class="category-list-count">6</span></li></ul>
         </li>
         <li class="friends">
             <h2>友情链接 </h2>
