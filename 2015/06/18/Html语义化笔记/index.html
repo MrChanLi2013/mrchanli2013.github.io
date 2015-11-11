@@ -5,7 +5,7 @@
     
     <title>
         
-        pl/sql入门 |
+        Html语义化笔记 |
         
         陈立的blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -29,7 +29,7 @@
     <div class="main am-u-sm-12 am-u-md-7 am-u-lg-7">
         <section id="main"><article>
     <h3 class="cl-art-title">
-        <a href="#">pl/sql入门</a>
+        <a href="#">Html语义化笔记</a>
     </h3>
 
     <div class="cl-art-content">
@@ -41,39 +41,73 @@
             <span class="cl-blog-auth">
                 
                 
-                <a href="/categories/sql/" class="pull-right">sql</a>
+                <a href="/categories/html/" class="pull-right">html</a>
                 
                 
             </span>
-            <span class="cl-blog-date">2014-08-14</span>
+            <span class="cl-blog-date">2015-06-18</span>
         </div>
         <div class="content">
             
-            <h2 id="pl/sql是什么?">pl/sql是什么?</h2><p>pl/sql (procedural language / sql) 该语句可以对数据库编程，它可以定义常量，变量..<br>,也有条件控制语句和循环语句.</p>
-<h2 id="为什么需要pl/sql">为什么需要pl/sql</h2><ol>
-<li>可以提高效率</li>
-<li>可以实现模块化编程</li>
-<li>可以减少网络传输量</li>
-<li>安全性提高</li>
-<li>缺点是不能移植</li>
-</ol>
-<h2 id="pl/sql编程快速入门">pl/sql编程快速入门</h2><p>举一个简单案例:<br>编写一个存储过程，该过程可以向某表中添加记录.</p>
-<pre><code>create procedure p1(in_empno number,in_empname varchar2) is
-begin
-    insert into emp(empno,empname) value(in_empno,inempname);
-end;
-</code></pre><p>调用: exec p1(100,”smith”);</p>
-<a id="more"></a>
-<h3 id="这里说到存储过程，那么在oracl中如何创建存储过程呢?">这里说到存储过程，那么在oracl中如何创建存储过程呢?</h3><p>创建过程的语法:</p>
-<pre><code>create procedure 过程名(参数列表) is
-begin
-    //执行语句..
-    //执行语句
-end;
-</code></pre><p>在控制台调用的语句:<br>exec 过程名(参数的值…) </p>
-<h3 id="这里需要主要的地方">这里需要主要的地方</h3><ol>
-<li><em>在创建过程的时候 可以在 create 后 带 or replace ，这样就是说，如果该过程存在了,就替换.希望小心使用.</em></li>
-<li><em>如果在创建过程中发生错误，可以 show error 来 查看错误信息.</em></li>
+            <ol>
+<li><p>什么是html语义？</p>
+<p>直观的说，就是html的含义，从html代码中使用的标签本身就可以说明标签包含内容的含义，比如使用&lt;h1&gt;标签，则代表所包含的内容是标题。</p>
+</li>
+<li><p>如何做到高语义化的html？</p>
+<p>要编写高语义化的html代码需要足够的耐心和良好的编码意识，具备了最基础的要求之后就需要在实际的项目中不断的实践了。当然也是有一些公认的比较好的实践原则：</p>
+<ul>
+<li><p>熟悉所有规范中的html标签，理解个标签的语义，在合适的地方使用合适的标签。</p>
+<p>例如：&lt;hx&gt;系列标签则表示标题，在网页中展示各层级的标签时使用；&lt;ul&gt;，&lt;ol&gt;表示列表，在展现各种数据列表或者菜单时使用；其他使用频率较高的有&lt;p&gt;，&lt;em&gt;，&lt;strong&gt;，&lt;table&gt;，&lt;site&gt;，&lt;blockquote&gt;等。此外还有一些html5新加入的标签，包括：&lt;header&gt;，&lt;footer&gt;，&lt;article&gt;，&lt;section&gt;，&lt;nav&gt;，&lt;aside&gt;。这些在W3C规范中针对所有标签都有详细的解释和使用场景示例。</p>
+</li>
+<li><p>熟悉各个标签上规范的属性，给html标签设置必要的属性</p>
+<p>在很多前端规范中都会提到两个属性是alt和title。这两个属性的设置同样也提高了Html的语义。在&lt;img&gt;中alt是必须要设置的属性。</p>
+<pre><code> &lt;!-- alt属性除了对图片做解释说明之外，也作为图片在浏览器中未加载时显示的代替文字 --&gt;
+ &lt;img src=&quot;/img/loading.gif&quot; alt=&quot;data loading&quot;/&gt;
+
+ &lt;!-- title 属性是对元素的解释说明，并且作为浏览器中当鼠标移动到元素上时显示的提示文本 --&gt;  
+ &lt;a href=&quot;&quot; title=&quot;&quot;&gt;&lt;/a&gt;
+</code></pre></li>
+<li><p>样式和结构分离</p>
+<p>首先要将单纯的css样式代码和html代码分离。更进一步，就是要把html代码中用于表达外观的部分从html中删除，利用css实现。简洁的html代码会让语义更加明确。</p>
+<pre><code> &lt;ul&gt;&lt;li&gt;|&lt;/li&gt;&lt;/ul&gt;
+</code></pre><p>在上面的&lt;li&gt;中有一个分隔符，其实它不属于网页的内容，应该从html中去掉。在css中提供了:before，:after两个伪类，很适合这样的场景。</p>
+<pre><code> &lt;div&gt;
+   &lt;div class=&quot;sidebar&quot;&gt;this is a side bar.&lt;/div&gt;
+   &lt;div class=&quot;content&quot;&gt;this is a the main content.&lt;/div&gt;
+   &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+ &lt;/div&gt;
+
+ //对应的css
+
+ .sidebar{float:left;width:150px}
+ .content{float:right;width:450px}
+ .clear{clear:both}
+</code></pre><p>为了清除元素的浮动，上面代码添加了一个空的&lt;div&gt;，很多人认为这是很正常的做法，其实有更好的解决方案：</p>
+<pre><code> &lt;div class=&quot;clearfix&quot;&gt;
+   &lt;div class=&quot;sidebar&quot;&gt;this is a side bar.&lt;/div&gt;
+   &lt;div class=&quot;content&quot;&gt;this is a the main content.&lt;/div&gt;
+ &lt;/div&gt;
+
+ //相应的css类clearfix的声明为：
+
+ .clearfix {
+   *zoom:1;
+ }
+ .clearfix:before,.clearfix:after{
+   display:table;
+   content:&quot;&quot;;
+ }
+ .clearfix:after{
+   clear:both;
+ }
+</code></pre><p>还有&lt;br/&gt;，很多喜欢有来加大元素直接的行距，这个就是完全没有理解到该元素的语义，该标签仅仅用于<strong>文本内容中的换行</strong>。如果要实现元素之间的换行或者增加间距，可以通过设置display，margin，padding来实现。</p>
+<p>还有就是&lt;img&gt;的使用，什么时候使用背景图，什么使用&lt;img&gt;，其原则就是如果图片仅仅起到装饰作用，则使用背景图，如果是属于页面的内容则应该使用&lt;img&gt;。</p>
+</li>
+<li><p>给空标签中添加隐藏文字，用于说明标签的实际功能</p>
+<p>这个一般式使用text-indent来达到隐藏文字的目的。</p>
+</li>
+</ul>
+</li>
 </ol>
 
             
@@ -86,7 +120,7 @@ end;
     
     <hr class="am-article-divider blog-hr">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="undefined" data-title="pl/sql入门" data-url="2014/08/14/plsql入门/"></div>
+    <div class="ds-thread" data-thread-key="undefined" data-title="Html语义化笔记" data-url="2015/06/18/Html语义化笔记/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">

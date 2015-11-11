@@ -5,7 +5,7 @@
     
     <title>
         
-        Archives: 2015 |
+        Hibernate一对多注解笔记 |
         
         陈立的blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -27,43 +27,7 @@
 </header>
 <div class="cl-mian-content am-g am-g-fixed">
     <div class="main am-u-sm-12 am-u-md-7 am-u-lg-7">
-        <section id="main">
-<article>
-    <h3 class="cl-art-title">
-        <a href="#">Html语义化笔记</a>
-    </h3>
-
-    <div class="cl-art-content">
-        <div class="author">
-            <span class="cl-avatar-span">
-                <img src="/css/images/avatar.jpg" alt="头像"
-                     class="avatar avatar-72" height="72" width="72">
-            </span>
-            <span class="cl-blog-auth">
-                
-                
-                <a href="/categories/html/" class="pull-right">html</a>
-                
-                
-            </span>
-            <span class="cl-blog-date">2015-06-18</span>
-        </div>
-        <div class="content">
-            
-            
-            
-        </div>
-    </div>
-    <div class="cl-art-footer">
-        
-        <a class="cl-more-link" href="/2015/06/18/Html语义化笔记/">阅读全文...</a>
-        
-    </div>
-
-    
-</article>
-
-<article>
+        <section id="main"><article>
     <h3 class="cl-art-title">
         <a href="#">Hibernate一对多注解笔记</a>
     </h3>
@@ -115,27 +79,98 @@ public class Child {
 
   //getter and setter
 }
-</code></pre>
+</code></pre><a id="more"></a>
+<p>  在Parent配置@OneToMany，这时Hibernate会创建第3张关联表，parent_child[parent_id,child_id]。</p>
+<p>  Test：</p>
+<pre><code>Parent parent = new Parent();
+parent.setName(&quot;张三&quot;);
+Set&lt;Child&gt; childSet = new HashSet&lt;Child&gt;();
+childSet.add(new Child(&quot;小明&quot;));
+childSet.add(new Child(&quot;小王&quot;));
+parent.setChildren(childSet);
+//session：Hibernate session
+session.save(parent);
+</code></pre><p>  数据库中parent中会存储一条记录，child会存储两条记录，其中关联表存储结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>parent_id</th>
+<th>child_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>  如果不想Hibernate创建关联表：</p>
+<ol>
+<li><p>更改Person如下，在children上添加注解@JoinColumn(name=”parent_id”)，那么在child表中hibernate会自动创建新的一列parent_id，并且此parent_id为外键。</p>
+<pre><code> @OneToMany(cascade = CascadeType.ALL)
+ @JoinColumn(name = &quot;parent_id&quot;)
+ private Set&lt;Child&gt; children;
+</code></pre></li>
+<li><p>也可以给Person的@OneToMany添加（mappedBy = “parent”），在Child中添加@ManyToOne：</p>
+<pre><code> //Person mappedBy指定关系的维护方为Child
+ @OneToMany(cascade = CascadeType.ALL, mappedBy = &quot;parent&quot;)
+ private Set&lt;Child&gt; children;
+
+ //Child
+ @ManyToOne
+ private Parent parent;
+
+ //Test
+ Parent parent = new Parent();
+ parent.setName(&quot;张三&quot;);
+ Set&lt;Child&gt; childSet = new HashSet&lt;Child&gt;();
+ Child child1 = new Child(&quot;小明&quot;);
+ //如果此处child不设置parent，则在数据库中parent_id字段就为空，因为使用mappedBy
+ child1.setParent(parent);
+ Child child2 = new Child(&quot;小王&quot;);
+ //
+ child2.setParent(parent);
+ childSet.add(child1);
+ childSet.add(child2);
+ parent.setChildren(childSet);
+ session.save(parent);
+</code></pre></li>
+</ol>
+
             
         </div>
     </div>
     <div class="cl-art-footer">
         
-        <a class="cl-more-link" href="/2015/06/17/Hibernate一对多注解/">阅读全文...</a>
-        
     </div>
 
     
-</article>
+    <hr class="am-article-divider blog-hr">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="undefined" data-title="Hibernate一对多注解笔记" data-url="2015/06/17/Hibernate一对多注解/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name: "lvelyn"};
+        (function () {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共JS代码 end -->
 
-<div class="cl-pagination">
-  <ul class="am-pagination">
     
-    
-    <li class="am-pagination-next"><a href="/archives/2015/page/2/">下一页 →</a></li>
-    
-  </ul>
-</div></section>
+</article></section>
     </div>
     <div class="cl-sidebar am-u-lg-4 am-u-md-4 am-u-sm-12">
     <ul class="cl-sidebar-ul">

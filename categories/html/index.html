@@ -5,7 +5,7 @@
     
     <title>
         
-        Archives: 2015 |
+        Category: html |
         
         陈立的blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -63,76 +63,9 @@
     
 </article>
 
-<article>
-    <h3 class="cl-art-title">
-        <a href="#">Hibernate一对多注解笔记</a>
-    </h3>
-
-    <div class="cl-art-content">
-        <div class="author">
-            <span class="cl-avatar-span">
-                <img src="/css/images/avatar.jpg" alt="头像"
-                     class="avatar avatar-72" height="72" width="72">
-            </span>
-            <span class="cl-blog-auth">
-                
-                
-                <a href="/categories/java/" class="pull-right">java</a>
-                
-                
-            </span>
-            <span class="cl-blog-date">2015-06-17</span>
-        </div>
-        <div class="content">
-            
-            <h4 id="Hibernate中一对多注解@OneToMany">Hibernate中一对多注解@OneToMany</h4><p>  parent和child直接就属于一对多关系，一个parent可能有多个child，一个child只有一个parent：</p>
-<p>  Parent类：</p>
-<pre><code>@Entity
-@Table(name=&quot;parent&quot;)
-public class Parent {
-  @Id
-  @GeneratedValue
-  private Integer id;
-
-  @OneToMany(cascade = CascadeType.ALL)
-  private Set&lt;Child&gt; children;
-
-  @Column
-  private String name;
-
-  //getter and setter
-}
-</code></pre><p>  Child类：</p>
-<pre><code>@Entity
-@Table(name=&quot;child&quot;)
-public class Child {
-  @Id
-  @GeneratedValue
-  private Integer id;
-
-  @Column
-  private String name;
-
-  //getter and setter
-}
-</code></pre>
-            
-        </div>
-    </div>
-    <div class="cl-art-footer">
-        
-        <a class="cl-more-link" href="/2015/06/17/Hibernate一对多注解/">阅读全文...</a>
-        
-    </div>
-
-    
-</article>
-
 <div class="cl-pagination">
   <ul class="am-pagination">
     
-    
-    <li class="am-pagination-next"><a href="/archives/2015/page/2/">下一页 →</a></li>
     
   </ul>
 </div></section>

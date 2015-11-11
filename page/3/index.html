@@ -28,7 +28,7 @@
         <section id="main">
 <article>
     <h3 class="cl-art-title">
-        <a href="#">pl/sql入门</a>
+        <a href="#">Mysql按照拼音首字母查询数据库函数</a>
     </h3>
 
     <div class="cl-art-content">
@@ -44,30 +44,18 @@
                 
                 
             </span>
-            <span class="cl-blog-date">2014-08-14</span>
+            <span class="cl-blog-date">2014-09-11</span>
         </div>
         <div class="content">
             
-            <h2 id="pl/sql是什么?">pl/sql是什么?</h2><p>pl/sql (procedural language / sql) 该语句可以对数据库编程，它可以定义常量，变量..<br>,也有条件控制语句和循环语句.</p>
-<h2 id="为什么需要pl/sql">为什么需要pl/sql</h2><ol>
-<li>可以提高效率</li>
-<li>可以实现模块化编程</li>
-<li>可以减少网络传输量</li>
-<li>安全性提高</li>
-<li>缺点是不能移植</li>
-</ol>
-<h2 id="pl/sql编程快速入门">pl/sql编程快速入门</h2><p>举一个简单案例:<br>编写一个存储过程，该过程可以向某表中添加记录.</p>
-<pre><code>create procedure p1(in_empno number,in_empname varchar2) is
-begin
-    insert into emp(empno,empname) value(in_empno,inempname);
-end;
-</code></pre><p>调用: exec p1(100,”smith”);</p>
+            <p>项目中经常可能会遇到需要用拼音的首字母来查询的需求,比如：用户表的字段name是汉字,我们需要查询首字母为C的所有用户，该怎么做呢？</p>
+<p>现总结如下函数以供使用:</p>
             
         </div>
     </div>
     <div class="cl-art-footer">
         
-        <a class="cl-more-link" href="/2014/08/14/plsql入门/">阅读全文...</a>
+        <a class="cl-more-link" href="/2014/09/11/MySQL按照首字母查询的函数/">阅读全文...</a>
         
     </div>
 
@@ -76,7 +64,7 @@ end;
 
 <article>
     <h3 class="cl-art-title">
-        <a href="#">Oracle中多行子查询中使用any和all操作</a>
+        <a href="#">pl/sql编程基础</a>
     </h3>
 
     <div class="cl-art-content">
@@ -92,22 +80,30 @@ end;
                 
                 
             </span>
-            <span class="cl-blog-date">2014-08-10</span>
+            <span class="cl-blog-date">2014-08-18</span>
         </div>
         <div class="content">
             
-            <p>Oracle中多行子查询中使用all和any操作:</p>
-<h3 id="请思考:如何显示工资比部门30的所有员工的工资高的员工的姓名?">请思考:如何显示工资比部门30的所有员工的工资高的员工的姓名?</h3><p>不使用all，可以这样做：</p>
-<pre><code>select ename form emp where sal&gt;(select max(sal) from emp where deptno=30)
-</code></pre><p>使用all，可以这样做：</p>
-<pre><code>select ename form emp where sal&gt;all(select sal from emp where deptno=30)
+            <h3 id="☞_pl/sql_编程的基础是块_,通过块的组合,可以开发_(过程、函数、触发器、包)">☞ pl/sql 编程的基础是<strong>块</strong> ,通过块的组合,可以开发 (过程、函数、触发器、包)</h3><h4 id="pl/sql_变量定义的规范">pl/sql 变量定义的规范</h4><ul>
+<li>普通变量 v_xxx</li>
+<li>常量 c_xxxx</li>
+<li>游标 xxx_cursor</li>
+<li>异常 e_xxx</li>
+</ul>
+<h4 id="块的结构">块的结构</h4><pre><code>declare
+    定义部分;
+begin
+    执行部分;
+exception
+    异常部分;
+end;
 </code></pre>
             
         </div>
     </div>
     <div class="cl-art-footer">
         
-        <a class="cl-more-link" href="/2014/08/10/Oracle中多行子查询中使用any和all操作/">阅读全文...</a>
+        <a class="cl-more-link" href="/2014/08/18/plsql编程基础/">阅读全文...</a>
         
     </div>
 
@@ -141,6 +137,14 @@ end;
             <ul>
                 
                 <li>
+                    <a href="/2015/06/18/Html语义化笔记/">Html语义化笔记</a>
+                </li>
+                
+                <li>
+                    <a href="/2015/06/17/Hibernate一对多注解/">Hibernate一对多注解笔记</a>
+                </li>
+                
+                <li>
                     <a href="/2015/03/08/MySQL优化方案笔记/">MySQL优化方案笔记</a>
                 </li>
                 
@@ -152,26 +156,19 @@ end;
                     <a href="/2014/09/11/MySQL按照首字母查询的函数/">Mysql按照拼音首字母查询数据库函数</a>
                 </li>
                 
-                <li>
-                    <a href="/2014/08/18/plsql编程基础/">pl/sql编程基础</a>
-                </li>
-                
-                <li>
-                    <a href="/2014/08/14/plsql入门/">pl/sql入门</a>
-                </li>
-                
             </ul>
         </li>
 
         <li class="category">
             <h2>分类目录</h2>
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/default/">default</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sql/">sql</a><span class="category-list-count">6</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/default/">default</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sql/">sql</a><span class="category-list-count">6</span></li></ul>
         </li>
         <li class="friends">
             <h2>友情链接 </h2>
             <ul>
                 <li><a href="http://www.songyuchao.com/">小宋的博客</a></li>
                 <li><a href="http://blog.tangjiujun.com/">唐久军的博客</a></li>
+                <li><a href="http://www.phpkong.com/">空灵的博客</a></li>
             </ul>
         </li>
 

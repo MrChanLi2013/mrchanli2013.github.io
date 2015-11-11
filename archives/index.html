@@ -30,7 +30,7 @@
         <section id="main">
 <article>
     <h3 class="cl-art-title">
-        <a href="#">MySQL优化方案笔记</a>
+        <a href="#">Html语义化笔记</a>
     </h3>
 
     <div class="cl-art-content">
@@ -42,34 +42,21 @@
             <span class="cl-blog-auth">
                 
                 
-                <a href="/categories/sql/" class="pull-right">sql</a>
+                <a href="/categories/html/" class="pull-right">html</a>
                 
                 
             </span>
-            <span class="cl-blog-date">2015-03-08</span>
+            <span class="cl-blog-date">2015-06-18</span>
         </div>
         <div class="content">
             
-            <h4 id="一些常用的优化手段">一些常用的优化手段</h4><ol>
-<li><p>选择优化的数据类型</p>
-<ul>
-<li><p>更小通常便好</p>
-<p>一般来说，要试着使用能正确的储存和表示的数据类型。因为他们使用了更少的磁盘空间。</p>
-</li>
-<li><p>简单就好</p>
-<p>越简单的数据类型，需要的CPU周期就越少。例如：应该使用数据库时间类型保存时间而不要使用字符串；应该使用整数来保存IP地址，<strong> IP地址本质就是无符号的32位整数，之所以用添加小数点是为了可读性。 </strong>MySql中提供了INET_ATON()和INET_NTOA()。</p>
-</li>
-<li><p>尽量避免使用NULL</p>
-</li>
-</ul>
-</li>
-</ol>
+            
             
         </div>
     </div>
     <div class="cl-art-footer">
         
-        <a class="cl-more-link" href="/2015/03/08/MySQL优化方案笔记/">阅读全文...</a>
+        <a class="cl-more-link" href="/2015/06/18/Html语义化笔记/">阅读全文...</a>
         
     </div>
 
@@ -78,7 +65,7 @@
 
 <article>
     <h3 class="cl-art-title">
-        <a href="#">MySQL数据引擎笔记</a>
+        <a href="#">Hibernate一对多注解笔记</a>
     </h3>
 
     <div class="cl-art-content">
@@ -90,37 +77,51 @@
             <span class="cl-blog-auth">
                 
                 
-                <a href="/categories/sql/" class="pull-right">sql</a>
+                <a href="/categories/java/" class="pull-right">java</a>
                 
                 
             </span>
-            <span class="cl-blog-date">2015-02-08</span>
+            <span class="cl-blog-date">2015-06-17</span>
         </div>
         <div class="content">
             
-            <h3 id="MySQL数据引擎分类">MySQL数据引擎分类</h3><ol>
-<li><p>ISAM</p>
-<p> 优点：ISAM执行读取操作的速度很快，而且不占用大量的内存和存储资源。</p>
-<p> 缺点：不支持事务处理，也不能够容错。<em> 如果你的硬盘坏了，那么数据文件就无法恢复了。 </em></p>
-</li>
-<li><p>MyISAM（MySQL的ISAM扩展格式和缺省的数据库引擎，MySQL 5.0 之前的默认数据库引擎）</p>
-<p> 优点：MyISAM使用了一种表格锁定的机制，来优化多个并发的读写操作，其代价是你需要经常运行OPTIMIZE TABLE命令，来恢复被更新机制所浪费的空间。MyISAM强调了快速读取操作。</p>
-<p> 缺点：不能在表损坏后恢复数据。</p>
-</li>
-<li><p>HEAP</p>
-<p> 优点：HEAP允许只驻留在内存里的临时表格。驻留在内存里让HEAP要比ISAM和MYISAM都快。</p>
-<p> 缺点：管理的数据是不稳定的，而且如果在关机之前没有进行保存，那么所有的数据都会丢失。</p>
-</li>
-<li><p>InnoDB（MySQL 5.5 起成为默认数据库引擎）</p>
-<p> InnoDB包括了对事务处理和外来键的支持，这两点都是前两个引擎所没有的。</p>
-</li>
-</ol>
+            <h4 id="Hibernate中一对多注解@OneToMany">Hibernate中一对多注解@OneToMany</h4><p>  parent和child直接就属于一对多关系，一个parent可能有多个child，一个child只有一个parent：</p>
+<p>  Parent类：</p>
+<pre><code>@Entity
+@Table(name=&quot;parent&quot;)
+public class Parent {
+  @Id
+  @GeneratedValue
+  private Integer id;
+
+  @OneToMany(cascade = CascadeType.ALL)
+  private Set&lt;Child&gt; children;
+
+  @Column
+  private String name;
+
+  //getter and setter
+}
+</code></pre><p>  Child类：</p>
+<pre><code>@Entity
+@Table(name=&quot;child&quot;)
+public class Child {
+  @Id
+  @GeneratedValue
+  private Integer id;
+
+  @Column
+  private String name;
+
+  //getter and setter
+}
+</code></pre>
             
         </div>
     </div>
     <div class="cl-art-footer">
         
-        <a class="cl-more-link" href="/2015/02/08/MySQL数据引擎/">阅读全文...</a>
+        <a class="cl-more-link" href="/2015/06/17/Hibernate一对多注解/">阅读全文...</a>
         
     </div>
 
@@ -152,6 +153,14 @@
             <ul>
                 
                 <li>
+                    <a href="/2015/06/18/Html语义化笔记/">Html语义化笔记</a>
+                </li>
+                
+                <li>
+                    <a href="/2015/06/17/Hibernate一对多注解/">Hibernate一对多注解笔记</a>
+                </li>
+                
+                <li>
                     <a href="/2015/03/08/MySQL优化方案笔记/">MySQL优化方案笔记</a>
                 </li>
                 
@@ -163,26 +172,19 @@
                     <a href="/2014/09/11/MySQL按照首字母查询的函数/">Mysql按照拼音首字母查询数据库函数</a>
                 </li>
                 
-                <li>
-                    <a href="/2014/08/18/plsql编程基础/">pl/sql编程基础</a>
-                </li>
-                
-                <li>
-                    <a href="/2014/08/14/plsql入门/">pl/sql入门</a>
-                </li>
-                
             </ul>
         </li>
 
         <li class="category">
             <h2>分类目录</h2>
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/default/">default</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sql/">sql</a><span class="category-list-count">6</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/default/">default</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sql/">sql</a><span class="category-list-count">6</span></li></ul>
         </li>
         <li class="friends">
             <h2>友情链接 </h2>
             <ul>
                 <li><a href="http://www.songyuchao.com/">小宋的博客</a></li>
                 <li><a href="http://blog.tangjiujun.com/">唐久军的博客</a></li>
+                <li><a href="http://www.phpkong.com/">空灵的博客</a></li>
             </ul>
         </li>
 
