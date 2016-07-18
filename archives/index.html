@@ -30,6 +30,41 @@
         <section id="main">
 <article>
     <h3 class="cl-art-title">
+        <a href="#">Linux常用命令总结</a>
+    </h3>
+
+    <div class="cl-art-content">
+        <div class="author">
+            <span class="cl-avatar-span">
+                <img src="/css/images/avatar.jpg" alt="头像"
+                     class="avatar avatar-72" height="72" width="72">
+            </span>
+            <span class="cl-blog-auth">
+                
+                
+                <a href="/categories/Linux/" class="pull-right">Linux</a>
+                
+                
+            </span>
+            <span class="cl-blog-date">2015-11-17</span>
+        </div>
+        <div class="content">
+            
+            
+            
+        </div>
+    </div>
+    <div class="cl-art-footer">
+        
+        <a class="cl-more-link" href="/2015/11/17/Linux常用命令总结/">阅读全文...</a>
+        
+    </div>
+
+    
+</article>
+
+<article>
+    <h3 class="cl-art-title">
         <a href="#">Html语义化笔记</a>
     </h3>
 
@@ -63,71 +98,6 @@
     
 </article>
 
-<article>
-    <h3 class="cl-art-title">
-        <a href="#">Hibernate一对多注解笔记</a>
-    </h3>
-
-    <div class="cl-art-content">
-        <div class="author">
-            <span class="cl-avatar-span">
-                <img src="/css/images/avatar.jpg" alt="头像"
-                     class="avatar avatar-72" height="72" width="72">
-            </span>
-            <span class="cl-blog-auth">
-                
-                
-                <a href="/categories/java/" class="pull-right">java</a>
-                
-                
-            </span>
-            <span class="cl-blog-date">2015-06-17</span>
-        </div>
-        <div class="content">
-            
-            <h4 id="Hibernate中一对多注解@OneToMany">Hibernate中一对多注解@OneToMany</h4><p>  parent和child直接就属于一对多关系，一个parent可能有多个child，一个child只有一个parent：</p>
-<p>  Parent类：</p>
-<pre><code>@Entity
-@Table(name=&quot;parent&quot;)
-public class Parent {
-  @Id
-  @GeneratedValue
-  private Integer id;
-
-  @OneToMany(cascade = CascadeType.ALL)
-  private Set&lt;Child&gt; children;
-
-  @Column
-  private String name;
-
-  //getter and setter
-}
-</code></pre><p>  Child类：</p>
-<pre><code>@Entity
-@Table(name=&quot;child&quot;)
-public class Child {
-  @Id
-  @GeneratedValue
-  private Integer id;
-
-  @Column
-  private String name;
-
-  //getter and setter
-}
-</code></pre>
-            
-        </div>
-    </div>
-    <div class="cl-art-footer">
-        
-        <a class="cl-more-link" href="/2015/06/17/Hibernate一对多注解/">阅读全文...</a>
-        
-    </div>
-
-    
-</article>
-
 <div class="cl-pagination">
   <ul class="am-pagination">
     
@@ -153,6 +123,10 @@ public class Child {
             <ul>
                 
                 <li>
+                    <a href="/2015/11/17/Linux常用命令总结/">Linux常用命令总结</a>
+                </li>
+                
+                <li>
                     <a href="/2015/06/18/Html语义化笔记/">Html语义化笔记</a>
                 </li>
                 
@@ -168,16 +142,12 @@ public class Child {
                     <a href="/2015/02/08/MySQL数据引擎/">MySQL数据引擎笔记</a>
                 </li>
                 
-                <li>
-                    <a href="/2014/09/11/Mysql按照首字母查询的函数/">Mysql按照首字母查询的函数</a>
-                </li>
-                
             </ul>
         </li>
 
         <li class="category">
             <h2>分类目录</h2>
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/default/">default</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sql/">sql</a><span class="category-list-count">6</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/default/">default</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sql/">sql</a><span class="category-list-count">6</span></li></ul>
         </li>
         <li class="friends">
             <h2>友情链接 </h2>
@@ -195,7 +165,7 @@ public class Child {
     <div class="am-g am-g-fixed">
         <ul class="cl-footer-links">
             <li>
-                <a href="#">&copy; 2015 陈立</a>
+                <a href="#">&copy; 2016 陈立</a>
                 | Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
                 | Theme by <a href="http://amazeui.org/">Amaze UI</a>
             </li>

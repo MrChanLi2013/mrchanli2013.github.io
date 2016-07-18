@@ -75,6 +75,25 @@
 </code></pre><p> 这个查询会查找date_col值离今天不超过10天的所有行，但它不会使用索引，因为使用了TO_DAYS函数。可以优化为：</p>
 <pre><code> mysql&gt; select ... from table where date_col &gt;= DATE_SUB(&#39;2015-09-09&#39;,INTERVAL 10 DAY)
 </code></pre></li>
+<li><p>优化like查询</p>
+<pre><code> select * from table where code like &#39;Code2%&#39;  -- 会使用索引
+ select * from table where code like &#39;%ode2%&#39;  -- 不会使用索引
+ select * from table where code like &#39;%ode2&#39;   -- 不会使用索引
+</code></pre><p> 可以使用其他函数来进行模糊查询，如果出现位置大于0，表示包含改字符，查询效率比like高。</p>
+<ol>
+<li><p>在oracle中可以使用instr()；</p>
+<pre><code> select count(*) from table t where instr(t.code,&#39;Cod2%&#39;) &gt; 0
+</code></pre></li>
+<li><p>在MySQL中可以使用locate()和position()；table.field like ‘%AAA%’可以改为locate(‘AAA’, table.field) &gt; 0或POSITION(‘AAA’ IN table.field)&gt;0。  </p>
+</li>
+</ol>
+</li>
+<li><p>避免隐式转换    </p>
+<p>例如，某个字段是char类型，但是在做查询的时候：</p>
+<pre><code>   where field = &#39;1&#39; -- 会走索引
+   where field = 1 -- 不会走索引
+</code></pre><p>但是如果那个表那个列是一个数字类型，拿来和字符类型的做比较，则不会影响到使用索引。</p>
+</li>
 </ul>
 </li>
 </ol>
@@ -125,6 +144,10 @@
             <ul>
                 
                 <li>
+                    <a href="/2015/11/17/Linux常用命令总结/">Linux常用命令总结</a>
+                </li>
+                
+                <li>
                     <a href="/2015/06/18/Html语义化笔记/">Html语义化笔记</a>
                 </li>
                 
@@ -140,16 +163,12 @@
                     <a href="/2015/02/08/MySQL数据引擎/">MySQL数据引擎笔记</a>
                 </li>
                 
-                <li>
-                    <a href="/2014/09/11/Mysql按照首字母查询的函数/">Mysql按照首字母查询的函数</a>
-                </li>
-                
             </ul>
         </li>
 
         <li class="category">
             <h2>分类目录</h2>
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/default/">default</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sql/">sql</a><span class="category-list-count">6</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/default/">default</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sql/">sql</a><span class="category-list-count">6</span></li></ul>
         </li>
         <li class="friends">
             <h2>友情链接 </h2>
@@ -167,7 +186,7 @@
     <div class="am-g am-g-fixed">
         <ul class="cl-footer-links">
             <li>
-                <a href="#">&copy; 2015 陈立</a>
+                <a href="#">&copy; 2016 陈立</a>
                 | Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
                 | Theme by <a href="http://amazeui.org/">Amaze UI</a>
             </li>
