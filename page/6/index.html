@@ -5,8 +5,6 @@
     
     <title>
         
-        Archives |
-        
         陈立的blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="renderer" content="webkit">
@@ -30,7 +28,7 @@
         <section id="main">
 <article>
     <h3 class="cl-art-title">
-        <a href="#">Linux常用命令总结</a>
+        <a href="#">Oracle中多行子查询中使用any和all操作</a>
     </h3>
 
     <div class="cl-art-content">
@@ -42,21 +40,26 @@
             <span class="cl-blog-auth">
                 
                 
-                <a href="/categories/Linux/" class="pull-right">Linux</a>
+                <a href="/categories/sql/" class="pull-right">sql</a>
                 
                 
             </span>
-            <span class="cl-blog-date">2015-11-17</span>
+            <span class="cl-blog-date">2014-08-10</span>
         </div>
         <div class="content">
             
-            
+            <p>Oracle中多行子查询中使用all和any操作:</p>
+<h3 id="请思考:如何显示工资比部门30的所有员工的工资高的员工的姓名?">请思考:如何显示工资比部门30的所有员工的工资高的员工的姓名?</h3><p>不使用all，可以这样做：</p>
+<pre><code>select ename form emp where sal&gt;(select max(sal) from emp where deptno=30)
+</code></pre><p>使用all，可以这样做：</p>
+<pre><code>select ename form emp where sal&gt;all(select sal from emp where deptno=30)
+</code></pre>
             
         </div>
     </div>
     <div class="cl-art-footer">
         
-        <a class="cl-more-link" href="/2015/11/17/Linux常用命令总结/">阅读全文...</a>
+        <a class="cl-more-link" href="/2014/08/10/Oracle中多行子查询中使用any和all操作/">阅读全文...</a>
         
     </div>
 
@@ -65,7 +68,7 @@
 
 <article>
     <h3 class="cl-art-title">
-        <a href="#">Html语义化笔记</a>
+        <a href="#">js常用验证总结</a>
     </h3>
 
     <div class="cl-art-content">
@@ -77,21 +80,34 @@
             <span class="cl-blog-auth">
                 
                 
-                <a href="/categories/html/" class="pull-right">html</a>
+                <a href="/categories/default/" class="pull-right">default</a>
                 
                 
             </span>
-            <span class="cl-blog-date">2015-06-18</span>
+            <span class="cl-blog-date">2014-08-10</span>
         </div>
         <div class="content">
             
-            
+            <p>一些常用的js正则验证：</p>
+<p>example：</p>
+<pre><code>var validateRegExp = {
+    chinese: &quot;^[\\u4e00-\\u9fa5]+$&quot; //仅中文
+};
+
+var validateRules = {
+ isChinese: function (str) {
+    return new RegExp(validateRegExp.chinese).test(str);
+  }
+};
+
+validateRules.isChinese(str);
+</code></pre>
             
         </div>
     </div>
     <div class="cl-art-footer">
         
-        <a class="cl-more-link" href="/2015/06/18/Html语义化笔记/">阅读全文...</a>
+        <a class="cl-more-link" href="/2014/08/10/js验证总结/">阅读全文...</a>
         
     </div>
 
@@ -101,10 +117,8 @@
 <div class="cl-pagination">
   <ul class="am-pagination">
     
-    <li class="am-pagination-prev"><a href="/archives/">← 上一页</a></li>
+    <li class="am-pagination-prev"><a href="/page/5/">← 上一页</a></li>
     
-    
-    <li class="am-pagination-next"><a href="/archives/page/3/">下一页 →</a></li>
     
   </ul>
 </div></section>

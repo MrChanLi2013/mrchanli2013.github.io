@@ -5,7 +5,7 @@
     
     <title>
         
-        Archives |
+        Web分布式session管理 |
         
         陈立的blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -27,10 +27,9 @@
 </header>
 <div class="cl-mian-content am-g am-g-fixed">
     <div class="main am-u-sm-12 am-u-md-7 am-u-lg-7">
-        <section id="main">
-<article>
+        <section id="main"><article>
     <h3 class="cl-art-title">
-        <a href="#">Linux常用命令总结</a>
+        <a href="#">Web分布式session管理</a>
     </h3>
 
     <div class="cl-art-content">
@@ -42,72 +41,62 @@
             <span class="cl-blog-auth">
                 
                 
-                <a href="/categories/Linux/" class="pull-right">Linux</a>
+                <a href="/categories/Web/" class="pull-right">Web</a>
                 
                 
             </span>
-            <span class="cl-blog-date">2015-11-17</span>
+            <span class="cl-blog-date">2016-07-25</span>
         </div>
         <div class="content">
             
-            
+            <p><strong>摘要</strong></p>
+<p>  随着web功能的强大起来，用户数量也多起来，这就需要在应用服务器前增加负载均衡设备来解决，例如有两台设备，当用户访问的时候是随机登录的一台设备，那这时候session如何处理？</p>
+<p><strong>解决方案</strong></p>
+<ol>
+<li><p>Session Stick<br> nginx支持stick技术。</p>
+</li>
+<li><p>Session复制<br> 将session复制至没一台服务器上。</p>
+</li>
+<li><p>Session集中管理<br> 使用单独的session服务器，将用户访问先路由至session服务器。</p>
+</li>
+<li><p>基于Cookie管理<br> 将session信息放在cookie中，再次访问服务器时，将cookie信息带上发送至服务器，这样就可以验证身份信息了。<br> 缺点：</p>
+<ul>
+<li>cookie信息不安全</li>
+<li>每次都需要携带cookie信息，增加了网络开销</li>
+<li>cookie长度有限制      </li>
+</ul>
+</li>
+</ol>
+
             
         </div>
     </div>
     <div class="cl-art-footer">
         
-        <a class="cl-more-link" href="/2015/11/17/Linux常用命令总结/">阅读全文...</a>
-        
     </div>
 
     
-</article>
-
-<article>
-    <h3 class="cl-art-title">
-        <a href="#">Html语义化笔记</a>
-    </h3>
-
-    <div class="cl-art-content">
-        <div class="author">
-            <span class="cl-avatar-span">
-                <img src="/css/images/avatar.jpg" alt="头像"
-                     class="avatar avatar-72" height="72" width="72">
-            </span>
-            <span class="cl-blog-auth">
-                
-                
-                <a href="/categories/html/" class="pull-right">html</a>
-                
-                
-            </span>
-            <span class="cl-blog-date">2015-06-18</span>
-        </div>
-        <div class="content">
-            
-            
-            
-        </div>
-    </div>
-    <div class="cl-art-footer">
-        
-        <a class="cl-more-link" href="/2015/06/18/Html语义化笔记/">阅读全文...</a>
-        
-    </div>
+    <hr class="am-article-divider blog-hr">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="undefined" data-title="Web分布式session管理" data-url="2016/07/25/Web分布式session管理/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name: "lvelyn"};
+        (function () {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共JS代码 end -->
 
     
-</article>
-
-<div class="cl-pagination">
-  <ul class="am-pagination">
-    
-    <li class="am-pagination-prev"><a href="/archives/">← 上一页</a></li>
-    
-    
-    <li class="am-pagination-next"><a href="/archives/page/3/">下一页 →</a></li>
-    
-  </ul>
-</div></section>
+</article></section>
     </div>
     <div class="cl-sidebar am-u-lg-4 am-u-md-4 am-u-sm-12">
     <ul class="cl-sidebar-ul">

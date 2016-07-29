@@ -28,7 +28,7 @@
         <section id="main">
 <article>
     <h3 class="cl-art-title">
-        <a href="#">Hibernate一对多注解笔记</a>
+        <a href="#">Linux常用命令总结</a>
     </h3>
 
     <div class="cl-art-content">
@@ -40,51 +40,21 @@
             <span class="cl-blog-auth">
                 
                 
-                <a href="/categories/java/" class="pull-right">java</a>
+                <a href="/categories/Linux/" class="pull-right">Linux</a>
                 
                 
             </span>
-            <span class="cl-blog-date">2015-06-17</span>
+            <span class="cl-blog-date">2015-11-17</span>
         </div>
         <div class="content">
             
-            <h4 id="Hibernate中一对多注解@OneToMany">Hibernate中一对多注解@OneToMany</h4><p>  parent和child直接就属于一对多关系，一个parent可能有多个child，一个child只有一个parent：</p>
-<p>  Parent类：</p>
-<pre><code>@Entity
-@Table(name=&quot;parent&quot;)
-public class Parent {
-  @Id
-  @GeneratedValue
-  private Integer id;
-
-  @OneToMany(cascade = CascadeType.ALL)
-  private Set&lt;Child&gt; children;
-
-  @Column
-  private String name;
-
-  //getter and setter
-}
-</code></pre><p>  Child类：</p>
-<pre><code>@Entity
-@Table(name=&quot;child&quot;)
-public class Child {
-  @Id
-  @GeneratedValue
-  private Integer id;
-
-  @Column
-  private String name;
-
-  //getter and setter
-}
-</code></pre>
+            
             
         </div>
     </div>
     <div class="cl-art-footer">
         
-        <a class="cl-more-link" href="/2015/06/17/Hibernate一对多注解/">阅读全文...</a>
+        <a class="cl-more-link" href="/2015/11/17/Linux常用命令总结/">阅读全文...</a>
         
     </div>
 
@@ -93,7 +63,7 @@ public class Child {
 
 <article>
     <h3 class="cl-art-title">
-        <a href="#">MySQL优化方案笔记</a>
+        <a href="#">Html语义化笔记</a>
     </h3>
 
     <div class="cl-art-content">
@@ -105,34 +75,21 @@ public class Child {
             <span class="cl-blog-auth">
                 
                 
-                <a href="/categories/sql/" class="pull-right">sql</a>
+                <a href="/categories/html/" class="pull-right">html</a>
                 
                 
             </span>
-            <span class="cl-blog-date">2015-03-08</span>
+            <span class="cl-blog-date">2015-06-18</span>
         </div>
         <div class="content">
             
-            <h4 id="一些常用的优化手段">一些常用的优化手段</h4><ol>
-<li><p>选择优化的数据类型</p>
-<ul>
-<li><p>更小通常便好</p>
-<p>一般来说，要试着使用能正确的储存和表示的数据类型。因为他们使用了更少的磁盘空间。</p>
-</li>
-<li><p>简单就好</p>
-<p>越简单的数据类型，需要的CPU周期就越少。例如：应该使用数据库时间类型保存时间而不要使用字符串；应该使用整数来保存IP地址，<strong> IP地址本质就是无符号的32位整数，之所以用添加小数点是为了可读性。 </strong>MySql中提供了INET_ATON()和INET_NTOA()。</p>
-</li>
-<li><p>尽量避免使用NULL</p>
-</li>
-</ul>
-</li>
-</ol>
+            
             
         </div>
     </div>
     <div class="cl-art-footer">
         
-        <a class="cl-more-link" href="/2015/03/08/MySQL优化方案笔记/">阅读全文...</a>
+        <a class="cl-more-link" href="/2015/06/18/Html语义化笔记/">阅读全文...</a>
         
     </div>
 
@@ -166,6 +123,14 @@ public class Child {
             <ul>
                 
                 <li>
+                    <a href="/2016/07/29/jvm笔记/">jvm内存结构</a>
+                </li>
+                
+                <li>
+                    <a href="/2016/07/25/Web分布式session管理/">Web分布式session管理</a>
+                </li>
+                
+                <li>
                     <a href="/2015/11/17/Linux常用命令总结/">Linux常用命令总结</a>
                 </li>
                 
@@ -177,20 +142,12 @@ public class Child {
                     <a href="/2015/06/17/Hibernate一对多注解/">Hibernate一对多注解笔记</a>
                 </li>
                 
-                <li>
-                    <a href="/2015/03/08/MySQL优化方案笔记/">MySQL优化方案笔记</a>
-                </li>
-                
-                <li>
-                    <a href="/2015/02/08/MySQL数据引擎/">MySQL数据引擎笔记</a>
-                </li>
-                
             </ul>
         </li>
 
         <li class="category">
             <h2>分类目录</h2>
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/default/">default</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sql/">sql</a><span class="category-list-count">6</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/default/">default</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sql/">sql</a><span class="category-list-count">6</span></li></ul>
         </li>
         <li class="friends">
             <h2>友情链接 </h2>
