@@ -398,7 +398,7 @@ public class TestApplication {
 
 &lt;p&gt;&lt;strong&gt;问题&lt;/strong&gt;：spring-boot加入jsp的支持启动项目时找不到jsp，报404问题？
 &lt;strong&gt;解决办法：&lt;/strong&gt;   特别设置图中红色部分，选到你的jsp所在的模块。
-&lt;img src=&#34;./idea-jsp.png&#34; alt=&#34;Alt text&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;http://blog.52zgd.com/img/idea-jsp.png&#34; alt=&#34;Alt text&#34; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
