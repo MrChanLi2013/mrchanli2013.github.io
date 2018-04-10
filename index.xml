@@ -61,9 +61,7 @@
       
       <guid>http://blog.52zgd.com/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/</guid>
       
-        <description>
-
-&lt;blockquote&gt;
+        <description>&lt;blockquote&gt;
 &lt;p&gt;“微服务”一词源于Martin Fowler 的名为Microservices 的博文， 可以在他的官方博客
 上找到： &lt;a href=&#34;http://martinfowler.com/articles/microservices.html&#34;&gt;Martin Fowler Blog&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -75,6 +73,8 @@
 &lt;h4 id=&#34;什么是微服务架构&#34;&gt;什么是微服务架构&lt;/h4&gt;
 
 &lt;p&gt;简单地说，&lt;strong&gt;微服务是系统架构上的一种设计风格， 它的主旨是将一个原本独立的系统拆分成多个小型服务，这些小型服务都在各自独立的进程中运行，服务之间通过基于HTTP的RESTful API进行通信协作&lt;/strong&gt;。被拆分成的每一个小型服务都围绕着系统中的某一项或一些耦合度较高的业务功能进行构建， 并且每个服务都维护着自身的数据存储、业务开发、自动化测试案例以及独立部署机制。由于有了轻量级的通信协作基础， 所以这些微服务可以使用不同的语言来编写。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;如何实施微服务&#34;&gt;如何实施微服务&lt;/h4&gt;
 
@@ -116,28 +116,33 @@
 
 &lt;h5 id=&#34;当下比较流行的微服务框架spring-cloud&#34;&gt;当下比较流行的微服务框架Spring Cloud&lt;/h5&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://projects.spring.io/spring-cloud/&#34;&gt;Spring Cloud&lt;/a&gt;是一个基千&lt;a href=&#34;https://projects.spring.io/spring-boot/&#34;&gt;Spring Boot&lt;/a&gt;实现的微服务架构开发工具。它为微服务架构中涉及的配置管理、服务治理、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的开发方式。Spring Cloud包含了多个子项目（针对分布式系统中涉及的多个不同开源产品，还可能会新增）， 如下所述：
-* Spring Cloud Config: 配置管理工具， 支持使用Git存储配置内容， 可以使用它实现应用配置的外部化存储， 并支持客户端配置信息刷新、加密／解密配置内容等。
-* Spring CloudN etflix: 核心 组件，对多个Netflix OSS开源套件进行整合。
-  * Eureka: 服务治理组件， 包含服务注册中心、服务注册与发现机制的实现。
-  * Hystrix: 容错管理组件，实现断路器模式， 帮助服务依赖中出现的延迟和为故障提供强大的容错能力。
-  * Ribbon: 客户端负载均衡的服务调用组件。
-  * Feign: 基于Ribbon 和Hystrix 的声明式服务调用组件。
-  * Zuul: 网关组件， 提供智能路由、访问过滤等功能。
-  * Archaius: 外部化配置组件。
-* Spring Cloud Bus: 事件、消息总线， 用于传播集群中的状态变化或事件， 以触发后续的处理， 比如用来动态刷新配置等。
-* Spring Cloud Cluster: 针对ZooKeeper、Redis、Hazelcast、Consul 的选举算法和通用状态模式的实现。
-* Spring Cloud Cloudfoundry: 与Pivotal Cloudfoundry 的整合支持。
-* Spring Cloud Consul: 服务发现与配置管理工具。
-* Spring Cloud Stream: 通过Redis、Rabbit 或者Kafka 实现的消费微服务， 可以通过简单的声明式模型来发送和接收消息。
-* Spring Cloud A WS: 用千简化整合Amazon Web Service 的组件。
-* Spring Cloud Security: 安全工具包， 提供在Zuul 代理中对0Auth2 客户端请求的中继器。
-* Spring Cloud Sleuth: Spring Cloud 应用的分布式跟踪实现， 可以完美整合Zip虹n。
-* Spring Cloud ZooKeeper: 基于ZooKeeper 的服务发现与配置管理组件。
-* Spring Cloud Starters: Spring Cloud 的基础组件， 它是基于Spring Boot 风格项目的基础依赖模块。
-* Spring Cloud CLI: 用于在Groovy 中快速创建Spring Cloud 应用的Spring Boot CLI插件。
-* &amp;hellip;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a href=&#34;https://projects.spring.io/spring-cloud/&#34;&gt;Spring Cloud&lt;/a&gt;是一个基千&lt;a href=&#34;https://projects.spring.io/spring-boot/&#34;&gt;Spring Boot&lt;/a&gt;实现的微服务架构开发工具。它为微服务架构中涉及的配置管理、服务治理、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的开发方式。Spring Cloud包含了多个子项目（针对分布式系统中涉及的多个不同开源产品，还可能会新增）， 如下所述：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Spring Cloud Config: 配置管理工具， 支持使用Git存储配置内容， 可以使用它实现应用配置的外部化存储， 并支持客户端配置信息刷新、加密／解密配置内容等。&lt;/li&gt;
+&lt;li&gt;Spring CloudN etflix: 核心 组件，对多个Netflix OSS开源套件进行整合。
+
+&lt;ul&gt;
+&lt;li&gt;Eureka: 服务治理组件， 包含服务注册中心、服务注册与发现机制的实现。&lt;/li&gt;
+&lt;li&gt;Hystrix: 容错管理组件，实现断路器模式， 帮助服务依赖中出现的延迟和为故障提供强大的容错能力。&lt;/li&gt;
+&lt;li&gt;Ribbon: 客户端负载均衡的服务调用组件。&lt;/li&gt;
+&lt;li&gt;Feign: 基于Ribbon 和Hystrix 的声明式服务调用组件。&lt;/li&gt;
+&lt;li&gt;Zuul: 网关组件， 提供智能路由、访问过滤等功能。&lt;/li&gt;
+&lt;li&gt;Archaius: 外部化配置组件。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Spring Cloud Bus: 事件、消息总线， 用于传播集群中的状态变化或事件， 以触发后续的处理， 比如用来动态刷新配置等。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Cluster: 针对ZooKeeper、Redis、Hazelcast、Consul 的选举算法和通用状态模式的实现。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Cloudfoundry: 与Pivotal Cloudfoundry 的整合支持。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Consul: 服务发现与配置管理工具。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Stream: 通过Redis、Rabbit 或者Kafka 实现的消费微服务， 可以通过简单的声明式模型来发送和接收消息。&lt;/li&gt;
+&lt;li&gt;Spring Cloud A WS: 用千简化整合Amazon Web Service 的组件。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Security: 安全工具包， 提供在Zuul 代理中对0Auth2 客户端请求的中继器。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Sleuth: Spring Cloud 应用的分布式跟踪实现， 可以完美整合Zip虹n。&lt;/li&gt;
+&lt;li&gt;Spring Cloud ZooKeeper: 基于ZooKeeper 的服务发现与配置管理组件。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Starters: Spring Cloud 的基础组件， 它是基于Spring Boot 风格项目的基础依赖模块。&lt;/li&gt;
+&lt;li&gt;Spring Cloud CLI: 用于在Groovy 中快速创建Spring Cloud 应用的Spring Boot CLI插件。&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;</description>
       
     </item>
     
