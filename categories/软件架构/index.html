@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>52zgd.com - 代码搬运工</title>
+  <title>软件架构 · 52zgd.com - 代码搬运工</title>
   <link rel="alternate" hreflang="zh-cn" href="http://blog.52zgd.com/" />
 
 <meta name="renderer" content="webkit" />
@@ -37,9 +37,9 @@
 <meta name="generator" content="Hugo 0.38" />
 
 
-<link rel="canonical" href="http://blog.52zgd.com/" />
-<link href="http://blog.52zgd.com/index.xml" rel="alternate" type="application/rss+xml" title="52zgd.com - 代码搬运工" />
-  <link href="http://blog.52zgd.com/index.xml" rel="feed" type="application/rss+xml" title="52zgd.com - 代码搬运工" />
+<link rel="canonical" href="http://blog.52zgd.com/categories/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/" />
+<link href="http://blog.52zgd.com/categories/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/index.xml" rel="alternate" type="application/rss+xml" title="52zgd.com - 代码搬运工" />
+  <link href="http://blog.52zgd.com/categories/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/index.xml" rel="feed" type="application/rss+xml" title="52zgd.com - 代码搬运工" />
 
 
 
@@ -59,29 +59,29 @@
 
 
 
-<meta property="og:title" content="52zgd.com - 代码搬运工" />
+<meta property="og:title" content="软件架构" />
 <meta property="og:description" content="一位代码搬运工的博客，52zgd.com" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://blog.52zgd.com/" />
+<meta property="og:url" content="http://blog.52zgd.com/categories/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/" />
 
 
 
-<meta property="og:updated_time" content="2018-02-08T00:00:00&#43;00:00"/>
-
-
-
-
+<meta property="og:updated_time" content="2018-04-10T00:00:00&#43;00:00"/>
 
 
 
 
 
 
-<meta itemprop="name" content="52zgd.com - 代码搬运工">
+
+
+
+
+<meta itemprop="name" content="软件架构">
 <meta itemprop="description" content="一位代码搬运工的博客，52zgd.com">
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="52zgd.com - 代码搬运工"/>
+<meta name="twitter:title" content="软件架构"/>
 <meta name="twitter:description" content="一位代码搬运工的博客，52zgd.com"/>
 
 <!--[if lte IE 9]>
@@ -170,166 +170,32 @@
       <div class="content-wrapper">
         <div id="content" class="content container">
           
-  <section id="posts" class="posts">
+
+<section id="archive" class="archive">
+  
     
+      <div class="archive-title category">
+        <h2 class="archive-name">分类： 软件架构</h2>
+      </div>
     
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/rest-api-%E8%AE%BE%E8%AE%A1/">REST API 设计总结</a></h1>
-    
-    <div class="post-meta">
-      <span class="post-time"> 2018-02-08 </span>
-      <div class="post-category">
-          
-            <a href="/categories/%E7%BB%8F%E9%AA%8C/"> 经验 </a>
-          
-        </div>
-      <span class="more-meta"> 约 1068 字 </span>
-      <span class="more-meta"> 预计阅读 3 分钟 </span>
+  
+
+  
+    <div class="archive-post">
+      <span class="archive-post-time">
+        2018-04-10
+      </span>
+      <span class="archive-post-title">
+        <a href="/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/" class="archive-post-link">
+          了解微服务架构
+        </a>
+      </span>
     </div>
-  </header>
   
-  <div class="post-content">
-    
-    <div class="post-summary">
-      <blockquote>
-<p>参考了GitHub rest api设计，<a href="https://developer.github.com/v3/">https://developer.github.com/v3/</a></p>
-</blockquote>
+</section>
 
-<h4 id="验证">验证</h4>
 
-<h5 id="使用-basic-authentication">使用<code>Basic authentication</code></h5>
 
-<p>如果没有验证就访问接口返回HTTP状态码<code>403 Forbidden</code>。但如果我们有接口是私有的我们可以返回<code>404 Not Found</code>，这样如果该地址被暴露出去之后，别人访问的时候会认为这个地址是错误的。也或者说我们只是针对部分用户，比如A、B两个用户A有权限访问接口，B没有权限，那么B访问的时候我们就返回404，A访问的时候没有验证成功我们就返回403。</p>
-
-<h5 id="登录失败的情况">登录失败的情况</h5>
-
-<ul>
-<li>无效的凭据：<code>401 Unauthorized</code></li>
-</ul>
-
-<pre><code class="language-json">HTTP/1.1 401 Unauthorized
-{
-	  &quot;message&quot;: &quot;用户名或密码错误&quot;
-}
-</code></pre>
-
-<ul>
-<li>凭据输入错误次数过多：<code>403 Forbidden</code></li>
-</ul>
-
-<pre><code class="language-json"> HTTP/1.1 403 Forbidden
- {
-	 &quot;message&quot;: &quot;操作过于频繁，请稍后操作&quot;
- }
-</code></pre>
-
-<p></p>
-    </div>
-    <div class="read-more">
-      <a href="/post/rest-api-%E8%AE%BE%E8%AE%A1/" class="read-more-link">阅读全文</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/vue/">Vue.js最佳实践</a></h1>
-    
-    <div class="post-meta">
-      <span class="post-time"> 2018-01-22 </span>
-      <div class="post-category">
-          
-            <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
-          
-        </div>
-      <span class="more-meta"> 约 313 字 </span>
-      <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      <p>@[web,javascript]</p>
-
-<h4 id="1-vue中是否还需要使用jquery">1.  Vue中是否还需要使用JQuery？</h4>
-
-<p>前端开发相信对jQuery非常熟悉了，对于刚开始使用vue的人来说，会更倾向于直接使用jQuery操作DOM，更加方便快捷。不过现在是时候改变一下你的习惯了，<strong>可以不再使用jQuery</strong>。</p>
-
-<p>Vue也提供了类似的API：</p>
-
-<pre><code class="language-javascript">&lt;template&gt;
-  &lt;div&gt;
-    ...
-    // 作用关于dom元素上
-    &lt;p ref=&quot;myElement&quot;&gt;This is the content of my element.&lt;/p&gt;
-    &lt;my-component ref=&quot;component&quot;&gt;This is custom component.&lt;/my-component&gt;
-    ...
-  &lt;/div&gt;
-&lt;/template&gt;
-&lt;script&gt;
-	export default {
-	  mounted () {
-	    console.log(this.$refs.myElement)
-	    console.log(this.$refs.component)
-	  }
-	}
-&lt;/script&gt;
-</code></pre>
-
-<p></p>
-    </div>
-    <div class="read-more">
-      <a href="/post/vue/" class="read-more-link">阅读全文</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/maven%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">maven常用命令操作</a></h1>
-    
-    <div class="post-meta">
-      <span class="post-time"> 2017-12-12 </span>
-      <div class="post-category">
-          
-            <a href="/categories/java/"> Java </a>
-          
-        </div>
-      <span class="more-meta"> 约 19 字 </span>
-      <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      <h1 id="maven常用操作">maven常用操作</h1>
-
-<ul>
-<li>跳过测试：<code>mvn install -Dmaven.test.skip=true</code></li>
-</ul>
-
-<p></p>
-    </div>
-    <div class="read-more">
-      <a href="/post/maven%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" class="read-more-link">阅读全文</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-  </section>
-
-  
-  
 
 
 
@@ -345,36 +211,6 @@
 
   
   
-
-  
-  
-  <nav class="pagination">
-    
-    <li >
-      <a href="/">1</a>
-    </li>
-    
-    <li  class="active" >
-      <a href="/page/2/">2</a>
-    </li>
-    
-    <li >
-      <a href="/page/3/">3</a>
-    </li>
-    
-    <li >
-      <a href="/page/4/">4</a>
-    </li>
-    
-    <li >
-      <a href="/page/5/">5</a>
-    </li>
-    
-    <li >
-      <a href="/page/6/">6</a>
-    </li>
-    
-  </nav>
 
   
   

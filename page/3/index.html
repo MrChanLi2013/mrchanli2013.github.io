@@ -66,7 +66,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-09-11T00:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2017-11-08T00:00:00&#43;00:00"/>
 
 
 
@@ -176,6 +176,62 @@
     
       <article class="post bg-white">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/oracle%E4%B8%8B%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">Oracle下常用函数</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2017-11-08 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+          
+        </div>
+      <span class="more-meta"> 约 558 字 </span>
+      <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <p>Oracle中经常使用<code>聚合函数</code>，那么除了这些函数，还有哪些我们会经常用到呢？</p>
+
+<p>总结如下：</p>
+
+<ul>
+<li><code>round()</code>：四舍五入方法，<code>SELECT ROUND( number, [ decimal_places ] ) FROM DUAL</code>，decimal_places 数值是按照指定的小数位进行四舍五入，<strong>小数位是从0开始计算与数组下标一样</strong></li>
+</ul>
+
+<pre><code class="language-sql"> select round(45.55, 1) from dual; -- 输出45.60
+ select round(45.21, 1) from dual; -- 输出45.20    
+</code></pre>
+
+<ul>
+<li><code>to_char()</code>转换日期</li>
+</ul>
+
+<pre><code class="language-sql"> select to_char(sysdate 'YYYY-MM-DD') from dual --转换成年-月-日的格式
+</code></pre>
+
+<ul>
+<li><code>to_char()</code>保留两位小数补0，例如：在java中查询出的字段映射到java class类属性时需要要补0</li>
+</ul>
+
+<pre><code class="language-sql"> TO_CHAR(35.00, 'FM9999999990.00')
+</code></pre>
+
+<p><br />
+</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/oracle%E4%B8%8B%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/js%E5%B8%B8%E7%94%A8%E9%AA%8C%E8%AF%81%E6%80%BB%E7%BB%93/">js常用验证总结</a></h1>
     
     <div class="post-meta">
@@ -273,43 +329,6 @@ enabled=1
 </article>
 
     
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/centos7/">Centos7.2 下mysql的安装</a></h1>
-    
-    <div class="post-meta">
-      <span class="post-time"> 2017-08-18 </span>
-      <div class="post-category">
-          
-            <a href="/categories/linux/"> Linux </a>
-          
-        </div>
-      <span class="more-meta"> 约 473 字 </span>
-      <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      <ol>
-<li>使用命令<code>yum list installed | grep mysql</code>查看mysql是否安装</li>
-<li>如果没有安装：先在MySQL官网中下载yum源rpm安装包：<a href="https://dev.mysql.com/downloads/repo/yum/">https://dev.mysql.com/downloads/repo/yum/</a>;</li>
-<li>下载mysql源安装包<code>wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm</code></li>
-<li>安装：<code>yum localinstall mysql57-community-release-el7-8.noarch.rpm</code></li>
-<li>将yum源安装好之后就可以使用<code>yum install mysql-community-server</code>安装mysql</li>
-</ol>
-
-<p></p>
-    </div>
-    <div class="read-more">
-      <a href="/post/centos7/" class="read-more-link">阅读全文</a>
-    </div>
-    
-  </div>
-</article>
-
-    
   </section>
 
   
@@ -352,6 +371,10 @@ enabled=1
     
     <li >
       <a href="/page/5/">5</a>
+    </li>
+    
+    <li >
+      <a href="/page/6/">6</a>
     </li>
     
   </nav>

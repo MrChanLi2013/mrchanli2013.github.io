@@ -176,6 +176,35 @@
     
       <article class="post bg-white">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/">了解微服务架构</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2018-04-10 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/"> 软件架构 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1849 字 </span>
+      <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      “微服务”一词源于Martin Fowler 的名为Microservices 的博文， 可以在他的官方博客 上找到： Martin Fowler Blog 更多内容请阅读书籍《SpringCl
+    </div>
+    <div class="read-more">
+      <a href="/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/">编程的一些基本原则</a></h1>
     
     <div class="post-meta">
@@ -270,67 +299,6 @@
 </article>
 
     
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/rest-api-%E8%AE%BE%E8%AE%A1/">REST API 设计总结</a></h1>
-    
-    <div class="post-meta">
-      <span class="post-time"> 2018-02-08 </span>
-      <div class="post-category">
-          
-            <a href="/categories/%E7%BB%8F%E9%AA%8C/"> 经验 </a>
-          
-        </div>
-      <span class="more-meta"> 约 1068 字 </span>
-      <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      <blockquote>
-<p>参考了GitHub rest api设计，<a href="https://developer.github.com/v3/">https://developer.github.com/v3/</a></p>
-</blockquote>
-
-<h4 id="验证">验证</h4>
-
-<h5 id="使用-basic-authentication">使用<code>Basic authentication</code></h5>
-
-<p>如果没有验证就访问接口返回HTTP状态码<code>403 Forbidden</code>。但如果我们有接口是私有的我们可以返回<code>404 Not Found</code>，这样如果该地址被暴露出去之后，别人访问的时候会认为这个地址是错误的。也或者说我们只是针对部分用户，比如A、B两个用户A有权限访问接口，B没有权限，那么B访问的时候我们就返回404，A访问的时候没有验证成功我们就返回403。</p>
-
-<h5 id="登录失败的情况">登录失败的情况</h5>
-
-<ul>
-<li>无效的凭据：<code>401 Unauthorized</code></li>
-</ul>
-
-<pre><code class="language-json">HTTP/1.1 401 Unauthorized
-{
-	  &quot;message&quot;: &quot;用户名或密码错误&quot;
-}
-</code></pre>
-
-<ul>
-<li>凭据输入错误次数过多：<code>403 Forbidden</code></li>
-</ul>
-
-<pre><code class="language-json"> HTTP/1.1 403 Forbidden
- {
-	 &quot;message&quot;: &quot;操作过于频繁，请稍后操作&quot;
- }
-</code></pre>
-
-<p></p>
-    </div>
-    <div class="read-more">
-      <a href="/post/rest-api-%E8%AE%BE%E8%AE%A1/" class="read-more-link">阅读全文</a>
-    </div>
-    
-  </div>
-</article>
-
-    
   </section>
 
   
@@ -373,6 +341,10 @@
     
     <li >
       <a href="/page/5/">5</a>
+    </li>
+    
+    <li >
+      <a href="/page/6/">6</a>
     </li>
     
   </nav>

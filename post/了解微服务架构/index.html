@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>编程的一些基本原则 - 52zgd.com - 代码搬运工</title>
+  <title>了解微服务架构 - 52zgd.com - 代码搬运工</title>
   <link rel="alternate" hreflang="zh-cn" href="http://blog.52zgd.com/" />
 
 <meta name="renderer" content="webkit" />
@@ -25,7 +25,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 
-<meta name="author" content="52zgd.com" /><meta name="description" content="编程的一些基本原则" />
+<meta name="author" content="52zgd.com" /><meta name="description" content="了解微服务架构" />
 
   <meta name="keywords" content="java, 技术博客, 前端, 后端技术" />
 
@@ -37,7 +37,7 @@
 <meta name="generator" content="Hugo 0.38" />
 
 
-<link rel="canonical" href="http://blog.52zgd.com/post/%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/" />
+<link rel="canonical" href="http://blog.52zgd.com/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/" />
 
 
 
@@ -57,20 +57,16 @@
 
 
 
-<meta property="og:title" content="编程的一些基本原则" />
-<meta property="og:description" content="编程的一些基本原则" />
+<meta property="og:title" content="了解微服务架构" />
+<meta property="og:description" content="了解微服务架构" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.52zgd.com/post/%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/" />
+<meta property="og:url" content="http://blog.52zgd.com/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/" />
 
 
 
-<meta property="article:published_time" content="2018-04-08T00:00:00&#43;00:00"/>
+<meta property="article:published_time" content="2018-04-10T00:00:00&#43;00:00"/>
 
-<meta property="article:modified_time" content="2018-04-08T00:00:00&#43;00:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2018-04-10T00:00:00&#43;00:00"/>
 
 
 
@@ -78,20 +74,24 @@
 
 
 
-<meta itemprop="name" content="编程的一些基本原则">
-<meta itemprop="description" content="编程的一些基本原则">
-
-
-<meta itemprop="datePublished" content="2018-04-08T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-04-08T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="492">
 
 
 
-<meta itemprop="keywords" content="代码规范," />
+
+<meta itemprop="name" content="了解微服务架构">
+<meta itemprop="description" content="了解微服务架构">
+
+
+<meta itemprop="datePublished" content="2018-04-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-04-10T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1849">
+
+
+
+<meta itemprop="keywords" content="架构,微服务,Spring," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="编程的一些基本原则"/>
-<meta name="twitter:description" content="编程的一些基本原则"/>
+<meta name="twitter:title" content="了解微服务架构"/>
+<meta name="twitter:description" content="了解微服务架构"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -181,17 +181,17 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">编程的一些基本原则</h1>
+      <h1 class="post-title">了解微服务架构</h1>
       
       <div class="post-meta">
-        <span class="post-time"> 2018-04-08 </span>
+        <span class="post-time"> 2018-04-10 </span>
         <div class="post-category">
             
-              <a href="/categories/%E7%BB%8F%E9%AA%8C/"> 经验 </a>
+              <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/"> 软件架构 </a>
             
           </div>
-        <span class="more-meta"> 约 492 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span class="more-meta"> 约 1849 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
       </div>
     </header>
 
@@ -206,20 +206,14 @@
 <ul>
 <li>
 <ul>
-<li><a href="#编程的一些基本原则">编程的一些基本原则</a>
-<ul>
 <li>
 <ul>
-<li>
+<li><a href="#什么是微服务架构">什么是微服务架构</a></li>
+<li><a href="#如何实施微服务">如何实施微服务</a>
 <ul>
-<li><a href="#1-kiss-尽量保证代码简洁">1、KISS：尽量保证代码简洁</a></li>
-<li><a href="#2-yagni-you-aren-t-gonna-need-it-不要实现多余的东西-除非必要的情况">2、 YAGNI(you aren&rsquo;t gonna need it)，不要实现多余的东西，除非必要的情况</a></li>
-<li><a href="#3-do-the-simplest-thing-that-could-possibly-work-找出最简单的方法解决问题">3、Do The Simplest Thing That Could Possibly Work：找出最简单的方法解决问题</a></li>
-<li><a href="#4-separation-of-concerns-本意就是单一职责原则-尽可能让你的代码只做一件事">4、Separation of Concerns：本意就是单一职责原则，尽可能让你的代码只做一件事</a></li>
-<li><a href="#5-keep-things-dry-不要做重复的事情">5、Keep Things DRY：不要做重复的事情</a></li>
-<li><a href="#6-code-for-the-maintainer-站长维护者的角度编写代码">6、Code For The Maintainer：站长维护者的角度编写代码</a></li>
-<li><a href="#7-avoid-premature-optimization-避免过早的优化代码">7、Avoid Premature Optimization：避免过早的优化代码</a></li>
-</ul></li>
+<li><a href="#微服务中会遇到的问题">微服务中会遇到的问题</a></li>
+<li><a href="#martin-fowler提炼的微服务9大特性">Martin Fowler提炼的微服务9大特性</a></li>
+<li><a href="#当下比较流行的微服务框架spring-cloud">当下比较流行的微服务框架Spring Cloud</a></li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -231,60 +225,83 @@
 
     
     <div class="post-content">
-      <h3 id="编程的一些基本原则">编程的一些基本原则</h3>
+      
+
+<blockquote>
+<p>“微服务”一词源于Martin Fowler 的名为Microservices 的博文， 可以在他的官方博客
+上找到： <a href="http://martinfowler.com/articles/microservices.html">Martin Fowler Blog</a></p>
+</blockquote>
+
+<p>更多内容请阅读书籍《SpringCloud微服务实战-翟永超》。</p>
+
+<hr />
+
+<h4 id="什么是微服务架构">什么是微服务架构</h4>
+
+<p>简单地说，<strong>微服务是系统架构上的一种设计风格， 它的主旨是将一个原本独立的系统拆分成多个小型服务，这些小型服务都在各自独立的进程中运行，服务之间通过基于HTTP的RESTful API进行通信协作</strong>。被拆分成的每一个小型服务都围绕着系统中的某一项或一些耦合度较高的业务功能进行构建， 并且每个服务都维护着自身的数据存储、业务开发、自动化测试案例以及独立部署机制。由于有了轻量级的通信协作基础， 所以这些微服务可以使用不同的语言来编写。</p>
+
+<h4 id="如何实施微服务">如何实施微服务</h4>
+
+<h5 id="微服务中会遇到的问题">微服务中会遇到的问题</h5>
 
 <ul>
-<li>KISS(Keep It Simple Stupid)</li>
-<li>YAGNI</li>
-<li>Do The Simplest Thing That Could Possibly Work</li>
-<li>Separation of Concerns</li>
-<li>Keep Things DRY</li>
-<li>Code For The Maintainer</li>
-<li>Avoid Premature Optimization</li>
+<li><p>运维的复杂性
+在微服务的架构中，运维人员维护的进程数量会大大增加。它不再像传统的单体应用只需要部署一个节点就可以了。这就要求运维人员具备一定的开发能力来编排运维过程并让它们能自动运行起来，并且相互合作。</p></li>
+
+<li><p>接口保持一致性问题
+虽然我们拆分了服务， 但是业务逻辑上的依赖并不会消除， 只是从单体应用中的代码依赖变为了服务间的通信依赖。</p></li>
+
+<li><p>分布式会遇到的问题
+由于拆分后的各个微服务都是独立部署并运行在各自的进程内，它们只能通过通信来进行协作， 所以分布式环境的问题都将是微服务架构系统设计时需要考虑的重要因素， 比如网络延迟、分布式事务、异步消息等。</p></li>
 </ul>
 
-<p></p>
+<h5 id="martin-fowler提炼的微服务9大特性">Martin Fowler提炼的微服务9大特性</h5>
 
-<h6 id="1-kiss-尽量保证代码简洁">1、KISS：尽量保证代码简洁</h6>
+<ol>
+<li>服务组件化
+在微服务架构中， 需要我们对服务进行组件化分解。服务， 是一种进程外的组件， 它通过HTTP 等通信协议进行协作， 而不是像传统组件那样以嵌入的方式协同工作。每一个服务都独立开发、部署， 可以有效避免一个服务的修改引起整个系统的重新部署。</li>
+<li>按业务组织团队</li>
+<li>做“ 产品” 的态度
+在实施微服务架构的团队中， 每个小团队都应该以做产品的方式， 对其产品的整个生命周期负责。</li>
+<li>智能端点与哑管道
+在微服务架构中， 通常会使用以下两种服务调用方式：
 
 <ul>
-<li>简洁的代码可以花很少的时间去写，越简单越不容易出bug，并且后期更容易修改以及维护</li>
-<li>一段代码趋于完美不是看它是否可以再增加代码，而是看它是否可以再减少代码</li>
-</ul>
+<li>使用HTTP 的RESTful API 或轻量级的消息发送协议， 实现信息传递与服务调用的触发。</li>
+<li>第二种， 通过在轻量级消息总线上传递消息， 类似RabbitMQ 等一些提供可靠异步交换的中间件。</li>
+</ul></li>
+<li>去中心化管理</li>
+<li>去中心化管理数据
+分布式事务本身的实现难度就非常大， 所以在微服务架构中， 我们更强调在各服务之间进行“ 无事务” 的调用， 而对于数据一致性， 只要求数据在最后的处理状态是一致的即可；若在过程中发现错误， 通过补偿机制来进行处理，使得错误数据能够达到最终的一致性。</li>
+<li>基础设施自动化</li>
+<li>容错设计</li>
+<li>演进式设计</li>
+</ol>
 
-<h6 id="2-yagni-you-aren-t-gonna-need-it-不要实现多余的东西-除非必要的情况">2、 YAGNI(you aren&rsquo;t gonna need it)，不要实现多余的东西，除非必要的情况</h6>
+<h5 id="当下比较流行的微服务框架spring-cloud">当下比较流行的微服务框架Spring Cloud</h5>
 
-<ul>
-<li>当某一个功能即使在后面可能需要（并不是扩展性），也不应该在当前迭代中加入这些工作</li>
-</ul>
+<p><a href="https://projects.spring.io/spring-cloud/">Spring Cloud</a>是一个基千<a href="https://projects.spring.io/spring-boot/">Spring Boot</a>实现的微服务架构开发工具。它为微服务架构中涉及的配置管理、服务治理、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的开发方式。Spring Cloud包含了多个子项目（针对分布式系统中涉及的多个不同开源产品，还可能会新增）， 如下所述：
+* Spring Cloud Config: 配置管理工具， 支持使用Git存储配置内容， 可以使用它实现应用配置的外部化存储， 并支持客户端配置信息刷新、加密／解密配置内容等。
+* Spring CloudN etflix: 核心 组件，对多个Netflix OSS开源套件进行整合。
+  * Eureka: 服务治理组件， 包含服务注册中心、服务注册与发现机制的实现。
+  * Hystrix: 容错管理组件，实现断路器模式， 帮助服务依赖中出现的延迟和为故障提供强大的容错能力。
+  * Ribbon: 客户端负载均衡的服务调用组件。
+  * Feign: 基于Ribbon 和Hystrix 的声明式服务调用组件。
+  * Zuul: 网关组件， 提供智能路由、访问过滤等功能。
+  * Archaius: 外部化配置组件。
+* Spring Cloud Bus: 事件、消息总线， 用于传播集群中的状态变化或事件， 以触发后续的处理， 比如用来动态刷新配置等。
+* Spring Cloud Cluster: 针对ZooKeeper、Redis、Hazelcast、Consul 的选举算法和通用状态模式的实现。
+* Spring Cloud Cloudfoundry: 与Pivotal Cloudfoundry 的整合支持。
+* Spring Cloud Consul: 服务发现与配置管理工具。
+* Spring Cloud Stream: 通过Redis、Rabbit 或者Kafka 实现的消费微服务， 可以通过简单的声明式模型来发送和接收消息。
+* Spring Cloud A WS: 用千简化整合Amazon Web Service 的组件。
+* Spring Cloud Security: 安全工具包， 提供在Zuul 代理中对0Auth2 客户端请求的中继器。
+* Spring Cloud Sleuth: Spring Cloud 应用的分布式跟踪实现， 可以完美整合Zip虹n。
+* Spring Cloud ZooKeeper: 基于ZooKeeper 的服务发现与配置管理组件。
+* Spring Cloud Starters: Spring Cloud 的基础组件， 它是基于Spring Boot 风格项目的基础依赖模块。
+* Spring Cloud CLI: 用于在Groovy 中快速创建Spring Cloud 应用的Spring Boot CLI插件。
+* &hellip;</p>
 
-<h6 id="3-do-the-simplest-thing-that-could-possibly-work-找出最简单的方法解决问题">3、Do The Simplest Thing That Could Possibly Work：找出最简单的方法解决问题</h6>
-
-<ul>
-<li>多问问自己：有没有更好的办法解决该问题，找出问题的本质</li>
-</ul>
-
-<h6 id="4-separation-of-concerns-本意就是单一职责原则-尽可能让你的代码只做一件事">4、Separation of Concerns：本意就是单一职责原则，尽可能让你的代码只做一件事</h6>
-
-<ul>
-<li>良好的职责划分，可以让代码更加容易理解，低耦合，更改一个功能只会影响很少的地方</li>
-<li>提方法，分模块</li>
-</ul>
-
-<h6 id="5-keep-things-dry-不要做重复的事情">5、Keep Things DRY：不要做重复的事情</h6>
-
-<h6 id="6-code-for-the-maintainer-站长维护者的角度编写代码">6、Code For The Maintainer：站长维护者的角度编写代码</h6>
-
-<ul>
-<li>代码维护一直是程序中代价最高的一个阶段</li>
-</ul>
-
-<h6 id="7-avoid-premature-optimization-避免过早的优化代码">7、Avoid Premature Optimization：避免过早的优化代码</h6>
-
-<ul>
-<li>有时候其实你并不知道瓶颈在哪里</li>
-<li>过早的优化代码，可能会导致代码难读并难以维护（所以重构都应该是在熟悉逻辑之后）</li>
-</ul>
     </div>
 
     
@@ -296,7 +313,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-04-08</span>
+    <span class="item-content">2018-04-10</span>
   </p>
   
   <p class="copyright-item">
@@ -324,21 +341,20 @@
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">代码规范</a>
+          <a href="/tags/%E6%9E%B6%E6%9E%84/">架构</a>
+          
+          <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
+          
+          <a href="/tags/spring/">Spring</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">了解微服务架构</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/windwos%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8Bjavanginx%E6%9C%8D%E5%8A%A1%E5%B0%81%E8%A3%85/">
-            <span class="next-text nav-default">Windwos服务器下Java，Nginx服务封装</span>
+          <a class="next" href="/post/%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/">
+            <span class="next-text nav-default">编程的一些基本原则</span>
             <span class="prev-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

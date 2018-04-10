@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>架构 on 52zgd.com - 代码搬运工</title>
+    <link>http://blog.52zgd.com/tags/%E6%9E%B6%E6%9E%84/</link>
+    <description>Recent content in 架构 on 52zgd.com - 代码搬运工</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 10 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.52zgd.com/tags/%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>了解微服务架构</title>
+      <link>http://blog.52zgd.com/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/</link>
+      <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/</guid>
+      <description>“微服务”一词源于Martin Fowler 的名为Microservices 的博文， 可以在他的官方博客 上找到： Martin Fowler Blog 更多内容请阅读书籍《SpringCl</description>
+    </item>
+    
+  </channel>
+</rss>
