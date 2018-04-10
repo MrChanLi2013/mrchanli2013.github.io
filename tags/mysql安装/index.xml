@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql安装 on 52zgd.com - 代码搬运工</title>
+    <link>http://blog.52zgd.com/tags/mysql%E5%AE%89%E8%A3%85/</link>
+    <description>Recent content in Mysql安装 on 52zgd.com - 代码搬运工</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 18 Aug 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.52zgd.com/tags/mysql%E5%AE%89%E8%A3%85/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Centos7.2 下mysql的安装</title>
+      <link>http://blog.52zgd.com/post/centos7/</link>
+      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/centos7/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;使用命令&lt;code&gt;yum list installed | grep mysql&lt;/code&gt;查看mysql是否安装&lt;/li&gt;
+&lt;li&gt;如果没有安装：先在MySQL官网中下载yum源rpm安装包：&lt;a href=&#34;https://dev.mysql.com/downloads/repo/yum/&#34;&gt;https://dev.mysql.com/downloads/repo/yum/&lt;/a&gt;;&lt;/li&gt;
+&lt;li&gt;下载mysql源安装包&lt;code&gt;wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;安装：&lt;code&gt;yum localinstall mysql57-community-release-el7-8.noarch.rpm&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;将yum源安装好之后就可以使用&lt;code&gt;yum install mysql-community-server&lt;/code&gt;安装mysql&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
