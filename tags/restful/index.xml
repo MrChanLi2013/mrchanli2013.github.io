@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Restful on 52zgd.com - 代码搬运工</title>
+    <link>http://blog.52zgd.com/tags/restful/</link>
+    <description>Recent content in Restful on 52zgd.com - 代码搬运工</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 08 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.52zgd.com/tags/restful/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>REST API 设计总结</title>
+      <link>http://blog.52zgd.com/post/rest-api-%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/rest-api-%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;参考了GitHub rest api设计，&lt;a href=&#34;https://developer.github.com/v3/&#34;&gt;https://developer.github.com/v3/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;验证&#34;&gt;验证&lt;/h4&gt;
+
+&lt;h5 id=&#34;使用-basic-authentication&#34;&gt;使用&lt;code&gt;Basic authentication&lt;/code&gt;&lt;/h5&gt;
+
+&lt;p&gt;如果没有验证就访问接口返回HTTP状态码&lt;code&gt;403 Forbidden&lt;/code&gt;。但如果我们有接口是私有的我们可以返回&lt;code&gt;404 Not Found&lt;/code&gt;，这样如果该地址被暴露出去之后，别人访问的时候会认为这个地址是错误的。也或者说我们只是针对部分用户，比如A、B两个用户A有权限访问接口，B没有权限，那么B访问的时候我们就返回404，A访问的时候没有验证成功我们就返回403。&lt;/p&gt;
+
+&lt;h5 id=&#34;登录失败的情况&#34;&gt;登录失败的情况&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;无效的凭据：&lt;code&gt;401 Unauthorized&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;HTTP/1.1 401 Unauthorized
+{
+	  &amp;quot;message&amp;quot;: &amp;quot;用户名或密码错误&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;凭据输入错误次数过多：&lt;code&gt;403 Forbidden&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt; HTTP/1.1 403 Forbidden
+ {
+	 &amp;quot;message&amp;quot;: &amp;quot;操作过于频繁，请稍后操作&amp;quot;
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
