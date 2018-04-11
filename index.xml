@@ -448,7 +448,26 @@
 &lt;li&gt;跳过测试：&lt;code&gt;mvn install -Dmaven.test.skip=true&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在pom.xml中加入maven仓库镜像&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;repositories&amp;gt;
+        &amp;lt;repository&amp;gt;  
+            &amp;lt;id&amp;gt;alimaven&amp;lt;/id&amp;gt;  
+            &amp;lt;name&amp;gt;aliyun maven&amp;lt;/name&amp;gt;  
+            &amp;lt;url&amp;gt;http://maven.aliyun.com/nexus/content/groups/public/&amp;lt;/url&amp;gt;  
+            &amp;lt;releases&amp;gt;  
+                &amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;  
+            &amp;lt;/releases&amp;gt;  
+            &amp;lt;snapshots&amp;gt;  
+                &amp;lt;enabled&amp;gt;false&amp;lt;/enabled&amp;gt;  
+            &amp;lt;/snapshots&amp;gt;  
+        &amp;lt;/repository&amp;gt;  
+&amp;lt;/repositories&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</description>
       
     </item>
     
