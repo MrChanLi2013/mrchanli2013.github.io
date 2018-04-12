@@ -6,10 +6,27 @@
     <description>Recent content in 经验 on 52zgd.com - 代码搬运工</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 08 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.52zgd.com/categories/%E7%BB%8F%E9%AA%8C/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>开发经理的职责</title>
+      <link>http://blog.52zgd.com/post/%E5%BC%80%E5%8F%91%E7%BB%8F%E7%90%86%E7%9A%84%E8%81%8C%E8%B4%A3/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/%E5%BC%80%E5%8F%91%E7%BB%8F%E7%90%86%E7%9A%84%E8%81%8C%E8%B4%A3/</guid>
+      <description>&lt;p&gt;在软件行业蓬勃发展的今天，又更多的职位也随之诞生，比如我们今天要讲的&lt;strong&gt;开发经理&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h4 id=&#34;概述&#34;&gt;概述&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.52zgd.com/img/code.png&#34; alt=&#34;图片说明&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;通常开发经理或架构师会早于开发人员介入项目，了解项目的需求，系统分析，做相关的技术选型，制定开发计划与开发规范。在制定技术规格说明阶段，开发经理或架构师要协调起所有的开发人员，指定相关的技术规范与开发人员保持沟通，让开发人员理解他们负责的模块或者子系统，确保开发人员能够按照架构意图实现各项功能。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>编程的一些基本原则</title>
