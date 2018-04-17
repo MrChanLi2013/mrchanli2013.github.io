@@ -84,7 +84,7 @@
 
 <meta itemprop="datePublished" content="2018-03-08T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-03-08T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="360">
+<meta itemprop="wordCount" content="359">
 
 
 
@@ -200,7 +200,7 @@
               <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"> 服务器 </a>
             
           </div>
-        <span class="more-meta"> 约 360 字 </span>
+        <span class="more-meta"> 约 359 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
       </div>
     </header>
@@ -242,19 +242,19 @@
 <li>下载winsw工具，比如到<code>D:\test</code></li>
 <li>在test目录下建立<strong>MyService.xml</strong>，其中<code>env</code>节点可以不用更改</li>
 <li>将下载的winsw工具更名为<code>MyService.exe</code></li>
-<li>使用<code>MyService.exe install</code>安装服务，有时候需要管理员权限运行，<code>MyService.exe uninstall</code>卸载服务
-<code>xml
-&lt;service&gt;
-&lt;id&gt;MyService&lt;/id&gt;
-&lt;name&gt;MyService&lt;/name&gt;
-&lt;description&gt;This runs Spring Boot as a Service.&lt;/description&gt;
-&lt;env name=&quot;MYSERVICE_HOME&quot; value=&quot;%BASE%&quot;/&gt;
-&lt;executable&gt;java&lt;/executable&gt;
-&lt;arguments&gt;-Xmx256m -jar &quot;%BASE%\MyJar.jar&quot;&lt;/arguments&gt;
-&lt;logmode&gt;rotate&lt;/logmode&gt;
-&lt;/service&gt;
-</code></li>
+<li>使用<code>MyService.exe install</code>安装服务，有时候需要管理员权限运行，<code>MyService.exe uninstall</code>卸载服务</li>
 </ul>
+
+<pre><code class="language-xml">&lt;service&gt;
+    &lt;id&gt;MyService&lt;/id&gt;
+    &lt;name&gt;MyService&lt;/name&gt;
+    &lt;description&gt;This runs Spring Boot as a Service.&lt;/description&gt;
+    &lt;env name=&quot;MYSERVICE_HOME&quot; value=&quot;%BASE%&quot;/&gt;
+    &lt;executable&gt;java&lt;/executable&gt;
+    &lt;arguments&gt;-Xmx256m -jar &quot;%BASE%\MyJar.jar&quot;&lt;/arguments&gt;
+    &lt;logmode&gt;rotate&lt;/logmode&gt;
+&lt;/service&gt;
+</code></pre>
 
 <p></p>
 

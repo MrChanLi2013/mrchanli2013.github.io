@@ -353,19 +353,19 @@
 &lt;li&gt;下载winsw工具，比如到&lt;code&gt;D:\test&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;在test目录下建立&lt;strong&gt;MyService.xml&lt;/strong&gt;，其中&lt;code&gt;env&lt;/code&gt;节点可以不用更改&lt;/li&gt;
 &lt;li&gt;将下载的winsw工具更名为&lt;code&gt;MyService.exe&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;使用&lt;code&gt;MyService.exe install&lt;/code&gt;安装服务，有时候需要管理员权限运行，&lt;code&gt;MyService.exe uninstall&lt;/code&gt;卸载服务
-&lt;code&gt;xml
-&amp;lt;service&amp;gt;
-&amp;lt;id&amp;gt;MyService&amp;lt;/id&amp;gt;
-&amp;lt;name&amp;gt;MyService&amp;lt;/name&amp;gt;
-&amp;lt;description&amp;gt;This runs Spring Boot as a Service.&amp;lt;/description&amp;gt;
-&amp;lt;env name=&amp;quot;MYSERVICE_HOME&amp;quot; value=&amp;quot;%BASE%&amp;quot;/&amp;gt;
-&amp;lt;executable&amp;gt;java&amp;lt;/executable&amp;gt;
-&amp;lt;arguments&amp;gt;-Xmx256m -jar &amp;quot;%BASE%\MyJar.jar&amp;quot;&amp;lt;/arguments&amp;gt;
-&amp;lt;logmode&amp;gt;rotate&amp;lt;/logmode&amp;gt;
-&amp;lt;/service&amp;gt;
-&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;MyService.exe install&lt;/code&gt;安装服务，有时候需要管理员权限运行，&lt;code&gt;MyService.exe uninstall&lt;/code&gt;卸载服务&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;service&amp;gt;
+    &amp;lt;id&amp;gt;MyService&amp;lt;/id&amp;gt;
+    &amp;lt;name&amp;gt;MyService&amp;lt;/name&amp;gt;
+    &amp;lt;description&amp;gt;This runs Spring Boot as a Service.&amp;lt;/description&amp;gt;
+    &amp;lt;env name=&amp;quot;MYSERVICE_HOME&amp;quot; value=&amp;quot;%BASE%&amp;quot;/&amp;gt;
+    &amp;lt;executable&amp;gt;java&amp;lt;/executable&amp;gt;
+    &amp;lt;arguments&amp;gt;-Xmx256m -jar &amp;quot;%BASE%\MyJar.jar&amp;quot;&amp;lt;/arguments&amp;gt;
+    &amp;lt;logmode&amp;gt;rotate&amp;lt;/logmode&amp;gt;
+&amp;lt;/service&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;/p&gt;
 
