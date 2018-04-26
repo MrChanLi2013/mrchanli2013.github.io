@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>52zgd.com - 代码搬运工</title>
+  <link rel="alternate" hreflang="zh-cn" href="http://blog.52zgd.com/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+
+<meta name="author" content="52zgd.com" />
+  <meta name="description" content="一位代码搬运工的博客，52zgd.com" />
+  <meta name="keywords" content="java, 技术博客, 前端, 后端技术" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.38" />
+
+
+<link rel="canonical" href="http://blog.52zgd.com/" />
+<link href="http://blog.52zgd.com/index.xml" rel="alternate" type="application/rss+xml" title="52zgd.com - 代码搬运工" />
+  <link href="http://blog.52zgd.com/index.xml" rel="feed" type="application/rss+xml" title="52zgd.com - 代码搬运工" />
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="52zgd.com - 代码搬运工" />
+<meta property="og:description" content="一位代码搬运工的博客，52zgd.com" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://blog.52zgd.com/" />
+
+
+
+<meta property="og:updated_time" content="2017-08-18T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="52zgd.com - 代码搬运工">
+<meta itemprop="description" content="一位代码搬运工的博客，52zgd.com">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="52zgd.com - 代码搬运工"/>
+<meta name="twitter:description" content="一位代码搬运工的博客，52zgd.com"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">52zgd.com</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="https://www.52zgd.com">
+        <li class="mobile-menu-item">宅宅新闻</li>
+      </a>
+  </ul>
+</nav>
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">52zgd.com</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        
+        <a class="menu-item-link" href="/">首页</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="/post/">文章</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="/tags/">标签</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="/categories/">分类</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="/about/">关于</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="https://www.52zgd.com" target="_blank">
+          宅宅新闻
+          <i class="iconfont icon-new-window"></i>
+        </a>
+        
+      </li>
+  </ul>
+</nav>
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          
+  <section id="posts" class="posts">
+    
+    
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/centso7%E4%B8%8Bnginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">Centos7.2 下Nginx的安装与配置</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2017-08-18 </span>
+      <div class="post-category">
+          
+            <a href="/categories/linux/"> Linux </a>
+          
+        </div>
+      <span class="more-meta"> 约 702 字 </span>
+      <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <p>@(Centos)[nginx]</p>
+
+<p>Nginx 是一个很强大的高性能Web和反向代理服务器，它具有很多非常优越的特性，很多人都在使用它。
+其实在<a href="http://nginx.org/en/docs/">nginx官网</a>写的比较清楚，我在这里主要写出一些基本的用法，方便一些英文不太好的同学不踩坑。</p>
+
+<p><strong>注意我的环境是centos7</strong></p>
+
+<h4 id="安装nginx">安装Nginx</h4>
+
+<ol>
+<li><p>创建文件<code>/etc/yum.repos.d/nginx.repo</code>，并输入下面内容：</p>
+
+<pre><code>[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/OS/OSRELEASE/$basearch/
+gpgcheck=0
+enabled=1
+</code></pre></li>
+
+<li><p>将<code>OS</code>替换成<code>centos</code>，<code>OSRELEASE</code>替换成<code>7</code>，就代表centos7.x。</p></li>
+
+<li><p>最后<code>yum install nginx</code>。</p></li>
+</ol>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/centso7%E4%B8%8Bnginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/centos7/">Centos7.2 下mysql的安装</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2017-08-18 </span>
+      <div class="post-category">
+          
+            <a href="/categories/linux/"> Linux </a>
+          
+        </div>
+      <span class="more-meta"> 约 473 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <ol>
+<li>使用命令<code>yum list installed | grep mysql</code>查看mysql是否安装</li>
+<li>如果没有安装：先在MySQL官网中下载yum源rpm安装包：<a href="https://dev.mysql.com/downloads/repo/yum/">https://dev.mysql.com/downloads/repo/yum/</a>;</li>
+<li>下载mysql源安装包<code>wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm</code></li>
+<li>安装：<code>yum localinstall mysql57-community-release-el7-8.noarch.rpm</code></li>
+<li>将yum源安装好之后就可以使用<code>yum install mysql-community-server</code>安装mysql</li>
+</ol>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/centos7/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/centos7/">Centos7.2 下svn服务器搭建</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2017-08-18 </span>
+      <div class="post-category">
+          
+            <a href="/categories/linux/"> Linux </a>
+          
+        </div>
+      <span class="more-meta"> 约 380 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <ol>
+<li><code>yum install subversion</code>安装svn</li>
+<li>初始化仓库，<code>mkdir -p /usr/dev/svn/svnrepos</code>创建的该目录为仓库，然后执行<code>svnadmin create /usr/dev/svn/svnrepos</code>，这就完成了仓库的创建</li>
+
+<li><p><code>cd</code>到该目录下<code>ls</code>会出现：</p>
+
+<pre><code>README.txt conf db format hooks locks
+</code></pre></li>
+
+<li><p>配置相关信息，<code>cd</code>到<code>conf</code>目录，会发现下面有3个文件：</p>
+
+<ul>
+<li>authz：权限控制文件</li>
+<li>passwd：帐号密码文件</li>
+<li>svnserve.conf ：SVN服务配置文件</li>
+</ul></li>
+</ol>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/centos7/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/centos%E4%B8%8B%E5%AD%97%E4%BD%93%E5%AE%89%E8%A3%85/">Centos7.2 下字体安装</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2017-07-08 </span>
+      <div class="post-category">
+          
+            <a href="/categories/linux/"> Linux </a>
+          
+        </div>
+      <span class="more-meta"> 约 270 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <h4 id="字体的安装">字体的安装</h4>
+
+<p>已经验证.ttc，.ttf格式字体的安装。本人安装的是windows下的<strong>微软雅黑</strong>到服务器。</p>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/centos%E4%B8%8B%E5%AD%97%E4%BD%93%E5%AE%89%E8%A3%85/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/spring-boot-junit-%E4%BD%BF%E7%94%A8h2-database/">Spring Boot Junit 使用h2 database</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2017-06-12 </span>
+      <div class="post-category">
+          
+            <a href="/categories/java/"> Java </a>
+          
+        </div>
+      <span class="more-meta"> 约 343 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <h1 id="spring-boot-junit-使用h2-database">spring boot junit 使用h2 database</h1>
+
+<p>@(java)[spring-boot-1.3.3,junit]</p>
+
+<ol>
+<li><p>创建测试使用的<code>Configuration</code>：</p>
+
+<pre><code class="language-java">import org.junit.runner.RunWith;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+    
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(TestApplication.class)//测试主类入口
+@TestPropertySource(locations = &quot;classpath:test.properties&quot;)//设置测试使用的配置文件
+public class TestConfiguration {
+}
+</code></pre></li>
+
+<li><p>创建测试入口类：</p>
+
+<pre><code class="language-java">import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+    
+@SpringBootApplication
+public class TestApplication {
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(TestApplication.class, args);
+    }
+}
+</code></pre></li>
+</ol>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/spring-boot-junit-%E4%BD%BF%E7%94%A8h2-database/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/java%E4%B8%ADset%E5%92%8Carray%E5%A6%82%E4%BD%95%E4%BA%92%E8%BD%AC/">Java中Set和Array如何互转</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2016-08-10 </span>
+      <div class="post-category">
+          
+            <a href="/categories/java/"> Java </a>
+          
+        </div>
+      <span class="more-meta"> 约 301 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <p>我们有两种方式将Set转成Array</p>
+
+<ol>
+<li><code>Set.toArray()</code> 方法</li>
+<li><code>Stream</code>java8中接口</li>
+</ol>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/java%E4%B8%ADset%E5%92%8Carray%E5%A6%82%E4%BD%95%E4%BA%92%E8%BD%AC/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/unbantu%E4%B8%8B%E9%85%8D%E7%BD%AEjava/">unbantu下配置java</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2016-06-12 </span>
+      <div class="post-category">
+          
+            <a href="/categories/linux/"> Linux </a>
+          
+        </div>
+      <span class="more-meta"> 约 14 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <p>@(unbantu)[java]</p>
+
+<pre><code>    sudo gedit ~/.bashrc
+    export JAVA_HOME=/usr/lib/jvm/java-7-sun
+    export JRE_HOME=${JAVA_HOME}/jre
+    export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+    export PATH=${JAVA_HOME}/bin:$PATH 
+    source ~/.bashrc
+</code></pre>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/unbantu%E4%B8%8B%E9%85%8D%E7%BD%AEjava/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/idea%E6%80%BB%E7%BB%93/">Java IDE利器IDEA技巧总结（常更新）</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2016-03-10 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+          
+        </div>
+      <span class="more-meta"> 约 140 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <hr />
+
+<p><strong>问题</strong>：spring-boot加入jsp的支持启动项目时找不到jsp，报404问题？
+<strong>解决办法：</strong>   特别设置图中红色部分，选到你的jsp所在的模块。
+<img src="/img/idea-jsp.png" alt="Alt text" /></p>
+
+<hr />
+
+<p><strong>问题</strong>：idea中如何替换空行？
+<strong>解决办法</strong>：<code>ctrl+r</code>搜索，在find栏输入<code>\s+$</code>，然后勾选<code>Regex</code>使用正则查找，在replace栏不填。</p>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/idea%E6%80%BB%E7%BB%93/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+  </section>
+
+  
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  <nav class="pagination">
+    
+    <li >
+      <a href="/">1</a>
+    </li>
+    
+    <li  class="active" >
+      <a href="/page/2/">2</a>
+    </li>
+    
+  </nav>
+
+  
+  
+
+
+
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:764157216@qq.com" rel="me" class="iconfont icon-email" 
+        title="email" target="_blank">
+      </a>
+      <a href="https://github.com/MrChanLi2013" rel="me" class="iconfont icon-github" 
+        title="github" target="_blank">
+      </a>
+  <a href="http://blog.52zgd.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" 
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2016 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">52zgd.com</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script><script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?4e3e7e6ae6e591dbaed85624a5cb2a70";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+</body>
+</html>
