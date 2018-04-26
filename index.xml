@@ -55,6 +55,88 @@
     </item>
     
     <item>
+      <title>Python计算一年中的每周</title>
+      <link>http://blog.52zgd.com/post/python%E8%AE%A1%E7%AE%97%E4%B8%80%E5%B9%B4%E4%B8%AD%E7%9A%84%E6%AF%8F%E5%91%A8/</link>
+      <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/python%E8%AE%A1%E7%AE%97%E4%B8%80%E5%B9%B4%E4%B8%AD%E7%9A%84%E6%AF%8F%E5%91%A8/</guid>
+      
+        <description>&lt;p&gt;利用&lt;code&gt;Python&lt;/code&gt;计算一年中的周数，并计算出每一周具体有哪些天。以周一为一周的起点。
+计算规则：以日历的第一排为准，如果在第一排中今年的天数占多数，那么今年的第一周就从第一排开始，否则从第二排开始。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;如下图所示：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;以第一排开始：&lt;img src=&#34;http://blog.52zgd.com/img/date1.png&#34; alt=&#34;以第一排开始&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;以第二排开始：&lt;img src=&#34;http://blog.52zgd.com/img/date2.png&#34; alt=&#34;以第二排开始&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;话不多说-直接上代码&#34;&gt;话不多说，直接上代码&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# -*- coding: utf-8 -*-
+import datetime
+import time
+
+def get_week_of_year(year):
+    temp = year
+    map = {}
+    year = str(year) + &#39;-01-01&#39;
+    # 每一年的一月一号
+    year_of_date = datetime.datetime.strptime(year,&#39;%Y-%m-%d&#39;)
+    # 如果一号大于周4，则属于上一年最后一周
+    # 计算周几
+    which_week = year_of_date.isoweekday()
+    # print(which_week)
+    # 闰年
+    total_of_year = 365
+    range_start = 0
+    if temp%100 != 0 and temp%4 == 0:
+        total_of_year = 366
+    if year.find(&#39;01-01&#39;) != -1:
+        if which_week &amp;gt; 4:
+            add = 7 - which_week + 1
+            year_of_date = year_of_date + datetime.timedelta(add)
+            total_of_year = total_of_year - add
+        else:
+            add = 1 - which_week
+            if which_week != 1:
+                year_of_date = year_of_date + datetime.timedelta(add)
+                total_of_year = total_of_year - add
+    # 上面已经计算出了周一，所以从0开始
+    final_year_array = []
+    for i in range(range_start, total_of_year):
+        final_year = year_of_date + datetime.timedelta(i)
+        final_year_array.append(final_year.strftime(&#39;%Y-%m-%d&#39;))
+    return final_year_array
+
+# 拆分数组，n代表拆分的每个数组有几个元素
+# list = [1,2,3,4,5,6]，reshape(list, 3) =&amp;gt; [[1,2,3],[4,5,6]]
+def reshape(lst, n):
+    size = len(lst)//n
+    if (len(lst)%n) != 0:
+        size = size + 1
+    return [lst[i*n:(i+1)*n] for i in range(size)]
+
+for year in range(2015,2018):
+	week_of_date = reshape(get_week_of_year(year), 7)
+	if len(week_of_date) == 53 and len(week_of_date[-1]) &amp;lt; 4:
+	    week_of_date.pop()
+	for idx, week_date in enumerate(week_of_date):
+	    length = len(week_date)
+	    last = week_date[-1]
+	    if length != 7:
+	        for i in range(1, 7 - length + 1):
+	            temp_date = datetime.datetime.strptime(last,&#39;%Y-%m-%d&#39;)
+	            after = temp_date + datetime.timedelta(i)
+	            week_date.append(after.strftime(&#39;%Y-%m-%d&#39;))
+	    print(&#39;第&#39; + str(idx + 1) + &#39;周：&#39; + str(week_date))
+&lt;/code&gt;&lt;/pre&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>开发经理的职责</title>
       <link>http://blog.52zgd.com/post/%E5%BC%80%E5%8F%91%E7%BB%8F%E7%90%86%E7%9A%84%E8%81%8C%E8%B4%A3/</link>
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
