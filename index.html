@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>52zgd.com - 代码搬运工</title>
+  <link rel="alternate" hreflang="zh-cn" href="http://blog.52zgd.com/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+
+<meta name="author" content="52zgd.com" />
+  <meta name="description" content="一位代码搬运工的博客，52zgd.com" />
+  <meta name="keywords" content="java, 技术博客, 前端, 后端技术" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.38" />
+
+
+<link rel="canonical" href="http://blog.52zgd.com/" />
+<link href="http://blog.52zgd.com/index.xml" rel="alternate" type="application/rss+xml" title="52zgd.com - 代码搬运工" />
+  <link href="http://blog.52zgd.com/index.xml" rel="feed" type="application/rss+xml" title="52zgd.com - 代码搬运工" />
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="52zgd.com - 代码搬运工" />
+<meta property="og:description" content="一位代码搬运工的博客，52zgd.com" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://blog.52zgd.com/" />
+
+
+
+<meta property="og:updated_time" content="2018-03-06T16:01:23&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="52zgd.com - 代码搬运工">
+<meta itemprop="description" content="一位代码搬运工的博客，52zgd.com">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="52zgd.com - 代码搬运工"/>
+<meta name="twitter:description" content="一位代码搬运工的博客，52zgd.com"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">52zgd.com</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="https://www.52zgd.com">
+        <li class="mobile-menu-item">宅宅新闻</li>
+      </a>
+  </ul>
+</nav>
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">52zgd.com</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        
+        <a class="menu-item-link" href="/">首页</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="/post/">文章</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="/tags/">标签</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="/categories/">分类</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="/about/">关于</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="https://www.52zgd.com" target="_blank">
+          宅宅新闻
+          <i class="iconfont icon-new-window"></i>
+        </a>
+        
+      </li>
+  </ul>
+</nav>
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <style>
+    @import 'https://fonts.googleapis.com/css?family=Montserrat:400,700';
+    .aa-input-container {
+        display: inline-block;
+        position: relative;
+        margin: 0 5em 1em;
+    }
+    @media screen and (max-width: 504px){
+        .aa-input-container {
+            margin: 0 1em 1em;
+        }
+    }
+    .aa-input-search {
+        width: 300px;
+        padding: 12px 28px 12px 12px;
+        border: 2px solid #e4e4e4;
+        border-radius: 4px;
+        -webkit-transition: .2s;
+        transition: .2s;
+        font-family: "Montserrat", sans-serif;
+        box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
+        font-size: 11px;
+        box-sizing: border-box;
+        color: #333;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    .aa-input-search::-webkit-search-decoration, .aa-input-search::-webkit-search-cancel-button, .aa-input-search::-webkit-search-results-button, .aa-input-search::-webkit-search-results-decoration {
+        display: none;
+    }
+    .aa-input-search:focus {
+        outline: 0;
+        border-color: #3a96cf;
+        box-shadow: 4px 4px 0 rgba(58, 150, 207, 0.1);
+    }
+    .aa-input-icon {
+        height: 16px;
+        width: 16px;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        fill: #e4e4e4;
+    }
+    .aa-hint {
+        color: #e4e4e4;
+    }
+    .aa-dropdown-menu {
+        background-color: #fff;
+        border: 2px solid rgba(228, 228, 228, 0.6);
+        border-top-width: 1px;
+        font-family: "Montserrat", sans-serif;
+        width: 300px;
+        margin-top: 10px;
+        box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
+        font-size: 11px;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .aa-suggestion {
+        padding: 12px;
+        border-top: 1px solid rgba(228, 228, 228, 0.6);
+        cursor: pointer;
+        -webkit-transition: .2s;
+        transition: .2s;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .aa-suggestion:hover, .aa-suggestion.aa-cursor {
+        background-color: rgba(241, 241, 241, 0.35);
+    }
+    .aa-suggestion > span:first-child {
+        color: #333;
+    }
+    .aa-suggestion > span:last-child {
+        text-transform: uppercase;
+        color: #a9a9a9;
+    }
+    .aa-suggestion > span:first-child em, .aa-suggestion > span:last-child em {
+        font-weight: 700;
+        font-style: normal;
+        background-color: rgba(58, 150, 207, 0.1);
+        padding: 2px 0 2px 2px;
+    }
+
+</style>
+<div class="content container" style="text-align: right">
+    <div class="aa-input-container" id="aa-input-container">
+        <input type="search" id="aa-search-input" class="aa-input-search" placeholder="search"
+               name="search" autocomplete="off"/>
+        <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+            <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z"/>
+        </svg>
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
+<script>
+  var client = algoliasearch('1N5Q366T4O', '18c284e357c24df5a88ab01c8618a2ed')
+  var index = client.initIndex('52zgd-blog')
+  autocomplete('#aa-search-input',
+    {hint: false}, {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          console.info(suggestion)
+          return '<span>' + '<a href="' + suggestion.uri + '">' +
+            suggestion._highlightResult.title.value + '</a></span>';
+        }
+      }
+    })
+</script>
+        <div id="content" class="content container">
+          
+  <section id="posts" class="posts">
+    
+    
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/python%E8%AE%A1%E7%AE%97%E4%B8%80%E5%B9%B4%E4%B8%AD%E7%9A%84%E6%AF%8F%E5%91%A8/">Python计算一年中的每周</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2018-04-26 </span>
+      <div class="post-category">
+          
+            <a href="/categories/python/"> Python </a>
+          
+        </div>
+      <span class="more-meta"> 约 435 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <p>利用<code>Python</code>计算一年中的周数，并计算出每一周具体有哪些天。以周一为一周的起点。
+计算规则：以日历的第一排为准，如果在第一排中今年的天数占多数，那么今年的第一周就从第一排开始，否则从第二排开始。</p>
+
+<p><strong>如下图所示：</strong></p>
+
+<ul>
+<li>以第一排开始：<img src="/img/date1.png" alt="以第一排开始" /></li>
+<li>以第二排开始：<img src="/img/date2.png" alt="以第二排开始" /></li>
+</ul>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/python%E8%AE%A1%E7%AE%97%E4%B8%80%E5%B9%B4%E4%B8%AD%E7%9A%84%E6%AF%8F%E5%91%A8/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%BC%80%E5%8F%91%E7%BB%8F%E7%90%86%E7%9A%84%E8%81%8C%E8%B4%A3/">开发经理的职责</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2018-04-12 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E7%BB%8F%E9%AA%8C/"> 经验 </a>
+          
+        </div>
+      <span class="more-meta"> 约 2879 字 </span>
+      <span class="more-meta"> 预计阅读 6 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <p>在软件行业蓬勃发展的今天，又更多的职位也随之诞生，比如我们今天要讲的<strong>开发经理</strong>。</p>
+
+<h4 id="概述">概述</h4>
+
+<p><img src="/img/code.png" alt="图片说明" /></p>
+
+<p>通常开发经理或架构师会早于开发人员介入项目，了解项目的需求，系统分析，做相关的技术选型，制定开发计划与开发规范。在制定技术规格说明阶段，开发经理或架构师要协调起所有的开发人员，指定相关的技术规范与开发人员保持沟通，让开发人员理解他们负责的模块或者子系统，确保开发人员能够按照架构意图实现各项功能。</p>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%BC%80%E5%8F%91%E7%BB%8F%E7%90%86%E7%9A%84%E8%81%8C%E8%B4%A3/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/">了解微服务架构</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2018-04-10 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/"> 软件架构 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1843 字 </span>
+      <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <blockquote>
+<p>“微服务”一词源于Martin Fowler 的名为Microservices 的博文， 可以在他的官方博客
+上找到： <a href="http://martinfowler.com/articles/microservices.html">Martin Fowler Blog</a></p>
+</blockquote>
+
+<p>更多内容请阅读书籍《SpringCloud微服务实战-翟永超》。</p>
+
+<hr />
+
+<h4 id="什么是微服务架构">什么是微服务架构</h4>
+
+<p>简单地说，<strong>微服务是系统架构上的一种设计风格， 它的主旨是将一个原本独立的系统拆分成多个小型服务，这些小型服务都在各自独立的进程中运行，服务之间通过基于HTTP的RESTful API进行通信协作</strong>。被拆分成的每一个小型服务都围绕着系统中的某一项或一些耦合度较高的业务功能进行构建， 并且每个服务都维护着自身的数据存储、业务开发、自动化测试案例以及独立部署机制。由于有了轻量级的通信协作基础， 所以这些微服务可以使用不同的语言来编写。</p>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/">编程的一些基本原则</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2018-04-08 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E7%BB%8F%E9%AA%8C/"> 经验 </a>
+          
+        </div>
+      <span class="more-meta"> 约 492 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <h3 id="编程的一些基本原则">编程的一些基本原则</h3>
+
+<ul>
+<li>KISS(Keep It Simple Stupid)</li>
+<li>YAGNI</li>
+<li>Do The Simplest Thing That Could Possibly Work</li>
+<li>Separation of Concerns</li>
+<li>Keep Things DRY</li>
+<li>Code For The Maintainer</li>
+<li>Avoid Premature Optimization</li>
+</ul>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/windwos%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8Bjavanginx%E6%9C%8D%E5%8A%A1%E5%B0%81%E8%A3%85/">Windwos服务器下Java，Nginx服务封装</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2018-03-08 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"> 服务器 </a>
+          
+        </div>
+      <span class="more-meta"> 约 359 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <p>Windows的服务用起来很方便，所以在项目开发过程把我们Java，Nginx程序封装为windows服务。
+工具：<a href="http://repo.jenkins-ci.org/releases/com/sun/winsw/winsw/">winsw</a>
+文档：<a href="https://github.com/kohsuke/winsw/blob/master/doc/xmlConfigFile.md">winsw-config</a></p>
+
+<hr />
+
+<h4 id="1-spring-boot项目封装为windows-service">1、Spring-boot项目封装为Windows service。</h4>
+
+<ul>
+<li>下载winsw工具，比如到<code>D:\test</code></li>
+<li>在test目录下建立<strong>MyService.xml</strong>，其中<code>env</code>节点可以不用更改</li>
+<li>将下载的winsw工具更名为<code>MyService.exe</code></li>
+<li>使用<code>MyService.exe install</code>安装服务，有时候需要管理员权限运行，<code>MyService.exe uninstall</code>卸载服务</li>
+</ul>
+
+<pre><code class="language-xml">&lt;service&gt;
+    &lt;id&gt;MyService&lt;/id&gt;
+    &lt;name&gt;MyService&lt;/name&gt;
+    &lt;description&gt;This runs Spring Boot as a Service.&lt;/description&gt;
+    &lt;env name=&quot;MYSERVICE_HOME&quot; value=&quot;%BASE%&quot;/&gt;
+    &lt;executable&gt;java&lt;/executable&gt;
+    &lt;arguments&gt;-Xmx256m -jar &quot;%BASE%\MyJar.jar&quot;&lt;/arguments&gt;
+    &lt;logmode&gt;rotate&lt;/logmode&gt;
+&lt;/service&gt;
+</code></pre>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/windwos%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8Bjavanginx%E6%9C%8D%E5%8A%A1%E5%B0%81%E8%A3%85/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/rest-api-%E8%AE%BE%E8%AE%A1/">REST API 设计总结</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2018-02-08 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E7%BB%8F%E9%AA%8C/"> 经验 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1068 字 </span>
+      <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <blockquote>
+<p>参考了GitHub rest api设计，<a href="https://developer.github.com/v3/">https://developer.github.com/v3/</a></p>
+</blockquote>
+
+<h4 id="验证">验证</h4>
+
+<h5 id="使用-basic-authentication">使用<code>Basic authentication</code></h5>
+
+<p>如果没有验证就访问接口返回HTTP状态码<code>403 Forbidden</code>。但如果我们有接口是私有的我们可以返回<code>404 Not Found</code>，这样如果该地址被暴露出去之后，别人访问的时候会认为这个地址是错误的。也或者说我们只是针对部分用户，比如A、B两个用户A有权限访问接口，B没有权限，那么B访问的时候我们就返回404，A访问的时候没有验证成功我们就返回403。</p>
+
+<h5 id="登录失败的情况">登录失败的情况</h5>
+
+<ul>
+<li>无效的凭据：<code>401 Unauthorized</code></li>
+</ul>
+
+<pre><code class="language-json">HTTP/1.1 401 Unauthorized
+{
+	  &quot;message&quot;: &quot;用户名或密码错误&quot;
+}
+</code></pre>
+
+<ul>
+<li>凭据输入错误次数过多：<code>403 Forbidden</code></li>
+</ul>
+
+<pre><code class="language-json"> HTTP/1.1 403 Forbidden
+ {
+	 &quot;message&quot;: &quot;操作过于频繁，请稍后操作&quot;
+ }
+</code></pre>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/rest-api-%E8%AE%BE%E8%AE%A1/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/vue/">Vue.js最佳实践</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2018-01-22 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+          
+        </div>
+      <span class="more-meta"> 约 313 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <p>@[web,javascript]</p>
+
+<h4 id="1-vue中是否还需要使用jquery">1.  Vue中是否还需要使用JQuery？</h4>
+
+<p>前端开发相信对jQuery非常熟悉了，对于刚开始使用vue的人来说，会更倾向于直接使用jQuery操作DOM，更加方便快捷。不过现在是时候改变一下你的习惯了，<strong>可以不再使用jQuery</strong>。</p>
+
+<p>Vue也提供了类似的API：</p>
+
+<pre><code class="language-javascript">&lt;template&gt;
+  &lt;div&gt;
+    ...
+    // 作用关于dom元素上
+    &lt;p ref=&quot;myElement&quot;&gt;This is the content of my element.&lt;/p&gt;
+    &lt;my-component ref=&quot;component&quot;&gt;This is custom component.&lt;/my-component&gt;
+    ...
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+	export default {
+	  mounted () {
+	    console.log(this.$refs.myElement)
+	    console.log(this.$refs.component)
+	  }
+	}
+&lt;/script&gt;
+</code></pre>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/vue/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/maven%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">maven常用命令操作</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2017-12-12 </span>
+      <div class="post-category">
+          
+            <a href="/categories/java/"> Java </a>
+          
+        </div>
+      <span class="more-meta"> 约 130 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <h1 id="maven常用操作">maven常用操作</h1>
+
+<ul>
+<li>跳过测试：<code>mvn install -Dmaven.test.skip=true</code></li>
+</ul>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/maven%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/oracle%E4%B8%8B%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">Oracle下常用函数</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2017-11-08 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
+          
+        </div>
+      <span class="more-meta"> 约 558 字 </span>
+      <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <p>Oracle中经常使用<code>聚合函数</code>，那么除了这些函数，还有哪些我们会经常用到呢？</p>
+
+<p>总结如下：</p>
+
+<ul>
+<li><code>round()</code>：四舍五入方法，<code>SELECT ROUND( number, [ decimal_places ] ) FROM DUAL</code>，decimal_places 数值是按照指定的小数位进行四舍五入，<strong>小数位是从0开始计算与数组下标一样</strong></li>
+</ul>
+
+<pre><code class="language-sql"> select round(45.55, 1) from dual; -- 输出45.60
+ select round(45.21, 1) from dual; -- 输出45.20    
+</code></pre>
+
+<ul>
+<li><code>to_char()</code>转换日期</li>
+</ul>
+
+<pre><code class="language-sql"> select to_char(sysdate 'YYYY-MM-DD') from dual --转换成年-月-日的格式
+</code></pre>
+
+<ul>
+<li><code>to_char()</code>保留两位小数补0，例如：在java中查询出的字段映射到java class类属性时需要要补0</li>
+</ul>
+
+<pre><code class="language-sql"> TO_CHAR(35.00, 'FM9999999990.00')
+</code></pre>
+
+<p><br />
+</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/oracle%E4%B8%8B%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/js%E5%B8%B8%E7%94%A8%E9%AA%8C%E8%AF%81%E6%80%BB%E7%BB%93/">js常用验证总结</a></h1>
+    
+    <div class="post-meta">
+      <span class="post-time"> 2017-09-11 </span>
+      <div class="post-category">
+          
+            <a href="/categories/javascript/"> JavaScript </a>
+          
+        </div>
+      <span class="more-meta"> 约 350 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <p>一些常用的js正则验证：</p>
+
+<p>example：</p>
+
+<pre><code>var validateRegExp = {
+    chinese: &quot;^[\\u4e00-\\u9fa5]+$&quot; //仅中文
+};
+
+var validateRules = {
+ isChinese: function (str) {
+    return new RegExp(validateRegExp.chinese).test(str);
+  }
+};
+
+validateRules.isChinese(str);
+</code></pre>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/js%E5%B8%B8%E7%94%A8%E9%AA%8C%E8%AF%81%E6%80%BB%E7%BB%93/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+  </section>
+
+  
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  <nav class="pagination">
+    
+    <li  class="active" >
+      <a href="/">1</a>
+    </li>
+    
+    <li >
+      <a href="/page/2/">2</a>
+    </li>
+    
+  </nav>
+
+  
+  
+
+
+
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:764157216@qq.com" rel="me" class="iconfont icon-email" 
+        title="email" target="_blank">
+      </a>
+      <a href="https://github.com/MrChanLi2013" rel="me" class="iconfont icon-github" 
+        title="github" target="_blank">
+      </a>
+  <a href="http://blog.52zgd.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" 
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://www.52zgd.com/">52zgd</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2016 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">52zgd.com</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script><script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?4e3e7e6ae6e591dbaed85624a5cb2a70";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+</body>
+</html>

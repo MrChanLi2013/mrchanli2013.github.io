@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>js常用验证总结 - 52zgd.com - 代码搬运工</title>
+  <link rel="alternate" hreflang="zh-cn" href="http://blog.52zgd.com/" />
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+
+<meta name="author" content="52zgd.com" /><meta name="description" content="js常用验证总结" />
+
+  <meta name="keywords" content="java, 技术博客, 前端, 后端技术" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.38" />
+
+
+<link rel="canonical" href="http://blog.52zgd.com/post/js%E5%B8%B8%E7%94%A8%E9%AA%8C%E8%AF%81%E6%80%BB%E7%BB%93/" />
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="js常用验证总结" />
+<meta property="og:description" content="js常用验证总结" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.52zgd.com/post/js%E5%B8%B8%E7%94%A8%E9%AA%8C%E8%AF%81%E6%80%BB%E7%BB%93/" />
+
+
+
+<meta property="article:published_time" content="2017-09-11T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2017-09-11T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="js常用验证总结">
+<meta itemprop="description" content="js常用验证总结">
+
+
+<meta itemprop="datePublished" content="2017-09-11T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-09-11T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="350">
+
+
+
+<meta itemprop="keywords" content="JavaScript," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="js常用验证总结"/>
+<meta name="twitter:description" content="js常用验证总结"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">52zgd.com</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="https://www.52zgd.com">
+        <li class="mobile-menu-item">宅宅新闻</li>
+      </a>
+  </ul>
+</nav>
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">52zgd.com</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        
+        <a class="menu-item-link" href="/">首页</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="/post/">文章</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="/tags/">标签</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="/categories/">分类</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="/about/">关于</a>
+        
+      </li><li class="menu-item">
+        
+        <a class="menu-item-link" href="https://www.52zgd.com" target="_blank">
+          宅宅新闻
+          <i class="iconfont icon-new-window"></i>
+        </a>
+        
+      </li>
+  </ul>
+</nav>
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <style>
+    @import 'https://fonts.googleapis.com/css?family=Montserrat:400,700';
+    .aa-input-container {
+        display: inline-block;
+        position: relative;
+        margin: 0 5em 1em;
+    }
+    @media screen and (max-width: 504px){
+        .aa-input-container {
+            margin: 0 1em 1em;
+        }
+    }
+    .aa-input-search {
+        width: 300px;
+        padding: 12px 28px 12px 12px;
+        border: 2px solid #e4e4e4;
+        border-radius: 4px;
+        -webkit-transition: .2s;
+        transition: .2s;
+        font-family: "Montserrat", sans-serif;
+        box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
+        font-size: 11px;
+        box-sizing: border-box;
+        color: #333;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    .aa-input-search::-webkit-search-decoration, .aa-input-search::-webkit-search-cancel-button, .aa-input-search::-webkit-search-results-button, .aa-input-search::-webkit-search-results-decoration {
+        display: none;
+    }
+    .aa-input-search:focus {
+        outline: 0;
+        border-color: #3a96cf;
+        box-shadow: 4px 4px 0 rgba(58, 150, 207, 0.1);
+    }
+    .aa-input-icon {
+        height: 16px;
+        width: 16px;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        fill: #e4e4e4;
+    }
+    .aa-hint {
+        color: #e4e4e4;
+    }
+    .aa-dropdown-menu {
+        background-color: #fff;
+        border: 2px solid rgba(228, 228, 228, 0.6);
+        border-top-width: 1px;
+        font-family: "Montserrat", sans-serif;
+        width: 300px;
+        margin-top: 10px;
+        box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
+        font-size: 11px;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .aa-suggestion {
+        padding: 12px;
+        border-top: 1px solid rgba(228, 228, 228, 0.6);
+        cursor: pointer;
+        -webkit-transition: .2s;
+        transition: .2s;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .aa-suggestion:hover, .aa-suggestion.aa-cursor {
+        background-color: rgba(241, 241, 241, 0.35);
+    }
+    .aa-suggestion > span:first-child {
+        color: #333;
+    }
+    .aa-suggestion > span:last-child {
+        text-transform: uppercase;
+        color: #a9a9a9;
+    }
+    .aa-suggestion > span:first-child em, .aa-suggestion > span:last-child em {
+        font-weight: 700;
+        font-style: normal;
+        background-color: rgba(58, 150, 207, 0.1);
+        padding: 2px 0 2px 2px;
+    }
+
+</style>
+<div class="content container" style="text-align: right">
+    <div class="aa-input-container" id="aa-input-container">
+        <input type="search" id="aa-search-input" class="aa-input-search" placeholder="search"
+               name="search" autocomplete="off"/>
+        <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+            <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z"/>
+        </svg>
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
+<script>
+  var client = algoliasearch('1N5Q366T4O', '18c284e357c24df5a88ab01c8618a2ed')
+  var index = client.initIndex('52zgd-blog')
+  autocomplete('#aa-search-input',
+    {hint: false}, {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          console.info(suggestion)
+          return '<span>' + '<a href="' + suggestion.uri + '">' +
+            suggestion._highlightResult.title.value + '</a></span>';
+        }
+      }
+    })
+</script>
+        <div id="content" class="content container">
+          
+<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/social-share.js/1.0.15/css/share.min.css">
+<style type="text/css">
+  .icon-weibo:before {
+    content: "\E00D" !important;
+  }
+  .icon-douban:before {
+    content: "\E00F" !important;
+  }
+</style>
+  <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">js常用验证总结</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2017-09-11 </span>
+        <div class="post-category">
+            
+              <a href="/categories/javascript/"> JavaScript </a>
+            
+          </div>
+        <span class="more-meta"> 约 350 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>一些常用的js正则验证：</p>
+
+<p>example：</p>
+
+<pre><code>var validateRegExp = {
+    chinese: &quot;^[\\u4e00-\\u9fa5]+$&quot; //仅中文
+};
+
+var validateRules = {
+ isChinese: function (str) {
+    return new RegExp(validateRegExp.chinese).test(str);
+  }
+};
+
+validateRules.isChinese(str);
+</code></pre>
+
+<p></p>
+
+<p>总结：</p>
+
+<ul>
+<li>decmal: &ldquo;^([+-]?)\d*\.\d+$&ldquo;, //浮点数</li>
+<li>decmal1: &ldquo;<sup class="footnote-ref" id="fnref:1-9"><a href="#fn:1-9">1</a></sup>\d<em>.\d</em>|0.\d<em>[1-9]\d</em>$&ldquo;, //正浮点数</li>
+<li>decmal2: &ldquo;^-([1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>)$&ldquo;, //负浮点数</li>
+<li>intege: &ldquo;^-?[1-9]\d*$&ldquo;, //整数</li>
+<li>intege1: &ldquo;<sup class="footnote-ref" id="fnref:1-9"><a href="#fn:1-9">2</a></sup>\d*$&ldquo;, //正整数</li>
+<li>intege2: &ldquo;^-[1-9]\d*$&ldquo;, //负整数</li>
+<li>num: &ldquo;^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:.\d+)?$&ldquo;, //数字</li>
+<li>num1: &ldquo;<sup class="footnote-ref" id="fnref:1-9"><a href="#fn:1-9">3</a></sup>\d*|0$&ldquo;, //正数（正整数 + 0）</li>
+<li>num2: &ldquo;^-[1-9]\d*|0$&ldquo;, //负数（负整数 + 0）</li>
+<li>ascii: &ldquo;<sup class="footnote-ref" id="fnref:x00-xFF"><a href="#fn:x00-xFF">4</a></sup>+$&ldquo;, //仅ACSII字符</li>
+<li>chinese: &ldquo;<sup class="footnote-ref" id="fnref:u4e00-u9fa5"><a href="#fn:u4e00-u9fa5">5</a></sup>+$&ldquo;, //仅中文</li>
+<li>color: &ldquo;<sup class="footnote-ref" id="fnref:a-fA-F0-9"><a href="#fn:a-fA-F0-9">6</a></sup>{6}$&ldquo;, //颜色</li>
+<li>date: &ldquo;^\d{4}(\-|\/|.)\d{1,2}\1\d{1,2}$&ldquo;, //日期</li>
+<li>email: &ldquo;<sup class="footnote-ref" id="fnref:a-zA-Z0-9"><a href="#fn:a-zA-Z0-9">7</a></sup>+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$&ldquo;, //邮箱</li>
+<li>idcard: &ldquo;^[1-9]([0-9]{14}|[0-9]{17})$&ldquo;, //身份证</li>
+<li>ip4: &ldquo;^(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5* 0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)$&ldquo;, //ip地址</li>
+<li>letter: &ldquo;<sup class="footnote-ref" id="fnref:A-Za-z"><a href="#fn:A-Za-z">8</a></sup>+$&ldquo;, //字母</li>
+<li>letter_l: &ldquo;<sup class="footnote-ref" id="fnref:a-z"><a href="#fn:a-z">9</a></sup>+$&ldquo;, //小写字母</li>
+<li>letter_u: &ldquo;<sup class="footnote-ref" id="fnref:A-Z"><a href="#fn:A-Z">10</a></sup>+$&ldquo;, //大写字母</li>
+<li>mobile: &ldquo;^0?(13|15|18|14)[0-9]{9}$&ldquo;, //手机</li>
+<li>notempty: &ldquo;^\S+$&ldquo;, //非空</li>
+<li>password: &ldquo;^.*[A-Za-z0-9\w_-]+.*$&ldquo;, //密码</li>
+<li>password_: &ldquo;^[^ ]{6,16}$&ldquo;, //不能含有空格的密码</li>
+<li>fullNumber: &ldquo;<sup class="footnote-ref" id="fnref:0-9"><a href="#fn:0-9">11</a></sup>+$&ldquo;, //数字</li>
+<li>picture: &ldquo;(.*)\.(jpg|bmp|gif|ico|pcx|jpeg|tif|png|raw|tga)$&ldquo;, //图片</li>
+<li>qq: &ldquo;^\[1-9]*[1-9][0-9]*$&ldquo;, //QQ号码</li>
+<li>rar: &ldquo;(.*)\.(rar|zip|7zip|tgz)$&ldquo;, //压缩文件</li>
+<li>tel: &ldquo;<sup class="footnote-ref" id="fnref:0-9"><a href="#fn:0-9">12</a></sup>{2,20}$&ldquo;, //电话号码的函数(包括验证国内区号,国际区号,分机号)</li>
+<li>url: &ldquo;^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:.(?:[a-z\u00a1-\uffff]{2,})).?)(?::\d{2,5})?(?:[\/?#]\S*)?$&ldquo;, //url</li>
+<li>username: &ldquo;<sup class="footnote-ref" id="fnref:A-Za-z0-9-u4e00"><a href="#fn:A-Za-z0-9-u4e00">13</a></sup>{2,25}$&ldquo;, //户名</li>
+<li>zipcode: &ldquo;^\d{6}$&ldquo;, //邮编</li>
+<li>realname: &ldquo;<sup class="footnote-ref" id="fnref:A-Za-z-u4e00-u9f"><a href="#fn:A-Za-z-u4e00-u9f">14</a></sup>+$&ldquo;, // 真实姓名</li>
+<li>……</li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1-9">1-9 <a class="footnote-return" href="#fnref:1-9"><sup>[return]</sup></a></li>
+<li id="fn:1-9">1-9 <a class="footnote-return" href="#fnref:1-9"><sup>[return]</sup></a></li>
+<li id="fn:1-9">1-9 <a class="footnote-return" href="#fnref:1-9"><sup>[return]</sup></a></li>
+<li id="fn:x00-xFF">\x00-\xFF <a class="footnote-return" href="#fnref:x00-xFF"><sup>[return]</sup></a></li>
+<li id="fn:u4e00-u9fa5">\u4e00-\u9fa5 <a class="footnote-return" href="#fnref:u4e00-u9fa5"><sup>[return]</sup></a></li>
+<li id="fn:a-fA-F0-9">a-fA-F0-9 <a class="footnote-return" href="#fnref:a-fA-F0-9"><sup>[return]</sup></a></li>
+<li id="fn:a-zA-Z0-9">a-zA-Z0-9.!#\$%&amp;&rsquo;*+\/=?^_`{|}~- <a class="footnote-return" href="#fnref:a-zA-Z0-9"><sup>[return]</sup></a></li>
+<li id="fn:A-Za-z">A-Za-z <a class="footnote-return" href="#fnref:A-Za-z"><sup>[return]</sup></a></li>
+<li id="fn:a-z">a-z <a class="footnote-return" href="#fnref:a-z"><sup>[return]</sup></a></li>
+<li id="fn:A-Z">A-Z <a class="footnote-return" href="#fnref:A-Z"><sup>[return]</sup></a></li>
+<li id="fn:0-9">0-9 <a class="footnote-return" href="#fnref:0-9"><sup>[return]</sup></a></li>
+<li id="fn:0-9">0-9-()+、（） <a class="footnote-return" href="#fnref:0-9"><sup>[return]</sup></a></li>
+<li id="fn:A-Za-z0-9-u4e00">A-Za-z0-9\u4e00-\u9fa5 <a class="footnote-return" href="#fnref:A-Za-z0-9-u4e00"><sup>[return]</sup></a></li>
+<li id="fn:A-Za-z-u4e00-u9f">A-Za-z\u4e00-\u9fa5 <a class="footnote-return" href="#fnref:A-Za-z-u4e00-u9f"><sup>[return]</sup></a></li>
+</ol>
+</div>
+    </div>
+
+    
+    <div class="social-share" data-sites="qzone,qq,weibo,wechat,douban" data-description="blog.52zgd.com - 一位代码搬运工的博客 - js常用验证总结" data-title="js常用验证总结" data-mobile-sites="weibo,qq,qzone,tencent"></div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">52zgd.com</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2017-09-11</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/wechat.JPG">
+        <span>微信打赏</span>
+      </label>
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/javascript/">JavaScript</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/oracle%E4%B8%8B%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Oracle下常用函数</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/centos7%E4%B8%8Bnginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">
+            <span class="next-text nav-default">Centos7.2 下Nginx的安装与配置</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+    
+
+  
+
+  <div id="SOHUCS"></div> 
+    <script type="text/javascript"> 
+    (function(){
+      if (window.location.hostname === 'localhost') return;
+
+      var appid = 'cytvF8FGA';
+      var conf = '36b5fd38300fbcbdc88c41da60c9d890';
+      var width = window.innerWidth || document.documentElement.clientWidth; 
+      if (width < 960) {window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); }
+    })();
+    </script>
+
+  
+  </article>
+  
+  <script type="text/javascript" src="https://cdn.bootcss.com/social-share.js/1.0.15/js/social-share.min.js"></script>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:764157216@qq.com" rel="me" class="iconfont icon-email" 
+        title="email" target="_blank">
+      </a>
+      <a href="https://github.com/MrChanLi2013" rel="me" class="iconfont icon-github" 
+        title="github" target="_blank">
+      </a>
+  <a href="http://blog.52zgd.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" 
+    title="rss" target="_blank">
+  </a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://www.52zgd.com/">52zgd</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2016 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">52zgd.com</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script><script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?4e3e7e6ae6e591dbaed85624a5cb2a70";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+</body>
+</html>

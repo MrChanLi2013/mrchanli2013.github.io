@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据库 on 52zgd.com - 代码搬运工</title>
+    <link>http://blog.52zgd.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <description>Recent content in 数据库 on 52zgd.com - 代码搬运工</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 08 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.52zgd.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Oracle下常用函数</title>
+      <link>http://blog.52zgd.com/post/oracle%E4%B8%8B%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Wed, 08 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/oracle%E4%B8%8B%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</guid>
+      <description>&lt;p&gt;Oracle中经常使用&lt;code&gt;聚合函数&lt;/code&gt;，那么除了这些函数，还有哪些我们会经常用到呢？&lt;/p&gt;
+
+&lt;p&gt;总结如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;round()&lt;/code&gt;：四舍五入方法，&lt;code&gt;SELECT ROUND( number, [ decimal_places ] ) FROM DUAL&lt;/code&gt;，decimal_places 数值是按照指定的小数位进行四舍五入，&lt;strong&gt;小数位是从0开始计算与数组下标一样&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt; select round(45.55, 1) from dual; -- 输出45.60
+ select round(45.21, 1) from dual; -- 输出45.20    
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;to_char()&lt;/code&gt;转换日期&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt; select to_char(sysdate &#39;YYYY-MM-DD&#39;) from dual --转换成年-月-日的格式
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;to_char()&lt;/code&gt;保留两位小数补0，例如：在java中查询出的字段映射到java class类属性时需要要补0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt; TO_CHAR(35.00, &#39;FM9999999990.00&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
