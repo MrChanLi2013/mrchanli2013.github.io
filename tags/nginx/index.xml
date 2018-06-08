@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nginx on 52zgd.com - 代码搬运工</title>
+    <link>http://blog.52zgd.com/tags/nginx/</link>
+    <description>Recent content in Nginx on 52zgd.com - 代码搬运工</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 08 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.52zgd.com/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Windwos服务器下Java，Nginx服务封装</title>
+      <link>http://blog.52zgd.com/post/windwos%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8Bjavanginx%E6%9C%8D%E5%8A%A1%E5%B0%81%E8%A3%85/</link>
+      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/windwos%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8Bjavanginx%E6%9C%8D%E5%8A%A1%E5%B0%81%E8%A3%85/</guid>
+      <description>&lt;p&gt;Windows的服务用起来很方便，所以在项目开发过程把我们Java，Nginx程序封装为windows服务。
+工具：&lt;a href=&#34;http://repo.jenkins-ci.org/releases/com/sun/winsw/winsw/&#34;&gt;winsw&lt;/a&gt;
+文档：&lt;a href=&#34;https://github.com/kohsuke/winsw/blob/master/doc/xmlConfigFile.md&#34;&gt;winsw-config&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;1-spring-boot项目封装为windows-service&#34;&gt;1、Spring-boot项目封装为Windows service。&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;下载winsw工具，比如到&lt;code&gt;D:\test&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在test目录下建立&lt;strong&gt;MyService.xml&lt;/strong&gt;，其中&lt;code&gt;env&lt;/code&gt;节点可以不用更改&lt;/li&gt;
+&lt;li&gt;将下载的winsw工具更名为&lt;code&gt;MyService.exe&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;MyService.exe install&lt;/code&gt;安装服务，有时候需要管理员权限运行，&lt;code&gt;MyService.exe uninstall&lt;/code&gt;卸载服务&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;service&amp;gt;
+    &amp;lt;id&amp;gt;MyService&amp;lt;/id&amp;gt;
+    &amp;lt;name&amp;gt;MyService&amp;lt;/name&amp;gt;
+    &amp;lt;description&amp;gt;This runs Spring Boot as a Service.&amp;lt;/description&amp;gt;
+    &amp;lt;env name=&amp;quot;MYSERVICE_HOME&amp;quot; value=&amp;quot;%BASE%&amp;quot;/&amp;gt;
+    &amp;lt;executable&amp;gt;java&amp;lt;/executable&amp;gt;
+    &amp;lt;arguments&amp;gt;-Xmx256m -jar &amp;quot;%BASE%\MyJar.jar&amp;quot;&amp;lt;/arguments&amp;gt;
+    &amp;lt;logmode&amp;gt;rotate&amp;lt;/logmode&amp;gt;
+&amp;lt;/service&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Centos7.2 下Nginx的安装与配置</title>
+      <link>http://blog.52zgd.com/post/centos7%E4%B8%8Bnginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/centos7%E4%B8%8Bnginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;p&gt;@(Centos)[nginx]&lt;/p&gt;
+
+&lt;p&gt;Nginx 是一个很强大的高性能Web和反向代理服务器，它具有很多非常优越的特性，很多人都在使用它。
+其实在&lt;a href=&#34;http://nginx.org/en/docs/&#34;&gt;nginx官网&lt;/a&gt;写的比较清楚，我在这里主要写出一些基本的用法，方便一些英文不太好的同学不踩坑。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意我的环境是centos7&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;安装nginx&#34;&gt;安装Nginx&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;创建文件&lt;code&gt;/etc/yum.repos.d/nginx.repo&lt;/code&gt;，并输入下面内容：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/OS/OSRELEASE/$basearch/
+gpgcheck=0
+enabled=1
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;将&lt;code&gt;OS&lt;/code&gt;替换成&lt;code&gt;centos&lt;/code&gt;，&lt;code&gt;OSRELEASE&lt;/code&gt;替换成&lt;code&gt;7&lt;/code&gt;，就代表centos7.x。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;最后&lt;code&gt;yum install nginx&lt;/code&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

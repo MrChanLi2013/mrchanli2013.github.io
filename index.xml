@@ -1,0 +1,1364 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>52zgd.com - 代码搬运工</title>
+    <link>http://blog.52zgd.com/</link>
+    <description>Recent content on 52zgd.com - 代码搬运工</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 06 Mar 2018 16:01:23 +0800</lastBuildDate>
+    
+        <atom:link href="http://blog.52zgd.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>关于</title>
+      <link>http://blog.52zgd.com/about/</link>
+      <pubDate>Tue, 06 Mar 2018 16:01:23 +0800</pubDate>
+      
+      <guid>http://blog.52zgd.com/about/</guid>
+      
+        <description>
+
+&lt;h5 id=&#34;关于博主&#34;&gt;关于博主&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;性别：M&lt;/li&gt;
+&lt;li&gt;职业：一位代码搬运工~&lt;/li&gt;
+&lt;li&gt;技能：基本都接触过~&lt;/li&gt;
+&lt;li&gt;技能熟悉程度：略懂&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;联系博主&#34;&gt;联系博主&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;有事联系，加QQ：905970363 或发送邮件到：905970363@qq.com。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;关于博客&#34;&gt;关于博客&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;好记性不如烂笔头，当然现在用键盘啦，建立本博只为记录学习中遇到的问题及解决办法，方便以后查询。也希望帮助更多人不再跳到我遇到的坑中。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;博客工具&#34;&gt;博客工具&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; Hugo博客生成工具&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.bootcss.com/&#34;&gt;Bootstrap&lt;/a&gt; 前端样式框架&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://fontawesome.io/icons/&#34;&gt;Font Awesome 字体图标&lt;/a&gt; 大量的优秀图标可以使用&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cn.vuejs.org/&#34;&gt;VUE&lt;/a&gt; 渐进式框架&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://webpack.js.org/&#34;&gt;Webpack2&lt;/a&gt; 前端打包工具&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Javascript下载base64文件</title>
+      <link>http://blog.52zgd.com/post/javascript%E4%B8%8B%E8%BD%BDbase64%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Fri, 08 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/javascript%E4%B8%8B%E8%BD%BDbase64%E6%96%87%E4%BB%B6/</guid>
+      
+        <description>&lt;h4 id=&#34;问题由来&#34;&gt;问题由来&lt;/h4&gt;
+
+&lt;p&gt;最近在项目中遇到这种情况：后端给前端返回了一段&lt;code&gt;base64&lt;/code&gt;，需要前端下载。因为文件本身比较小，并且文件只是前端返给用户临时使用。所以后端并不想做一次存储，然后返回链接给前端。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;前端解决问题&#34;&gt;前端解决问题&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;思路&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;将&lt;code&gt;base64&lt;/code&gt;转化为&lt;code&gt;blob&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function b64toBlob (b64Data, contentType, sliceSize) {
+      contentType = contentType || &#39;&#39;
+      sliceSize = sliceSize || 512
+
+      var byteCharacters = atob(b64Data)
+      var byteArrays = []
+
+      for (var offset = 0; offset &amp;lt; byteCharacters.length; offset += sliceSize) {
+        var slice = byteCharacters.slice(offset, offset + sliceSize)
+
+        var byteNumbers = new Array(slice.length)
+        for (var i = 0; i &amp;lt; slice.length; i++) {
+          byteNumbers[i] = slice.charCodeAt(i)
+        }
+
+        var byteArray = new Uint8Array(byteNumbers)
+
+        byteArrays.push(byteArray)
+      }
+
+      var blob = new Blob(byteArrays, {type: contentType})
+      return blob
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;然后创建连接，触发click模拟点击下载&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var contentType = &#39;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&#39;
+var blob = b64toBlob(&#39;base64&#39;, contentType)
+var blobUrl = URL.createObjectURL(blob)
+var excel = document.createElement(&#39;a&#39;)
+excel.href = blobUrl
+excel.click()
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Python计算一年中的每周</title>
+      <link>http://blog.52zgd.com/post/python%E8%AE%A1%E7%AE%97%E4%B8%80%E5%B9%B4%E4%B8%AD%E7%9A%84%E6%AF%8F%E5%91%A8/</link>
+      <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/python%E8%AE%A1%E7%AE%97%E4%B8%80%E5%B9%B4%E4%B8%AD%E7%9A%84%E6%AF%8F%E5%91%A8/</guid>
+      
+        <description>&lt;p&gt;利用&lt;code&gt;Python&lt;/code&gt;计算一年中的周数，并计算出每一周具体有哪些天。以周一为一周的起点。
+计算规则：以日历的第一排为准，如果在第一排中今年的天数占多数，那么今年的第一周就从第一排开始，否则从第二排开始。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;如下图所示：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;以第一排开始：&lt;img src=&#34;http://blog.52zgd.com/img/date1.png&#34; alt=&#34;以第一排开始&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;以第二排开始：&lt;img src=&#34;http://blog.52zgd.com/img/date2.png&#34; alt=&#34;以第二排开始&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;话不多说-直接上代码&#34;&gt;话不多说，直接上代码&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# -*- coding: utf-8 -*-
+import datetime
+import time
+
+def get_week_of_year(year):
+    temp = year
+    map = {}
+    year = str(year) + &#39;-01-01&#39;
+    # 每一年的一月一号
+    year_of_date = datetime.datetime.strptime(year,&#39;%Y-%m-%d&#39;)
+    # 如果一号大于周4，则属于上一年最后一周
+    # 计算周几
+    which_week = year_of_date.isoweekday()
+    # print(which_week)
+    # 闰年
+    total_of_year = 365
+    range_start = 0
+    if temp%100 != 0 and temp%4 == 0:
+        total_of_year = 366
+    if year.find(&#39;01-01&#39;) != -1:
+        if which_week &amp;gt; 4:
+            add = 7 - which_week + 1
+            year_of_date = year_of_date + datetime.timedelta(add)
+            total_of_year = total_of_year - add
+        else:
+            add = 1 - which_week
+            if which_week != 1:
+                year_of_date = year_of_date + datetime.timedelta(add)
+                total_of_year = total_of_year - add
+    # 上面已经计算出了周一，所以从0开始
+    final_year_array = []
+    for i in range(range_start, total_of_year):
+        final_year = year_of_date + datetime.timedelta(i)
+        final_year_array.append(final_year.strftime(&#39;%Y-%m-%d&#39;))
+    return final_year_array
+
+# 拆分数组，n代表拆分的每个数组有几个元素
+# list = [1,2,3,4,5,6]，reshape(list, 3) =&amp;gt; [[1,2,3],[4,5,6]]
+def reshape(lst, n):
+    size = len(lst)//n
+    if (len(lst)%n) != 0:
+        size = size + 1
+    return [lst[i*n:(i+1)*n] for i in range(size)]
+
+for year in range(2015,2018):
+	week_of_date = reshape(get_week_of_year(year), 7)
+	if len(week_of_date) == 53 and len(week_of_date[-1]) &amp;lt; 4:
+	    week_of_date.pop()
+	for idx, week_date in enumerate(week_of_date):
+	    length = len(week_date)
+	    last = week_date[-1]
+	    if length != 7:
+	        for i in range(1, 7 - length + 1):
+	            temp_date = datetime.datetime.strptime(last,&#39;%Y-%m-%d&#39;)
+	            after = temp_date + datetime.timedelta(i)
+	            week_date.append(after.strftime(&#39;%Y-%m-%d&#39;))
+	    print(&#39;第&#39; + str(idx + 1) + &#39;周：&#39; + str(week_date))
+&lt;/code&gt;&lt;/pre&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>开发经理的职责</title>
+      <link>http://blog.52zgd.com/post/%E5%BC%80%E5%8F%91%E7%BB%8F%E7%90%86%E7%9A%84%E8%81%8C%E8%B4%A3/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/%E5%BC%80%E5%8F%91%E7%BB%8F%E7%90%86%E7%9A%84%E8%81%8C%E8%B4%A3/</guid>
+      
+        <description>&lt;p&gt;在软件行业蓬勃发展的今天，又更多的职位也随之诞生，比如我们今天要讲的&lt;strong&gt;开发经理&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h4 id=&#34;概述&#34;&gt;概述&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.52zgd.com/img/code.png&#34; alt=&#34;图片说明&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;通常开发经理或架构师会早于开发人员介入项目，了解项目的需求，系统分析，做相关的技术选型，制定开发计划与开发规范。在制定技术规格说明阶段，开发经理或架构师要协调起所有的开发人员，指定相关的技术规范与开发人员保持沟通，让开发人员理解他们负责的模块或者子系统，确保开发人员能够按照架构意图实现各项功能。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;具体职责&#34;&gt;具体职责&lt;/h4&gt;
+
+&lt;h5 id=&#34;1-基本编码规范&#34;&gt;1. 基本编码规范&lt;/h5&gt;
+
+&lt;p&gt;这个基本上每个公司都有一份这样的文档，这个文档一般跟项目无关，比如命名规范，注释规范，SQL规范等等。另外，要统一jdk，包括本地开发环境、服务器环境；定好项目名，包名，数据库名，表名，以及是否每个表需要通用字段（如version乐观锁版本号）等等。
+这里重点强调2个地方，工程规范和包名目录规范。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;工程规范&lt;/p&gt;
+
+&lt;p&gt;要明确定义每个工程模块的边界，尤其是在分布式系统中，这一点显得尤为重要，开发人员要对框架的层次结构非常理解，比如什么时候该定义DTO，什么时候该定义Domain。这个如果没有搞清楚，在项目的整个生命周期里面，项目的体积越来越庞大，这个问题一旦暴露出来简直就是灾难。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;包名目录规范&lt;/p&gt;
+
+&lt;p&gt;包目录规范要尽可能从顶层开始，开发人员的包目录权限要尽可能低，简单的说就是尽可能让开发人员少去建包，这一点很像日本的外包项目，目的就是统一规范。另外一点，要避免两个工程模块出现相同的包路径，这样在引用的时候极有可能出现冲突。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;2-定义好组件的边界和职责&#34;&gt;2. 定义好组件的边界和职责&lt;/h5&gt;
+
+&lt;p&gt;系统分解之后，要定义好组件（子系统或者模块）的边界和职责，这个是项目初期开发人员最关心的问题，如果这个没有定义清楚，后面系统就要面临重构的危险。&lt;/p&gt;
+
+&lt;p&gt;比如基础数据，并不是所有基础资料、配置信息都放到基础数据中，只有跨系统、跨服务、模块的基础资料、配置信息才属于基础数据管理范畴；另外基础数据服务的接口需要具备一定的通用性，尽可能减少针对某个系统、服务、模块开放特殊接口；并且不允许基础数据服务依赖上层服务。&lt;/p&gt;
+
+&lt;h5 id=&#34;5-项目版本定义&#34;&gt;5. 项目版本定义&lt;/h5&gt;
+
+&lt;p&gt;项目初期，除了一些基础的模块，比如工具类等公共模块可能被打包成Release版本，其他的一般都是SNAPSHOT版本，当项目陆陆续续上线之后，比如分布式系统中RPC调用要给客户端系统提供jar包引用，版本控制的作用就会凸显出来。这里推荐一批文章《语义化版本2.0.0》，是关于语义化的版本规范，这个规范是由 Gravatars 创办者兼 GitHub 共同创办者 Tom Preston-Werner 所建立。&lt;/p&gt;
+
+&lt;h5 id=&#34;4-svn代码管理与发布规范&#34;&gt;4. svn代码管理与发布规范&lt;/h5&gt;
+
+&lt;p&gt;根据项目的开发模型，定好代码的主干（trunk），分支（branches），基线（tags）的关系，以及相关环境的发布流程规范。&lt;/p&gt;
+
+&lt;h5 id=&#34;5-自动构建&#34;&gt;5. 自动构建&lt;/h5&gt;
+
+&lt;p&gt;在分布式系统开发中，没有自动构建简直不敢想象，往往一个项目有很多个子项目部署在几十台甚至几百台服务器上。如果没有自动构建，开发人员有可能要花费大量的时间在服务打包发布上，一旦需要马上发布一个测试bug，都需要很长一段时间，这会另整个团队精疲力竭。&lt;/p&gt;
+
+&lt;h5 id=&#34;6-代码日志规范&#34;&gt;6. 代码日志规范&lt;/h5&gt;
+
+&lt;p&gt;项目的日志在生产环境上禁止将日志输出到Console中。项目代码中都需要通过Logger对象来输出日志和异常，禁止使用system.out.println等方法进行输出，禁止使用e.printStackTrace来输出异常。日志需要通过日期、大小两个维度来分割文件，避免日志文件过大无法打开。生产环境的日志级别禁止开启DEBUG，如果排查确实需要则可以针对特定类打开而不能将整个环境设置为DEBUG，可能会造成系统因为文件锁卡死。&lt;/p&gt;
+
+&lt;h5 id=&#34;7-统一异常处理&#34;&gt;7. 统一异常处理&lt;/h5&gt;
+
+&lt;p&gt;分布式业务处理系统，系统中存在大量的跨服务调用，并且需要对不同类型的异常做不同级别的处理，处理的方式需要随着系统的不断扩展而适应不同类型的异常处理，并且做到跨服务的异常统一定义和快速定位跨服务的异常发生的源头和原因。一般通过定义全系统统一的异常编码，并定义其产生的原因，并需要达到识别系统的目的。&lt;/p&gt;
+
+&lt;h5 id=&#34;8-提供批量更新方法&#34;&gt;8. 提供批量更新方法&lt;/h5&gt;
+
+&lt;p&gt;批量更新必须使用提供的统一批量更新方法，对性能有很大的提升，如果有非常特殊的场景需求无法使用则必须要经过评审，否则这有可能成为一个性能瓶颈。&lt;/p&gt;
+
+&lt;h5 id=&#34;9-尽早提供基础服务&#34;&gt;9. 尽早提供基础服务&lt;/h5&gt;
+
+&lt;p&gt;如短信服务，邮件服务，这些基础服务要优先安排开发，因为几乎每个模块都有可能涉及到。&lt;/p&gt;
+
+&lt;h5 id=&#34;10-规范多线程写法&#34;&gt;10. 规范多线程写法&lt;/h5&gt;
+
+&lt;p&gt;如果系统中有用到多线程，不要随意开辟线程，尽可能使用统一的线程池，并封装公共的调用方法以及返回结果。&lt;/p&gt;
+
+&lt;h5 id=&#34;11-规范事务的处理&#34;&gt;11. 规范事务的处理&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;避免产生一个较长时间锁定多行数据的事务，尽可能将事务拆解或改为异步。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;分布式事务&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在项目中尽可能不通过数据库层面的分布式事务来实现数据的一致性而是通过异步、补偿、幂等等方式来实现数据的最终一致性。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;幂等性：&lt;/p&gt;
+
+&lt;p&gt;任何对外提供的服务入口方法都必须实现幂等性，重复使用同样的参数调用同一方法时总能获得同样的结果，而不会造成重复的处理。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; 查询服务：查询本身就是幂等的，所以不需要做额外的处理。
+ 新增服务：通过唯一性约束来控制数据的唯一性避免重复写入数据
+ 更新服务：通过乐观锁来控制数据的幂等性
+ 删除服务：删除本身也是幂等的，所以不需要做额外的处理
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;异步消息处理：&lt;/p&gt;
+
+&lt;p&gt;跨系统进行事务处理时尽可能的使用异步消息处理来进行，先将数据保存为一个中间状态，并将消息写入MQ，由下游系统订阅处理。下游系统处理完之后再将结果反馈给上游更新状态。MQ中写入的数据正常情况下不要使用完整数据，会造成MQ的IO压力很高而且数据可能是已经过期的，并且会将队列变成专用而不是通用，可能无法被其他服务订阅。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;补偿&lt;/p&gt;
+
+&lt;p&gt;MQ处理时可能存在消息丢失、故障等问题丢失数据导致流程中断，所以需要补偿措施来保障流程不会长时间中断。由一个分布式事务的最上游系统提供一个定时补偿措施检测长时间未完成事务的流程，并重新触发这个流程（重新写入MQ）。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;12-确定基础数据缓存方案&#34;&gt;12. 确定基础数据缓存方案&lt;/h5&gt;
+
+&lt;p&gt;缓存往往被忽视，等到项目后期碰到性能瓶颈的时候才发现需要重构，那个时候的代价是很大的，所以需要尽早的定好缓存方案，是用ehcache? guava? redis?这个要确定下来并让开发人员实施下去。&lt;/p&gt;
+
+&lt;h5 id=&#34;13-规范缓存环境使用&#34;&gt;13. 规范缓存环境使用&lt;/h5&gt;
+
+&lt;p&gt;memcached/redis缓存环境规划，要定义好数据结构使用规范，比如不能让所有人都用key/value这种方式来存储，最终导致缓存环境脏乱。&lt;/p&gt;
+
+&lt;h5 id=&#34;14-分布式文件存储&#34;&gt;14. 分布式文件存储&lt;/h5&gt;
+
+&lt;p&gt;尽早确定是在物理上做共享磁盘？还是使用分布式的文件系统？&lt;/p&gt;
+
+&lt;h5 id=&#34;15-单元测试&#34;&gt;15. 单元测试&lt;/h5&gt;
+
+&lt;p&gt;编写单元测试要成为一种习惯，另外，单元测试应该是没有副作用的。定义良好的单元测试在运行多次的情况下，如果没有其他条件发生变化，那么每一次都应该产生完全相同的结果。比如说，在数据库中通常会插入一些假数据，然后在测试中验证这些数据，这种方式的测试不可靠，因为数据库可能发生变化。可以在单元测试过程中使用内存数据库或者每次单元测试的数据都是自动生产最后自动删除的。&lt;/p&gt;
+
+&lt;p&gt;许多同事怕写单元测试的一个主要原因就是依赖太多（远程服务调用、redis、webservice等），如果一个服务因为种种原因挂掉了，那么这个测试就会失败。要解决这个痛点，可以引入mock对象可以满足这些条件的需求，而Mockito正是这样的一个框架，用Mockito来模拟相关行为，不用费力去准备各种依赖环境，这时只需专注于业务逻辑即可。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;a href=&#34;http://www.cnblogs.com/jager/p/6069106.html&#34;&gt;原文链接&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>了解微服务架构</title>
+      <link>http://blog.52zgd.com/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/</link>
+      <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/</guid>
+      
+        <description>&lt;blockquote&gt;
+&lt;p&gt;“微服务”一词源于Martin Fowler 的名为Microservices 的博文， 可以在他的官方博客
+上找到： &lt;a href=&#34;http://martinfowler.com/articles/microservices.html&#34;&gt;Martin Fowler Blog&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;更多内容请阅读书籍《SpringCloud微服务实战-翟永超》。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;什么是微服务架构&#34;&gt;什么是微服务架构&lt;/h4&gt;
+
+&lt;p&gt;简单地说，&lt;strong&gt;微服务是系统架构上的一种设计风格， 它的主旨是将一个原本独立的系统拆分成多个小型服务，这些小型服务都在各自独立的进程中运行，服务之间通过基于HTTP的RESTful API进行通信协作&lt;/strong&gt;。被拆分成的每一个小型服务都围绕着系统中的某一项或一些耦合度较高的业务功能进行构建， 并且每个服务都维护着自身的数据存储、业务开发、自动化测试案例以及独立部署机制。由于有了轻量级的通信协作基础， 所以这些微服务可以使用不同的语言来编写。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;如何实施微服务&#34;&gt;如何实施微服务&lt;/h4&gt;
+
+&lt;h5 id=&#34;微服务中会遇到的问题&#34;&gt;微服务中会遇到的问题&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;运维的复杂性
+在微服务的架构中，运维人员维护的进程数量会大大增加。它不再像传统的单体应用只需要部署一个节点就可以了。这就要求运维人员具备一定的开发能力来编排运维过程并让它们能自动运行起来，并且相互合作。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;接口保持一致性问题
+虽然我们拆分了服务， 但是业务逻辑上的依赖并不会消除， 只是从单体应用中的代码依赖变为了服务间的通信依赖。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;分布式会遇到的问题
+由于拆分后的各个微服务都是独立部署并运行在各自的进程内，它们只能通过通信来进行协作， 所以分布式环境的问题都将是微服务架构系统设计时需要考虑的重要因素， 比如网络延迟、分布式事务、异步消息等。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;martin-fowler提炼的微服务9大特性&#34;&gt;Martin Fowler提炼的微服务9大特性&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;服务组件化
+在微服务架构中， 需要我们对服务进行组件化分解。服务， 是一种进程外的组件， 它通过HTTP 等通信协议进行协作， 而不是像传统组件那样以嵌入的方式协同工作。每一个服务都独立开发、部署， 可以有效避免一个服务的修改引起整个系统的重新部署。&lt;/li&gt;
+&lt;li&gt;按业务组织团队&lt;/li&gt;
+&lt;li&gt;做“ 产品” 的态度
+在实施微服务架构的团队中， 每个小团队都应该以做产品的方式， 对其产品的整个生命周期负责。&lt;/li&gt;
+&lt;li&gt;智能端点与哑管道
+在微服务架构中， 通常会使用以下两种服务调用方式：
+
+&lt;ul&gt;
+&lt;li&gt;使用HTTP 的RESTful API 或轻量级的消息发送协议， 实现信息传递与服务调用的触发。&lt;/li&gt;
+&lt;li&gt;第二种， 通过在轻量级消息总线上传递消息， 类似RabbitMQ 等一些提供可靠异步交换的中间件。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;去中心化管理&lt;/li&gt;
+&lt;li&gt;去中心化管理数据
+分布式事务本身的实现难度就非常大， 所以在微服务架构中， 我们更强调在各服务之间进行“ 无事务” 的调用， 而对于数据一致性， 只要求数据在最后的处理状态是一致的即可；若在过程中发现错误， 通过补偿机制来进行处理，使得错误数据能够达到最终的一致性。&lt;/li&gt;
+&lt;li&gt;基础设施自动化&lt;/li&gt;
+&lt;li&gt;容错设计&lt;/li&gt;
+&lt;li&gt;演进式设计&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5 id=&#34;当下比较流行的微服务框架spring-cloud&#34;&gt;当下比较流行的微服务框架Spring Cloud&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://projects.spring.io/spring-cloud/&#34;&gt;Spring Cloud&lt;/a&gt;是一个基千&lt;a href=&#34;https://projects.spring.io/spring-boot/&#34;&gt;Spring Boot&lt;/a&gt;实现的微服务架构开发工具。它为微服务架构中涉及的配置管理、服务治理、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等操作提供了一种简单的开发方式。Spring Cloud包含了多个子项目（针对分布式系统中涉及的多个不同开源产品，还可能会新增）， 如下所述：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Spring Cloud Config: 配置管理工具， 支持使用Git存储配置内容， 可以使用它实现应用配置的外部化存储， 并支持客户端配置信息刷新、加密／解密配置内容等。&lt;/li&gt;
+&lt;li&gt;Spring CloudN etflix: 核心 组件，对多个Netflix OSS开源套件进行整合。
+
+&lt;ul&gt;
+&lt;li&gt;Eureka: 服务治理组件， 包含服务注册中心、服务注册与发现机制的实现。&lt;/li&gt;
+&lt;li&gt;Hystrix: 容错管理组件，实现断路器模式， 帮助服务依赖中出现的延迟和为故障提供强大的容错能力。&lt;/li&gt;
+&lt;li&gt;Ribbon: 客户端负载均衡的服务调用组件。&lt;/li&gt;
+&lt;li&gt;Feign: 基于Ribbon 和Hystrix 的声明式服务调用组件。&lt;/li&gt;
+&lt;li&gt;Zuul: 网关组件， 提供智能路由、访问过滤等功能。&lt;/li&gt;
+&lt;li&gt;Archaius: 外部化配置组件。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Spring Cloud Bus: 事件、消息总线， 用于传播集群中的状态变化或事件， 以触发后续的处理， 比如用来动态刷新配置等。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Cluster: 针对ZooKeeper、Redis、Hazelcast、Consul 的选举算法和通用状态模式的实现。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Cloudfoundry: 与Pivotal Cloudfoundry 的整合支持。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Consul: 服务发现与配置管理工具。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Stream: 通过Redis、Rabbit 或者Kafka 实现的消费微服务， 可以通过简单的声明式模型来发送和接收消息。&lt;/li&gt;
+&lt;li&gt;Spring Cloud A WS: 用千简化整合Amazon Web Service 的组件。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Security: 安全工具包， 提供在Zuul 代理中对0Auth2 客户端请求的中继器。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Sleuth: Spring Cloud 应用的分布式跟踪实现， 可以完美整合Zip虹n。&lt;/li&gt;
+&lt;li&gt;Spring Cloud ZooKeeper: 基于ZooKeeper 的服务发现与配置管理组件。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Starters: Spring Cloud 的基础组件， 它是基于Spring Boot 风格项目的基础依赖模块。&lt;/li&gt;
+&lt;li&gt;Spring Cloud CLI: 用于在Groovy 中快速创建Spring Cloud 应用的Spring Boot CLI插件。&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>编程的一些基本原则</title>
+      <link>http://blog.52zgd.com/post/%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/</link>
+      <pubDate>Sun, 08 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/</guid>
+      
+        <description>&lt;h3 id=&#34;编程的一些基本原则&#34;&gt;编程的一些基本原则&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;KISS(Keep It Simple Stupid)&lt;/li&gt;
+&lt;li&gt;YAGNI&lt;/li&gt;
+&lt;li&gt;Do The Simplest Thing That Could Possibly Work&lt;/li&gt;
+&lt;li&gt;Separation of Concerns&lt;/li&gt;
+&lt;li&gt;Keep Things DRY&lt;/li&gt;
+&lt;li&gt;Code For The Maintainer&lt;/li&gt;
+&lt;li&gt;Avoid Premature Optimization&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h6 id=&#34;1-kiss-尽量保证代码简洁&#34;&gt;1、KISS：尽量保证代码简洁&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;简洁的代码可以花很少的时间去写，越简单越不容易出bug，并且后期更容易修改以及维护&lt;/li&gt;
+&lt;li&gt;一段代码趋于完美不是看它是否可以再增加代码，而是看它是否可以再减少代码&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&#34;2-yagni-you-aren-t-gonna-need-it-不要实现多余的东西-除非必要的情况&#34;&gt;2、 YAGNI(you aren&amp;rsquo;t gonna need it)，不要实现多余的东西，除非必要的情况&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当某一个功能即使在后面可能需要（并不是扩展性），也不应该在当前迭代中加入这些工作&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&#34;3-do-the-simplest-thing-that-could-possibly-work-找出最简单的方法解决问题&#34;&gt;3、Do The Simplest Thing That Could Possibly Work：找出最简单的方法解决问题&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;多问问自己：有没有更好的办法解决该问题，找出问题的本质&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&#34;4-separation-of-concerns-本意就是单一职责原则-尽可能让你的代码只做一件事&#34;&gt;4、Separation of Concerns：本意就是单一职责原则，尽可能让你的代码只做一件事&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;良好的职责划分，可以让代码更加容易理解，低耦合，更改一个功能只会影响很少的地方&lt;/li&gt;
+&lt;li&gt;提方法，分模块&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&#34;5-keep-things-dry-不要做重复的事情&#34;&gt;5、Keep Things DRY：不要做重复的事情&lt;/h6&gt;
+
+&lt;h6 id=&#34;6-code-for-the-maintainer-站长维护者的角度编写代码&#34;&gt;6、Code For The Maintainer：站长维护者的角度编写代码&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;代码维护一直是程序中代价最高的一个阶段&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&#34;7-avoid-premature-optimization-避免过早的优化代码&#34;&gt;7、Avoid Premature Optimization：避免过早的优化代码&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;有时候其实你并不知道瓶颈在哪里&lt;/li&gt;
+&lt;li&gt;过早的优化代码，可能会导致代码难读并难以维护（所以重构都应该是在熟悉逻辑之后）&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Windwos服务器下Java，Nginx服务封装</title>
+      <link>http://blog.52zgd.com/post/windwos%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8Bjavanginx%E6%9C%8D%E5%8A%A1%E5%B0%81%E8%A3%85/</link>
+      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/windwos%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8Bjavanginx%E6%9C%8D%E5%8A%A1%E5%B0%81%E8%A3%85/</guid>
+      
+        <description>&lt;p&gt;Windows的服务用起来很方便，所以在项目开发过程把我们Java，Nginx程序封装为windows服务。
+工具：&lt;a href=&#34;http://repo.jenkins-ci.org/releases/com/sun/winsw/winsw/&#34;&gt;winsw&lt;/a&gt;
+文档：&lt;a href=&#34;https://github.com/kohsuke/winsw/blob/master/doc/xmlConfigFile.md&#34;&gt;winsw-config&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;1-spring-boot项目封装为windows-service&#34;&gt;1、Spring-boot项目封装为Windows service。&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;下载winsw工具，比如到&lt;code&gt;D:\test&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在test目录下建立&lt;strong&gt;MyService.xml&lt;/strong&gt;，其中&lt;code&gt;env&lt;/code&gt;节点可以不用更改&lt;/li&gt;
+&lt;li&gt;将下载的winsw工具更名为&lt;code&gt;MyService.exe&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;MyService.exe install&lt;/code&gt;安装服务，有时候需要管理员权限运行，&lt;code&gt;MyService.exe uninstall&lt;/code&gt;卸载服务&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;service&amp;gt;
+    &amp;lt;id&amp;gt;MyService&amp;lt;/id&amp;gt;
+    &amp;lt;name&amp;gt;MyService&amp;lt;/name&amp;gt;
+    &amp;lt;description&amp;gt;This runs Spring Boot as a Service.&amp;lt;/description&amp;gt;
+    &amp;lt;env name=&amp;quot;MYSERVICE_HOME&amp;quot; value=&amp;quot;%BASE%&amp;quot;/&amp;gt;
+    &amp;lt;executable&amp;gt;java&amp;lt;/executable&amp;gt;
+    &amp;lt;arguments&amp;gt;-Xmx256m -jar &amp;quot;%BASE%\MyJar.jar&amp;quot;&amp;lt;/arguments&amp;gt;
+    &amp;lt;logmode&amp;gt;rotate&amp;lt;/logmode&amp;gt;
+&amp;lt;/service&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;2-nginx封装为windows-service&#34;&gt;2、Nginx封装为Windows service&lt;/h4&gt;
+
+&lt;p&gt;Nginx封装和spring-boot封装步骤一样只是建立的&lt;strong&gt;MyService.xml&lt;/strong&gt;内容稍有不同：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;service&amp;gt;
+	&amp;lt;id&amp;gt;nginx&amp;lt;/id&amp;gt;
+	&amp;lt;name&amp;gt;nginx&amp;lt;/name&amp;gt;
+	&amp;lt;description&amp;gt;nginx&amp;lt;/description&amp;gt;
+	&amp;lt;executable&amp;gt;C:\nginx\nginx.exe&amp;lt;/executable&amp;gt;
+	&amp;lt;logmode&amp;gt;rotate&amp;lt;/logmode&amp;gt;
+	&amp;lt;startargument&amp;gt;-p C:\nginx\&amp;lt;/startargument&amp;gt;
+	&amp;lt;stopargument&amp;gt;-p C:\nginx\-s stop&amp;lt;/stopargument&amp;gt;
+&amp;lt;/service&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>REST API 设计总结</title>
+      <link>http://blog.52zgd.com/post/rest-api-%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/rest-api-%E8%AE%BE%E8%AE%A1/</guid>
+      
+        <description>&lt;blockquote&gt;
+&lt;p&gt;参考了GitHub rest api设计，&lt;a href=&#34;https://developer.github.com/v3/&#34;&gt;https://developer.github.com/v3/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;验证&#34;&gt;验证&lt;/h4&gt;
+
+&lt;h5 id=&#34;使用-basic-authentication&#34;&gt;使用&lt;code&gt;Basic authentication&lt;/code&gt;&lt;/h5&gt;
+
+&lt;p&gt;如果没有验证就访问接口返回HTTP状态码&lt;code&gt;403 Forbidden&lt;/code&gt;。但如果我们有接口是私有的我们可以返回&lt;code&gt;404 Not Found&lt;/code&gt;，这样如果该地址被暴露出去之后，别人访问的时候会认为这个地址是错误的。也或者说我们只是针对部分用户，比如A、B两个用户A有权限访问接口，B没有权限，那么B访问的时候我们就返回404，A访问的时候没有验证成功我们就返回403。&lt;/p&gt;
+
+&lt;h5 id=&#34;登录失败的情况&#34;&gt;登录失败的情况&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;无效的凭据：&lt;code&gt;401 Unauthorized&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;HTTP/1.1 401 Unauthorized
+{
+	  &amp;quot;message&amp;quot;: &amp;quot;用户名或密码错误&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;凭据输入错误次数过多：&lt;code&gt;403 Forbidden&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt; HTTP/1.1 403 Forbidden
+ {
+	 &amp;quot;message&amp;quot;: &amp;quot;操作过于频繁，请稍后操作&amp;quot;
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;参数&#34;&gt;参数&lt;/h4&gt;
+
+&lt;h5 id=&#34;get参数&#34;&gt;GET参数&lt;/h5&gt;
+
+&lt;p&gt;使用查询的方式（HTTP query string parameter），&lt;code&gt;http://api.com/product/1?status=normal&lt;/code&gt;，获取id为1并且状态为normal的产品&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;其中&lt;code&gt;status=normal&lt;/code&gt;就使用查询参数的方式&lt;/li&gt;
+&lt;li&gt;id为1可以使用&lt;code&gt;{id}&lt;/code&gt;方式存在path中：&lt;code&gt;http://api.com/product/{id}?status=normal&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果是中文的查询参数，建议使用&lt;code&gt;encodeURIComponent()&lt;/code&gt;或者&lt;code&gt;encodeURI()&lt;/code&gt;将url encode&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;post-patch-put-delete参数&#34;&gt;POST、PATCH、PUT、DELETE参数&lt;/h5&gt;
+
+&lt;p&gt;这些方法的参数使用&lt;code&gt;json&lt;/code&gt;的格式传输，&lt;code&gt;Content-Type = &#39;application/json&#39;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;客户端错误定义&#34;&gt;客户端错误定义&lt;/h4&gt;
+
+&lt;h5 id=&#34;1-发送的参数json格式错误-400-bad-request&#34;&gt;1、发送的参数json格式错误：&lt;code&gt;400 Bad Request&lt;/code&gt;&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;HTTP/1.1 400 Bad Request
+
+{&amp;quot;message&amp;quot;:&amp;quot;json解析失败&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;2-参数验证错误-422-unprocessable-entity&#34;&gt;2、参数验证错误：&lt;code&gt;422 Unprocessable Entity&lt;/code&gt;&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;HTTP/1.1 422 Unprocessable Entity
+
+{
+  &amp;quot;message&amp;quot;: &amp;quot;参数验证失败&amp;quot;,
+  &amp;quot;errors&amp;quot;: [
+    {
+      &amp;quot;message&amp;quot;: &amp;quot;title不能为空&amp;quot;,
+      &amp;quot;field&amp;quot;: &amp;quot;title&amp;quot;,
+      &amp;quot;code&amp;quot;: &amp;quot;missing_filed&amp;quot;
+    }
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;code可能存在几种：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;missing：资源不存在&lt;/li&gt;
+&lt;li&gt;missing_filed：实体的字段缺失&lt;/li&gt;
+&lt;li&gt;invalid：实体的字段格式验证失败&lt;/li&gt;
+&lt;li&gt;already_exists：实体已存在&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;分页&#34;&gt;分页&lt;/h4&gt;
+
+&lt;p&gt;当请求返回会有多条时，采用分页形式，可以设置默认一页显示30，可以使用&lt;code&gt;?page&lt;/code&gt;参数查询第几页，&lt;code&gt;?per_page&lt;/code&gt;参数设置每页返回多少条，可以使用&lt;code&gt;?sort&lt;/code&gt;进行排序。&lt;/p&gt;
+
+&lt;h4 id=&#34;http-响应状态码&#34;&gt;HTTP 响应状态码&lt;/h4&gt;
+
+&lt;h5 id=&#34;2xx-请求成功&#34;&gt;2XX（请求成功）&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;200 Ok&lt;/code&gt;：&lt;code&gt;POST&lt;/code&gt;、&lt;code&gt;GET&lt;/code&gt;等方法请求成功返回&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;201 Created&lt;/code&gt;：创建某个资源成功时返回&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;204 No Content&lt;/code&gt;：请求成功了，没有返回任何东西，在&lt;code&gt;DELETE&lt;/code&gt;方法中最常见&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;4xx-客户端错误&#34;&gt;4XX（客户端错误）&lt;/h5&gt;
+
+&lt;p&gt;可以参看之前的介绍&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;400 Bad Request&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;401 Unauthorized&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;403 Forbidden&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;404 Not Found&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;5xx-服务器错误&#34;&gt;5XX（服务器错误）&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;500 Internal Server Error&lt;/code&gt;：服务器错误&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Vue.js最佳实践</title>
+      <link>http://blog.52zgd.com/post/vue/</link>
+      <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/vue/</guid>
+      
+        <description>&lt;p&gt;@[web,javascript]&lt;/p&gt;
+
+&lt;h4 id=&#34;1-vue中是否还需要使用jquery&#34;&gt;1.  Vue中是否还需要使用JQuery？&lt;/h4&gt;
+
+&lt;p&gt;前端开发相信对jQuery非常熟悉了，对于刚开始使用vue的人来说，会更倾向于直接使用jQuery操作DOM，更加方便快捷。不过现在是时候改变一下你的习惯了，&lt;strong&gt;可以不再使用jQuery&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;Vue也提供了类似的API：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div&amp;gt;
+    ...
+    // 作用关于dom元素上
+    &amp;lt;p ref=&amp;quot;myElement&amp;quot;&amp;gt;This is the content of my element.&amp;lt;/p&amp;gt;
+    &amp;lt;my-component ref=&amp;quot;component&amp;quot;&amp;gt;This is custom component.&amp;lt;/my-component&amp;gt;
+    ...
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+&amp;lt;script&amp;gt;
+	export default {
+	  mounted () {
+	    console.log(this.$refs.myElement)
+	    console.log(this.$refs.component)
+	  }
+	}
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;2-vue中使用bootstrap&#34;&gt;2. Vue中使用Bootstrap？&lt;/h4&gt;
+
+&lt;p&gt;Boostrap很显然是一看优秀的前端框架，但是在vue中使用bootstrap还是稍显复杂的。&lt;/p&gt;
+
+&lt;p&gt;我们可以找到一些可以替代bootstrap的框架：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://element.eleme.io/#/zh-CN&#34;&gt;ElementUI&lt;/a&gt; 文档详细，友好的&lt;strong&gt;中文&lt;/strong&gt;支持。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://bulma.io/&#34;&gt;Bulma&lt;/a&gt; 完美融合vue，&lt;code&gt;npm install vue-bulma --save&lt;/code&gt;，它还提供了一套管理界面&lt;a href=&#34;https://github.com/vue-bulma/vue-admin&#34;&gt;vue-admin&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>maven常用命令操作</title>
+      <link>http://blog.52zgd.com/post/maven%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/maven%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      
+        <description>&lt;h1 id=&#34;maven常用操作&#34;&gt;maven常用操作&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;跳过测试：&lt;code&gt;mvn install -Dmaven.test.skip=true&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在pom.xml中加入maven仓库镜像&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;repositories&amp;gt;
+        &amp;lt;repository&amp;gt;  
+            &amp;lt;id&amp;gt;alimaven&amp;lt;/id&amp;gt;  
+            &amp;lt;name&amp;gt;aliyun maven&amp;lt;/name&amp;gt;  
+            &amp;lt;url&amp;gt;http://maven.aliyun.com/nexus/content/groups/public/&amp;lt;/url&amp;gt;  
+            &amp;lt;releases&amp;gt;  
+                &amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;  
+            &amp;lt;/releases&amp;gt;  
+            &amp;lt;snapshots&amp;gt;  
+                &amp;lt;enabled&amp;gt;false&amp;lt;/enabled&amp;gt;  
+            &amp;lt;/snapshots&amp;gt;  
+        &amp;lt;/repository&amp;gt;  
+&amp;lt;/repositories&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;spring-boot项目打包时会出现BOOT-INFO文件夹，这样会导致我们写的类找不到。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;plugin&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+    &amp;lt;configuration&amp;gt;
+        &amp;lt;skip&amp;gt;true&amp;lt;/skip&amp;gt; &amp;lt;!--加入这句--&amp;gt;
+    &amp;lt;/configuration&amp;gt;
+    &amp;lt;executions&amp;gt;
+        &amp;lt;execution&amp;gt;
+            &amp;lt;goals&amp;gt;
+                &amp;lt;goal&amp;gt;repackage&amp;lt;/goal&amp;gt;
+            &amp;lt;/goals&amp;gt;
+        &amp;lt;/execution&amp;gt;
+    &amp;lt;/executions&amp;gt;
+&amp;lt;/plugin&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Oracle下常用函数</title>
+      <link>http://blog.52zgd.com/post/oracle%E4%B8%8B%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Wed, 08 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/oracle%E4%B8%8B%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</guid>
+      
+        <description>&lt;p&gt;Oracle中经常使用&lt;code&gt;聚合函数&lt;/code&gt;，那么除了这些函数，还有哪些我们会经常用到呢？&lt;/p&gt;
+
+&lt;p&gt;总结如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;round()&lt;/code&gt;：四舍五入方法，&lt;code&gt;SELECT ROUND( number, [ decimal_places ] ) FROM DUAL&lt;/code&gt;，decimal_places 数值是按照指定的小数位进行四舍五入，&lt;strong&gt;小数位是从0开始计算与数组下标一样&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt; select round(45.55, 1) from dual; -- 输出45.60
+ select round(45.21, 1) from dual; -- 输出45.20    
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;to_char()&lt;/code&gt;转换日期&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt; select to_char(sysdate &#39;YYYY-MM-DD&#39;) from dual --转换成年-月-日的格式
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;to_char()&lt;/code&gt;保留两位小数补0，例如：在java中查询出的字段映射到java class类属性时需要要补0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt; TO_CHAR(35.00, &#39;FM9999999990.00&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;add_months()&lt;/code&gt;月份函数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;比如获取某个时间的上一月，&lt;code&gt;add_months(date, -1)&lt;/code&gt;；
+ 如果要获取几天前，则直接使用你的时间加减天数就可以了：
+ 如：当前时间的两天前：&lt;code&gt;sysdate-2&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nvl()&lt;/code&gt;函数：如果第一个参数为空那么显示第二个参数的值，如果第一个参数的值不为空，则显示第一个参数本来的值。主要用于&lt;strong&gt;空值&lt;/strong&gt;的处理&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt; select nvl(null, &#39;无数据&#39;) from dual -- 返回 无数据
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;decode()&lt;/code&gt;函数：可以用来代替case when操作，我在项目中常用于除数为0的情况&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;decode(&#39;条件&#39;, &#39;值1&#39;, &#39;满足值1时返回值&#39;,..., &#39;最后有一个默认值&#39;)
+
+ select decode(b, 0, 0,a/b) from dual; // 如果b为0时返回0，否则返回a/b
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;以上就是我在项目中经常使用的函数，后续遇到了陆续添加&amp;hellip;&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>js常用验证总结</title>
+      <link>http://blog.52zgd.com/post/js%E5%B8%B8%E7%94%A8%E9%AA%8C%E8%AF%81%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/js%E5%B8%B8%E7%94%A8%E9%AA%8C%E8%AF%81%E6%80%BB%E7%BB%93/</guid>
+      
+        <description>&lt;p&gt;一些常用的js正则验证：&lt;/p&gt;
+
+&lt;p&gt;example：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var validateRegExp = {
+    chinese: &amp;quot;^[\\u4e00-\\u9fa5]+$&amp;quot; //仅中文
+};
+
+var validateRules = {
+ isChinese: function (str) {
+    return new RegExp(validateRegExp.chinese).test(str);
+  }
+};
+
+validateRules.isChinese(str);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;总结：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;decmal: &amp;ldquo;^([+-]?)\d*\.\d+$&amp;ldquo;, //浮点数&lt;/li&gt;
+&lt;li&gt;decmal1: &amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1-9&#34;&gt;&lt;a href=&#34;#fn:1-9&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;\d&lt;em&gt;.\d&lt;/em&gt;|0.\d&lt;em&gt;[1-9]\d&lt;/em&gt;$&amp;ldquo;, //正浮点数&lt;/li&gt;
+&lt;li&gt;decmal2: &amp;ldquo;^-([1-9]\d&lt;em&gt;.\d&lt;/em&gt;|0.\d&lt;em&gt;[1-9]\d&lt;/em&gt;)$&amp;ldquo;, //负浮点数&lt;/li&gt;
+&lt;li&gt;intege: &amp;ldquo;^-?[1-9]\d*$&amp;ldquo;, //整数&lt;/li&gt;
+&lt;li&gt;intege1: &amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1-9&#34;&gt;&lt;a href=&#34;#fn:1-9&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;\d*$&amp;ldquo;, //正整数&lt;/li&gt;
+&lt;li&gt;intege2: &amp;ldquo;^-[1-9]\d*$&amp;ldquo;, //负整数&lt;/li&gt;
+&lt;li&gt;num: &amp;ldquo;^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:.\d+)?$&amp;ldquo;, //数字&lt;/li&gt;
+&lt;li&gt;num1: &amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1-9&#34;&gt;&lt;a href=&#34;#fn:1-9&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;\d*|0$&amp;ldquo;, //正数（正整数 + 0）&lt;/li&gt;
+&lt;li&gt;num2: &amp;ldquo;^-[1-9]\d*|0$&amp;ldquo;, //负数（负整数 + 0）&lt;/li&gt;
+&lt;li&gt;ascii: &amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:x00-xFF&#34;&gt;&lt;a href=&#34;#fn:x00-xFF&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;+$&amp;ldquo;, //仅ACSII字符&lt;/li&gt;
+&lt;li&gt;chinese: &amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:u4e00-u9fa5&#34;&gt;&lt;a href=&#34;#fn:u4e00-u9fa5&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;+$&amp;ldquo;, //仅中文&lt;/li&gt;
+&lt;li&gt;color: &amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:a-fA-F0-9&#34;&gt;&lt;a href=&#34;#fn:a-fA-F0-9&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;{6}$&amp;ldquo;, //颜色&lt;/li&gt;
+&lt;li&gt;date: &amp;ldquo;^\d{4}(\-|\/|.)\d{1,2}\1\d{1,2}$&amp;ldquo;, //日期&lt;/li&gt;
+&lt;li&gt;email: &amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:a-zA-Z0-9&#34;&gt;&lt;a href=&#34;#fn:a-zA-Z0-9&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$&amp;ldquo;, //邮箱&lt;/li&gt;
+&lt;li&gt;idcard: &amp;ldquo;^[1-9]([0-9]{14}|[0-9]{17})$&amp;ldquo;, //身份证&lt;/li&gt;
+&lt;li&gt;ip4: &amp;ldquo;^(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5* 0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)$&amp;ldquo;, //ip地址&lt;/li&gt;
+&lt;li&gt;letter: &amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:A-Za-z&#34;&gt;&lt;a href=&#34;#fn:A-Za-z&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;+$&amp;ldquo;, //字母&lt;/li&gt;
+&lt;li&gt;letter_l: &amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:a-z&#34;&gt;&lt;a href=&#34;#fn:a-z&#34;&gt;9&lt;/a&gt;&lt;/sup&gt;+$&amp;ldquo;, //小写字母&lt;/li&gt;
+&lt;li&gt;letter_u: &amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:A-Z&#34;&gt;&lt;a href=&#34;#fn:A-Z&#34;&gt;10&lt;/a&gt;&lt;/sup&gt;+$&amp;ldquo;, //大写字母&lt;/li&gt;
+&lt;li&gt;mobile: &amp;ldquo;^0?(13|15|18|14)[0-9]{9}$&amp;ldquo;, //手机&lt;/li&gt;
+&lt;li&gt;notempty: &amp;ldquo;^\S+$&amp;ldquo;, //非空&lt;/li&gt;
+&lt;li&gt;password: &amp;ldquo;^.*[A-Za-z0-9\w_-]+.*$&amp;ldquo;, //密码&lt;/li&gt;
+&lt;li&gt;password_: &amp;ldquo;^[^ ]{6,16}$&amp;ldquo;, //不能含有空格的密码&lt;/li&gt;
+&lt;li&gt;fullNumber: &amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:0-9&#34;&gt;&lt;a href=&#34;#fn:0-9&#34;&gt;11&lt;/a&gt;&lt;/sup&gt;+$&amp;ldquo;, //数字&lt;/li&gt;
+&lt;li&gt;picture: &amp;ldquo;(.*)\.(jpg|bmp|gif|ico|pcx|jpeg|tif|png|raw|tga)$&amp;ldquo;, //图片&lt;/li&gt;
+&lt;li&gt;qq: &amp;ldquo;^\[1-9]*[1-9][0-9]*$&amp;ldquo;, //QQ号码&lt;/li&gt;
+&lt;li&gt;rar: &amp;ldquo;(.*)\.(rar|zip|7zip|tgz)$&amp;ldquo;, //压缩文件&lt;/li&gt;
+&lt;li&gt;tel: &amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:0-9&#34;&gt;&lt;a href=&#34;#fn:0-9&#34;&gt;12&lt;/a&gt;&lt;/sup&gt;{2,20}$&amp;ldquo;, //电话号码的函数(包括验证国内区号,国际区号,分机号)&lt;/li&gt;
+&lt;li&gt;url: &amp;ldquo;^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:.(?:[a-z\u00a1-\uffff]{2,})).?)(?::\d{2,5})?(?:[\/?#]\S*)?$&amp;ldquo;, //url&lt;/li&gt;
+&lt;li&gt;username: &amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:A-Za-z0-9-u4e00&#34;&gt;&lt;a href=&#34;#fn:A-Za-z0-9-u4e00&#34;&gt;13&lt;/a&gt;&lt;/sup&gt;{2,25}$&amp;ldquo;, //户名&lt;/li&gt;
+&lt;li&gt;zipcode: &amp;ldquo;^\d{6}$&amp;ldquo;, //邮编&lt;/li&gt;
+&lt;li&gt;realname: &amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:A-Za-z-u4e00-u9f&#34;&gt;&lt;a href=&#34;#fn:A-Za-z-u4e00-u9f&#34;&gt;14&lt;/a&gt;&lt;/sup&gt;+$&amp;ldquo;, // 真实姓名&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1-9&#34;&gt;1-9 &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1-9&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:1-9&#34;&gt;1-9 &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1-9&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:1-9&#34;&gt;1-9 &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1-9&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:x00-xFF&#34;&gt;\x00-\xFF &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:x00-xFF&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:u4e00-u9fa5&#34;&gt;\u4e00-\u9fa5 &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:u4e00-u9fa5&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:a-fA-F0-9&#34;&gt;a-fA-F0-9 &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:a-fA-F0-9&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:a-zA-Z0-9&#34;&gt;a-zA-Z0-9.!#\$%&amp;amp;&amp;rsquo;*+\/=?^_`{|}~- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:a-zA-Z0-9&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:A-Za-z&#34;&gt;A-Za-z &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:A-Za-z&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:a-z&#34;&gt;a-z &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:a-z&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:A-Z&#34;&gt;A-Z &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:A-Z&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:0-9&#34;&gt;0-9 &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:0-9&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:0-9&#34;&gt;0-9-()+、（） &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:0-9&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:A-Za-z0-9-u4e00&#34;&gt;A-Za-z0-9\u4e00-\u9fa5 &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:A-Za-z0-9-u4e00&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:A-Za-z-u4e00-u9f&#34;&gt;A-Za-z\u4e00-\u9fa5 &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:A-Za-z-u4e00-u9f&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Centos7.2 下Nginx的安装与配置</title>
+      <link>http://blog.52zgd.com/post/centos7%E4%B8%8Bnginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/centos7%E4%B8%8Bnginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      
+        <description>&lt;p&gt;@(Centos)[nginx]&lt;/p&gt;
+
+&lt;p&gt;Nginx 是一个很强大的高性能Web和反向代理服务器，它具有很多非常优越的特性，很多人都在使用它。
+其实在&lt;a href=&#34;http://nginx.org/en/docs/&#34;&gt;nginx官网&lt;/a&gt;写的比较清楚，我在这里主要写出一些基本的用法，方便一些英文不太好的同学不踩坑。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意我的环境是centos7&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;安装nginx&#34;&gt;安装Nginx&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;创建文件&lt;code&gt;/etc/yum.repos.d/nginx.repo&lt;/code&gt;，并输入下面内容：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/OS/OSRELEASE/$basearch/
+gpgcheck=0
+enabled=1
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;将&lt;code&gt;OS&lt;/code&gt;替换成&lt;code&gt;centos&lt;/code&gt;，&lt;code&gt;OSRELEASE&lt;/code&gt;替换成&lt;code&gt;7&lt;/code&gt;，就代表centos7.x。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;最后&lt;code&gt;yum install nginx&lt;/code&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;配置nginx&#34;&gt;配置Nginx&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Nginx安装好之后默认配置文件为&lt;code&gt;nginx.conf&lt;/code&gt;放在目录&lt;code&gt;/usr/local/nginx/conf&lt;/code&gt;或者&lt;code&gt;/etc/nginx&lt;/code&gt;或者&lt;code&gt;/usr/local/etc/nginx&lt;/code&gt;。&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;日志文件存放位置：&lt;code&gt;/var/log/nginx&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h5 id=&#34;常用的命令&#34;&gt;常用的命令&lt;/h5&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;启动Nginx：&lt;code&gt;systemctl start nginx.service&lt;/code&gt;。在centos7下不再使用之前的&lt;del&gt;service&lt;/del&gt;启动了而是使用&lt;strong&gt;systemctl&lt;/strong&gt;。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;查看Nginx状态：&lt;code&gt;systemctl status nginx.service&lt;/code&gt;。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;关闭Nginx：&lt;code&gt;nginx -s stop&lt;/code&gt;或者&lt;code&gt;nginx -s quit&lt;/code&gt;。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;重新加载Nginx配置文件：&lt;code&gt;nginx -s reload&lt;/code&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;springboot下nginx-https配置&#34;&gt;SpringBoot下Nginx Https配置&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在&lt;code&gt;nginx.conf&lt;/code&gt;http模块中加入以下server配置：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http {
+    ......................;
+
+    server {
+        #强制跳转至https页面
+        listen      80;
+        server_name    yourdomain;
+        return      301 https://$server_name$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+        server_name yourdomain;
+
+        ssl on;
+        #https证书
+        ssl_certificate 1_youdomain_bundle.crt;
+        ssl_certificate_key 2_youdomain.key;
+
+        location / {
+           proxy_pass https://yourdomain:8080;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           proxy_set_header X-Forwarded-Proto $scheme;
+           proxy_set_header X-Forwarded-Port $server_port;
+        }
+
+        #这儿主要防止一些域名复制或者说镜像了你的网站
+        if ($host = &#39;一些域名&#39; ) {
+           return 403;
+        }
+     }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在spring boot的&lt;code&gt;application.properties&lt;/code&gt;文件中加入以下配置：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;server.tomcat.remote_ip_header=x-forwarded-for
+server.tomcat.protocol_header=x-forwarded-proto
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Centos7.2 下mysql的安装</title>
+      <link>http://blog.52zgd.com/post/centos7%E4%B8%8Bmysql%E7%9A%84%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/centos7%E4%B8%8Bmysql%E7%9A%84%E5%AE%89%E8%A3%85/</guid>
+      
+        <description>&lt;ol&gt;
+&lt;li&gt;使用命令&lt;code&gt;yum list installed | grep mysql&lt;/code&gt;查看mysql是否安装&lt;/li&gt;
+&lt;li&gt;如果没有安装：先在MySQL官网中下载yum源rpm安装包：&lt;a href=&#34;https://dev.mysql.com/downloads/repo/yum/&#34;&gt;https://dev.mysql.com/downloads/repo/yum/&lt;/a&gt;;&lt;/li&gt;
+&lt;li&gt;下载mysql源安装包&lt;code&gt;wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;安装：&lt;code&gt;yum localinstall mysql57-community-release-el7-8.noarch.rpm&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;将yum源安装好之后就可以使用&lt;code&gt;yum install mysql-community-server&lt;/code&gt;安装mysql&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;安装成功后启动mysql&lt;code&gt;service mysqld start&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;安装成功后使用mysql会在&lt;code&gt;/var/log/mysqld.log&lt;/code&gt;中生成一个随机密码，在重设密码的时候需要按照密码策略设置，可以详情搜索一下mysql密码策略&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;grep &#39;temporary password&#39; /var/log/mysqld.log
+mysql -uroot -p
+ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;MyNewPass4!&#39;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;开启远程访问设置&lt;code&gt;GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;刚刚设置的密码&#39; WITH GRANT OPTION;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;重启mysql&lt;code&gt;systemctl restart mysqld&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;默认配置文件路径：
+配置文件：&lt;code&gt;/etc/my.cnf&lt;/code&gt;
+日志文件：&lt;code&gt;/var/log//var/log/mysqld.log&lt;/code&gt;
+服务启动脚本：&lt;code&gt;/usr/lib/systemd/system/mysqld.service&lt;/code&gt;&lt;br /&gt;
+socket文件：&lt;code&gt;/var/run/mysqld/mysqld.pid&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Centos7.2 下svn服务器搭建</title>
+      <link>http://blog.52zgd.com/post/centos7%E4%B8%8Bsvn%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/centos7%E4%B8%8Bsvn%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</guid>
+      
+        <description>&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;yum install subversion&lt;/code&gt;安装svn&lt;/li&gt;
+&lt;li&gt;初始化仓库，&lt;code&gt;mkdir -p /usr/dev/svn/svnrepos&lt;/code&gt;创建的该目录为仓库，然后执行&lt;code&gt;svnadmin create /usr/dev/svn/svnrepos&lt;/code&gt;，这就完成了仓库的创建&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;cd&lt;/code&gt;到该目录下&lt;code&gt;ls&lt;/code&gt;会出现：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;README.txt conf db format hooks locks
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;配置相关信息，&lt;code&gt;cd&lt;/code&gt;到&lt;code&gt;conf&lt;/code&gt;目录，会发现下面有3个文件：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;authz：权限控制文件&lt;/li&gt;
+&lt;li&gt;passwd：帐号密码文件&lt;/li&gt;
+&lt;li&gt;svnserve.conf ：SVN服务配置文件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;添加账户密码：&lt;code&gt;vi passwd&lt;/code&gt;在最后一行添加格式：帐号=密码，如chenli=123456&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;设置权限：&lt;code&gt;vi authz&lt;/code&gt;在最后一行添加&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[/] #所有目录
+chenli=rw #可读可写
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;修改svnserve.conf文件 ,&lt;code&gt;vi svnserve.conf&lt;/code&gt;
+打开下面的几个注释：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;anon-access = read #匿名用户可读&lt;/li&gt;
+&lt;li&gt;auth-access = write #授权用户可写&lt;/li&gt;
+&lt;li&gt;password-db = passwd #使用哪个文件作为账号文件&lt;/li&gt;
+&lt;li&gt;authz-db = authz #使用哪个文件作为权限文件&lt;/li&gt;
+&lt;li&gt;realm = /usr/dev/svn/svnrepos # 认证空间名，版本库所在目录&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;启动svn服务&lt;code&gt;svnserve -d -r /usr/dev/svn/svnrepos&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Centos7.2 下字体安装</title>
+      <link>http://blog.52zgd.com/post/centos%E4%B8%8B%E5%AD%97%E4%BD%93%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Sat, 08 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/centos%E4%B8%8B%E5%AD%97%E4%BD%93%E5%AE%89%E8%A3%85/</guid>
+      
+        <description>&lt;h4 id=&#34;字体的安装&#34;&gt;字体的安装&lt;/h4&gt;
+
+&lt;p&gt;已经验证.ttc，.ttf格式字体的安装。本人安装的是windows下的&lt;strong&gt;微软雅黑&lt;/strong&gt;到服务器。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在/usr/share/fonts目录下建立一个子目录，例如mac：&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt; mkdir /usr/share/fonts/mac
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;将字体文件放到刚刚建立的文件夹中；&lt;/li&gt;
+&lt;li&gt;建立字体索引信息，更新字体缓存：&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd /usr/share/fonts/win
+mkfontscale
+mkfontdir
+fc-cache
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;使用&lt;code&gt;fc-list&lt;/code&gt;查看字体是否安装成功。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;java中使用安装的字体&#34;&gt;java中使用安装的字体&lt;/h4&gt;
+
+&lt;p&gt;在服务器中使用&lt;code&gt;fc-list&lt;/code&gt;查看字体可以看到下面一行：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;微软雅黑,Microsoft YaHei,Microsoft YaHei Light,微软雅黑 Light:style=Light,Regular
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以看到是以逗号分隔的。
+在Java中就可以使用：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Font font = new Font(&amp;quot;微软雅黑&amp;quot;, Font.PLAIN, 14);
+Font font = new Font(&amp;quot;Microsoft YaHei&amp;quot;, Font.PLAIN, 14);
+&lt;/code&gt;&lt;/pre&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Spring Boot Junit 使用h2 database</title>
+      <link>http://blog.52zgd.com/post/spring-boot-junit-%E4%BD%BF%E7%94%A8h2-database/</link>
+      <pubDate>Mon, 12 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/spring-boot-junit-%E4%BD%BF%E7%94%A8h2-database/</guid>
+      
+        <description>&lt;h1 id=&#34;spring-boot-junit-使用h2-database&#34;&gt;spring boot junit 使用h2 database&lt;/h1&gt;
+
+&lt;p&gt;@(java)[spring-boot-1.3.3,junit]&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;创建测试使用的&lt;code&gt;Configuration&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import org.junit.runner.RunWith;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+    
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(TestApplication.class)//测试主类入口
+@TestPropertySource(locations = &amp;quot;classpath:test.properties&amp;quot;)//设置测试使用的配置文件
+public class TestConfiguration {
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;创建测试入口类：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+    
+@SpringBootApplication
+public class TestApplication {
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(TestApplication.class, args);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;添加&lt;code&gt;h2&lt;/code&gt;的&lt;code&gt;maven&lt;/code&gt;依赖：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;com.h2database&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;h2&amp;lt;/artifactId&amp;gt;
+    &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;在&lt;code&gt;test.properties&lt;/code&gt;文件中加入h2数据源的配置：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.url=jdbc:h2:mem:Business_Farmer;MODE=MSSQLServer;INIT=create schema if not exists dbo\\;set SCHEMA=dbo\\;RUNSCRIPT FROM &#39;./src/test/resources/table.sql&#39;
+spring.datasource.username=
+spring.datasource.password=
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;说明：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MODE=MSSQLServer指定数据库类型；&lt;/li&gt;
+&lt;li&gt;RUNSCRIPT FROM可以初始化测试数据库表结构，_其中script名称如果是&lt;code&gt;schema.sql&lt;/code&gt;或&lt;code&gt;data.sql&lt;/code&gt;spring会自动帮我们执行_；&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Java中Set和Array如何互转</title>
+      <link>http://blog.52zgd.com/post/java%E4%B8%ADset%E5%92%8Carray%E5%A6%82%E4%BD%95%E4%BA%92%E8%BD%AC/</link>
+      <pubDate>Wed, 10 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/java%E4%B8%ADset%E5%92%8Carray%E5%A6%82%E4%BD%95%E4%BA%92%E8%BD%AC/</guid>
+      
+        <description>&lt;p&gt;我们有两种方式将Set转成Array&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Set.toArray()&lt;/code&gt; 方法&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Stream&lt;/code&gt;java8中接口&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Example：SetToArrayExample.java&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.test;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class SetToArrayExample {
+	public static void main(String[] args) {	
+		Set&amp;lt;String&amp;gt; set=new HashSet&amp;lt;&amp;gt;();
+		set.add(&amp;quot;A&amp;quot;);
+		set.add(&amp;quot;B&amp;quot;);
+		set.add(&amp;quot;C&amp;quot;);
+		set.add(&amp;quot;D&amp;quot;);
+		set.add(&amp;quot;E&amp;quot;);
+		
+		/*方法1 - (Set.toArray())*/
+		String[] array1=set.toArray(new String[0]);
+		for (String string : array1) {
+			System.out.println(string);
+		}
+		
+		/*方法2 - (Using stream)*/
+		String[] array2=set.stream().toArray(String[]::new);
+		for (String string : array2) {
+			System.out.println(string);
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;java-array转set&#34;&gt;Java Array转Set&lt;/h4&gt;
+
+&lt;p&gt;我们有三种方式将Array转成Set&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;for-each&lt;/code&gt;循环&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Arrays.asList()&lt;/code&gt;方法&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Collections.addAll()&lt;/code&gt;方法&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Example：ArrayToSetExample&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.test;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
+public class ArrayToSetExample {
+	public static void main(String[] args) {
+		
+		String[] numbers=new String[]{&amp;quot;One&amp;quot;,&amp;quot;Two&amp;quot;,&amp;quot;Three&amp;quot;,&amp;quot;One&amp;quot;,&amp;quot;Six&amp;quot;};
+		
+		/* 方法- 1 */
+		Set&amp;lt;String&amp;gt; numberList1=new HashSet&amp;lt;&amp;gt;();
+		for (String integer : numbers) {
+			numberList1.add(integer);
+		}
+		System.out.println(&amp;quot;Number List1=&amp;quot;+numberList1);
+		
+		/* 方法 - 2 */
+		Set&amp;lt;String&amp;gt; numberList2=new HashSet&amp;lt;&amp;gt;(Arrays.asList(numbers));
+		System.out.println(&amp;quot;Number List2=&amp;quot;+numberList2);
+
+		/* 方法 - 3 */
+		Set&amp;lt;String&amp;gt; numberList3=new HashSet&amp;lt;&amp;gt;();
+		Collections.addAll(numberList3, numbers);
+		System.out.println(&amp;quot;Number List3=&amp;quot;+numberList3);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>unbantu下配置java</title>
+      <link>http://blog.52zgd.com/post/unbantu%E4%B8%8B%E9%85%8D%E7%BD%AEjava/</link>
+      <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/unbantu%E4%B8%8B%E9%85%8D%E7%BD%AEjava/</guid>
+      
+        <description>&lt;p&gt;@(unbantu)[java]&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    sudo gedit ~/.bashrc
+    export JAVA_HOME=/usr/lib/jvm/java-7-sun
+    export JRE_HOME=${JAVA_HOME}/jre
+    export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+    export PATH=${JAVA_HOME}/bin:$PATH 
+    source ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Java IDE利器IDEA技巧总结（常更新）</title>
+      <link>http://blog.52zgd.com/post/idea%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 10 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/idea%E6%80%BB%E7%BB%93/</guid>
+      
+        <description>&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;问题&lt;/strong&gt;：spring-boot加入jsp的支持启动项目时找不到jsp，报404问题？
+&lt;strong&gt;解决办法：&lt;/strong&gt;   特别设置图中红色部分，选到你的jsp所在的模块。
+&lt;img src=&#34;http://blog.52zgd.com/img/idea-jsp.png&#34; alt=&#34;Alt text&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;问题&lt;/strong&gt;：idea中如何替换空行？
+&lt;strong&gt;解决办法&lt;/strong&gt;：&lt;code&gt;ctrl+r&lt;/code&gt;搜索，在find栏输入&lt;code&gt;\s+$&lt;/code&gt;，然后勾选&lt;code&gt;Regex&lt;/code&gt;使用正则查找，在replace栏不填。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>
