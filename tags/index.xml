@@ -41,7 +41,7 @@
     <item>
       <title>Java</title>
       <link>http://blog.52zgd.com/tags/java/</link>
-      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://blog.52zgd.com/tags/java/</guid>
       <description></description>
@@ -80,6 +80,15 @@
       <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>http://blog.52zgd.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Log4j</title>
+      <link>http://blog.52zgd.com/tags/log4j/</link>
+      <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/tags/log4j/</guid>
       <description></description>
     </item>
     
@@ -179,15 +188,6 @@
       <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>http://blog.52zgd.com/tags/svn/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Svn安装</title>
-      <link>http://blog.52zgd.com/tags/svn%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://blog.52zgd.com/tags/svn%E5%AE%89%E8%A3%85/</guid>
       <description></description>
     </item>
     

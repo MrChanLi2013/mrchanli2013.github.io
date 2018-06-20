@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Log4j on 52zgd.com - 代码搬运工</title>
+    <link>http://blog.52zgd.com/tags/log4j/</link>
+    <description>Recent content in Log4j on 52zgd.com - 代码搬运工</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 20 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.52zgd.com/tags/log4j/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>log4j自定义Appender</title>
+      <link>http://blog.52zgd.com/post/log4j%E8%87%AA%E5%AE%9A%E4%B9%89appender/</link>
+      <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/log4j%E8%87%AA%E5%AE%9A%E4%B9%89appender/</guid>
+      <description>&lt;h4 id=&#34;背景&#34;&gt;背景&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;log4j&lt;/code&gt;本身已经提供了许多的&lt;code&gt;Appender&lt;/code&gt;，例如：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ConsoleAppender&lt;/li&gt;
+&lt;li&gt;FileAppender&lt;/li&gt;
+&lt;li&gt;FlumeAppender&lt;/li&gt;
+&lt;li&gt;JDBCAppender&lt;/li&gt;
+&lt;li&gt;JMS Appender&lt;/li&gt;
+&lt;li&gt;KafkaAppender&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;详情请看&lt;a href=&#34;https://logging.apache.org/log4j/2.x/manual/appenders.html&#34;&gt;log4j Appenders&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;可是有时候我们还是会有自己的特殊需求，比如我们项目中就遇到这样的情况：我们提供了一组&lt;code&gt;Restful API&lt;/code&gt;这组API是方便测试人员使用，调用这些接口，日志会打印至文件和kafka。但我们的测试你人员就需要到另外的地方查看日志，并不能调用了接口之后就看到执行日志。&lt;strong&gt;那我们应该怎么办？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -55,6 +55,129 @@
     </item>
     
     <item>
+      <title>log4j自定义Appender</title>
+      <link>http://blog.52zgd.com/post/log4j%E8%87%AA%E5%AE%9A%E4%B9%89appender/</link>
+      <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/log4j%E8%87%AA%E5%AE%9A%E4%B9%89appender/</guid>
+      
+        <description>&lt;h4 id=&#34;背景&#34;&gt;背景&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;log4j&lt;/code&gt;本身已经提供了许多的&lt;code&gt;Appender&lt;/code&gt;，例如：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ConsoleAppender&lt;/li&gt;
+&lt;li&gt;FileAppender&lt;/li&gt;
+&lt;li&gt;FlumeAppender&lt;/li&gt;
+&lt;li&gt;JDBCAppender&lt;/li&gt;
+&lt;li&gt;JMS Appender&lt;/li&gt;
+&lt;li&gt;KafkaAppender&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;详情请看&lt;a href=&#34;https://logging.apache.org/log4j/2.x/manual/appenders.html&#34;&gt;log4j Appenders&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;可是有时候我们还是会有自己的特殊需求，比如我们项目中就遇到这样的情况：我们提供了一组&lt;code&gt;Restful API&lt;/code&gt;这组API是方便测试人员使用，调用这些接口，日志会打印至文件和kafka。但我们的测试你人员就需要到另外的地方查看日志，并不能调用了接口之后就看到执行日志。&lt;strong&gt;那我们应该怎么办？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;自定义appender出场&#34;&gt;自定义Appender出场&lt;/h4&gt;
+
+&lt;h5 id=&#34;定义appender&#34;&gt;定义Appender&lt;/h5&gt;
+
+&lt;p&gt;自定义Appender的核心就是继承&lt;code&gt;AbstractAppender&lt;/code&gt;，然后重写&lt;code&gt;append()&lt;/code&gt;方法。&lt;/p&gt;
+
+&lt;p&gt;直接上代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt; // 1. @Plugin注解，声明appender，方便在log4j2.xml中使用
+ @Plugin(name = &amp;quot;CustomListAppender&amp;quot;, category = &amp;quot;Core&amp;quot;, elementType = &amp;quot;appender&amp;quot;, printObject = true)
+public class CustomListAppender extends AbstractAppender {
+
+    // 2. 必须申明构造函数，可以直接使用父类的构造函数
+    private CustomListAppender(String name, Filter filter, Layout&amp;lt;? extends Serializable&amp;gt; layout) {
+        super(name, filter, layout);
+    }
+
+    3. @PluginFactory注解，接收配置文件中的参数
+    @PluginFactory
+    public static CustomListAppender createAppender(@PluginAttribute(&amp;quot;name&amp;quot;) String name,
+                                                    @PluginElement(&amp;quot;Filter&amp;quot;) final Filter filter,
+                                                    @PluginElement(&amp;quot;Layout&amp;quot;) Layout&amp;lt;? extends Serializable&amp;gt; layout) {
+        if (name == null) {
+            LOGGER.error(&amp;quot;no name defined in conf.&amp;quot;);
+            return null;
+        }
+        if (layout == null) {
+            layout = PatternLayout.createDefaultLayout();
+        }
+        return new CustomListAppender(name, filter, layout);
+    }
+
+    4. 核心逻辑处理你的日志
+    @Override
+    public void append(LogEvent event) {
+        final byte[] bytes = getLayout().toByteArray(event);
+        // LogRecorder是我自己定义记录日志内容的单例
+        // 这里你可以自己写自己的逻辑
+        LogRecorder.getInstance().setContent(new String(bytes));
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;##### 配置&lt;code&gt;log4j2.xml&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt; &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+
+&amp;lt;configuration status=&amp;quot;INFO&amp;quot; monitorInterval=&amp;quot;30&amp;quot;&amp;gt;
+    &amp;lt;appenders&amp;gt;
+        &amp;lt;!-- 这个就是自定义的Appender --&amp;gt;
+        &amp;lt;CustomListAppender name=&amp;quot;CustomListAppender&amp;quot;&amp;gt;
+            &amp;lt;PatternLayout pattern=&amp;quot;%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%-5p] {%F:%L} - %m%n&amp;quot; /&amp;gt;
+        &amp;lt;/CustomListAppender&amp;gt;
+    &amp;lt;/appenders&amp;gt;
+
+    &amp;lt;logger name=&amp;quot;com.xx.rest&amp;quot; level=&amp;quot;DEBUG&amp;quot; additivity=&amp;quot;false&amp;quot;&amp;gt;
+        &amp;lt;appender-ref ref=&amp;quot;listAppender&amp;quot;/&amp;gt;
+    &amp;lt;/logger&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;后续-可以不用看&#34;&gt;后续(可以不用看)&lt;/h4&gt;
+
+&lt;p&gt;为了解决我们之前遇到的问题，我创建了一个&lt;code&gt;LogRecorder&lt;/code&gt;单例记录日志，然后在调用rest接口之后返回之前记录的日志。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class LogRecorder {
+    private static LogRecorder logRecorder;
+    private List&amp;lt;String&amp;gt; content = new ArrayList&amp;lt;&amp;gt;();
+
+    private LogRecorder() {
+    }
+
+    public static synchronized LogRecorder getInstance() {
+        if (logRecorder == null) {
+            logRecorder = new LogRecorder();
+        }
+        return logRecorder;
+    }
+
+    public List&amp;lt;String&amp;gt; getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content.add(content);
+    }
+
+    public void clear() {
+        this.content.clear();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>Javascript下载base64文件</title>
       <link>http://blog.52zgd.com/post/javascript%E4%B8%8B%E8%BD%BDbase64%E6%96%87%E4%BB%B6/</link>
       <pubDate>Fri, 08 Jun 2018 00:00:00 +0000</pubDate>
@@ -1333,28 +1456,6 @@ public class ArrayToSetExample {
     export PATH=${JAVA_HOME}/bin:$PATH 
     source ~/.bashrc
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Java IDE利器IDEA技巧总结（常更新）</title>
-      <link>http://blog.52zgd.com/post/idea%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Thu, 10 Mar 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://blog.52zgd.com/post/idea%E6%80%BB%E7%BB%93/</guid>
-      
-        <description>&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;问题&lt;/strong&gt;：spring-boot加入jsp的支持启动项目时找不到jsp，报404问题？
-&lt;strong&gt;解决办法：&lt;/strong&gt;   特别设置图中红色部分，选到你的jsp所在的模块。
-&lt;img src=&#34;http://blog.52zgd.com/img/idea-jsp.png&#34; alt=&#34;Alt text&#34; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;问题&lt;/strong&gt;：idea中如何替换空行？
-&lt;strong&gt;解决办法&lt;/strong&gt;：&lt;code&gt;ctrl+r&lt;/code&gt;搜索，在find栏输入&lt;code&gt;\s+$&lt;/code&gt;，然后勾选&lt;code&gt;Regex&lt;/code&gt;使用正则查找，在replace栏不填。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
       

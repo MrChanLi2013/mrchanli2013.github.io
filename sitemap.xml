@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>http://blog.52zgd.com/post/log4j%E8%87%AA%E5%AE%9A%E4%B9%89appender/</loc>
+    <lastmod>2018-06-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.52zgd.com/post/javascript%E4%B8%8B%E8%BD%BDbase64%E6%96%87%E4%BB%B6/</loc>
     <lastmod>2018-06-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -178,14 +185,14 @@
   
   <url>
     <loc>http://blog.52zgd.com/tags/java/</loc>
-    <lastmod>2018-03-08T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://blog.52zgd.com/categories/java/</loc>
-    <lastmod>2018-04-16T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -228,6 +235,13 @@
   <url>
     <loc>http://blog.52zgd.com/categories/linux/</loc>
     <lastmod>2017-08-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.52zgd.com/tags/log4j/</loc>
+    <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -276,7 +290,7 @@
   
   <url>
     <loc>http://blog.52zgd.com/post/</loc>
-    <lastmod>2018-06-08T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
