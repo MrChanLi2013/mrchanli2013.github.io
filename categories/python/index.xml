@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on 52zgd.com - 代码搬运工</title>
+    <link>http://blog.52zgd.com/categories/python/</link>
+    <description>Recent content in Python on 52zgd.com - 代码搬运工</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 26 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.52zgd.com/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python计算一年中的每周</title>
+      <link>http://blog.52zgd.com/post/python%E8%AE%A1%E7%AE%97%E4%B8%80%E5%B9%B4%E4%B8%AD%E7%9A%84%E6%AF%8F%E5%91%A8/</link>
+      <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/python%E8%AE%A1%E7%AE%97%E4%B8%80%E5%B9%B4%E4%B8%AD%E7%9A%84%E6%AF%8F%E5%91%A8/</guid>
+      <description>&lt;p&gt;利用&lt;code&gt;Python&lt;/code&gt;计算一年中的周数，并计算出每一周具体有哪些天。以周一为一周的起点。
+计算规则：以日历的第一排为准，如果在第一排中今年的天数占多数，那么今年的第一周就从第一排开始，否则从第二排开始。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;如下图所示：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;以第一排开始：&lt;img src=&#34;http://blog.52zgd.com/img/date1.png&#34; alt=&#34;以第一排开始&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;以第二排开始：&lt;img src=&#34;http://blog.52zgd.com/img/date2.png&#34; alt=&#34;以第二排开始&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

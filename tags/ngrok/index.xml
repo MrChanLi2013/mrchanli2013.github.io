@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ngrok on 52zgd.com - 代码搬运工</title>
+    <link>http://blog.52zgd.com/tags/ngrok/</link>
+    <description>Recent content in Ngrok on 52zgd.com - 代码搬运工</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 20 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.52zgd.com/tags/ngrok/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Centos7 Ngrok服务器搭建</title>
+      <link>http://blog.52zgd.com/post/centos7-ngrok%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/centos7-ngrok%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</guid>
+      <description>&lt;h4 id=&#34;1-安装-go-环境&#34;&gt;1、安装&lt;code&gt;go&lt;/code&gt;环境&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;下载go安装包。注意自己的linux版本，我的是64位的。所以下载amd64的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;wget https://dl.google.com/go/go1.10.7.linux-amd64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;解压。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;tar -C /usr/local -xzf go1.10.7.linux-amd64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;添加到path中。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;export PATH=$PATH:/usr/local/go/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;验证是否安装成功&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;go version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Base64 on 52zgd.com - 代码搬运工</title>
+    <link>http://blog.52zgd.com/tags/base64/</link>
+    <description>Recent content in Base64 on 52zgd.com - 代码搬运工</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 08 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.52zgd.com/tags/base64/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Javascript下载base64文件</title>
+      <link>http://blog.52zgd.com/post/javascript%E4%B8%8B%E8%BD%BDbase64%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Fri, 08 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/javascript%E4%B8%8B%E8%BD%BDbase64%E6%96%87%E4%BB%B6/</guid>
+      <description>&lt;h4 id=&#34;问题由来&#34;&gt;问题由来&lt;/h4&gt;
+
+&lt;p&gt;最近在项目中遇到这种情况：后端给前端返回了一段&lt;code&gt;base64&lt;/code&gt;，需要前端下载。因为文件本身比较小，并且文件只是前端返给用户临时使用。所以后端并不想做一次存储，然后返回链接给前端。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

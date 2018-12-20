@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on 52zgd.com - 代码搬运工</title>
+    <link>http://blog.52zgd.com/categories/linux/</link>
+    <description>Recent content in Linux on 52zgd.com - 代码搬运工</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 20 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.52zgd.com/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Centos7 Ngrok服务器搭建</title>
+      <link>http://blog.52zgd.com/post/centos7-ngrok%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/centos7-ngrok%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</guid>
+      <description>&lt;h4 id=&#34;1-安装-go-环境&#34;&gt;1、安装&lt;code&gt;go&lt;/code&gt;环境&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;下载go安装包。注意自己的linux版本，我的是64位的。所以下载amd64的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;wget https://dl.google.com/go/go1.10.7.linux-amd64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;解压。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;tar -C /usr/local -xzf go1.10.7.linux-amd64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;添加到path中。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;export PATH=$PATH:/usr/local/go/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;验证是否安装成功&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;go version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Centos7.2 下Nginx的安装与配置</title>
+      <link>http://blog.52zgd.com/post/centos7%E4%B8%8Bnginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/centos7%E4%B8%8Bnginx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;p&gt;@(Centos)[nginx]&lt;/p&gt;
+
+&lt;p&gt;Nginx 是一个很强大的高性能Web和反向代理服务器，它具有很多非常优越的特性，很多人都在使用它。
+其实在&lt;a href=&#34;http://nginx.org/en/docs/&#34;&gt;nginx官网&lt;/a&gt;写的比较清楚，我在这里主要写出一些基本的用法，方便一些英文不太好的同学不踩坑。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意我的环境是centos7&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;安装nginx&#34;&gt;安装Nginx&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;创建文件&lt;code&gt;/etc/yum.repos.d/nginx.repo&lt;/code&gt;，并输入下面内容：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/OS/OSRELEASE/$basearch/
+gpgcheck=0
+enabled=1
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;将&lt;code&gt;OS&lt;/code&gt;替换成&lt;code&gt;centos&lt;/code&gt;，&lt;code&gt;OSRELEASE&lt;/code&gt;替换成&lt;code&gt;7&lt;/code&gt;，就代表centos7.x。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;最后&lt;code&gt;yum install nginx&lt;/code&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Centos7.2 下mysql的安装</title>
+      <link>http://blog.52zgd.com/post/centos7%E4%B8%8Bmysql%E7%9A%84%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/centos7%E4%B8%8Bmysql%E7%9A%84%E5%AE%89%E8%A3%85/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;使用命令&lt;code&gt;yum list installed | grep mysql&lt;/code&gt;查看mysql是否安装&lt;/li&gt;
+&lt;li&gt;如果没有安装：先在MySQL官网中下载yum源rpm安装包：&lt;a href=&#34;https://dev.mysql.com/downloads/repo/yum/&#34;&gt;https://dev.mysql.com/downloads/repo/yum/&lt;/a&gt;;&lt;/li&gt;
+&lt;li&gt;下载mysql源安装包&lt;code&gt;wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;安装：&lt;code&gt;yum localinstall mysql57-community-release-el7-8.noarch.rpm&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;将yum源安装好之后就可以使用&lt;code&gt;yum install mysql-community-server&lt;/code&gt;安装mysql&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Centos7.2 下svn服务器搭建</title>
+      <link>http://blog.52zgd.com/post/centos7%E4%B8%8Bsvn%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/centos7%E4%B8%8Bsvn%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;yum install subversion&lt;/code&gt;安装svn&lt;/li&gt;
+&lt;li&gt;初始化仓库，&lt;code&gt;mkdir -p /usr/dev/svn/svnrepos&lt;/code&gt;创建的该目录为仓库，然后执行&lt;code&gt;svnadmin create /usr/dev/svn/svnrepos&lt;/code&gt;，这就完成了仓库的创建&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;cd&lt;/code&gt;到该目录下&lt;code&gt;ls&lt;/code&gt;会出现：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;README.txt conf db format hooks locks
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;配置相关信息，&lt;code&gt;cd&lt;/code&gt;到&lt;code&gt;conf&lt;/code&gt;目录，会发现下面有3个文件：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;authz：权限控制文件&lt;/li&gt;
+&lt;li&gt;passwd：帐号密码文件&lt;/li&gt;
+&lt;li&gt;svnserve.conf ：SVN服务配置文件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Centos7.2 下字体安装</title>
+      <link>http://blog.52zgd.com/post/centos%E4%B8%8B%E5%AD%97%E4%BD%93%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Sat, 08 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/centos%E4%B8%8B%E5%AD%97%E4%BD%93%E5%AE%89%E8%A3%85/</guid>
+      <description>&lt;h4 id=&#34;字体的安装&#34;&gt;字体的安装&lt;/h4&gt;
+
+&lt;p&gt;已经验证.ttc，.ttf格式字体的安装。本人安装的是windows下的&lt;strong&gt;微软雅黑&lt;/strong&gt;到服务器。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>unbantu下配置java</title>
+      <link>http://blog.52zgd.com/post/unbantu%E4%B8%8B%E9%85%8D%E7%BD%AEjava/</link>
+      <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/unbantu%E4%B8%8B%E9%85%8D%E7%BD%AEjava/</guid>
+      <description>&lt;p&gt;@(unbantu)[java]&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    sudo gedit ~/.bashrc
+    export JAVA_HOME=/usr/lib/jvm/java-7-sun
+    export JRE_HOME=${JAVA_HOME}/jre
+    export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+    export PATH=${JAVA_HOME}/bin:$PATH 
+    source ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>微服务 on 52zgd.com - 代码搬运工</title>
+    <link>http://blog.52zgd.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+    <description>Recent content in 微服务 on 52zgd.com - 代码搬运工</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 10 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.52zgd.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>了解微服务架构</title>
+      <link>http://blog.52zgd.com/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/</link>
+      <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.52zgd.com/post/%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;“微服务”一词源于Martin Fowler 的名为Microservices 的博文， 可以在他的官方博客
+上找到： &lt;a href=&#34;http://martinfowler.com/articles/microservices.html&#34;&gt;Martin Fowler Blog&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;更多内容请阅读书籍《SpringCloud微服务实战-翟永超》。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;什么是微服务架构&#34;&gt;什么是微服务架构&lt;/h4&gt;
+
+&lt;p&gt;简单地说，&lt;strong&gt;微服务是系统架构上的一种设计风格， 它的主旨是将一个原本独立的系统拆分成多个小型服务，这些小型服务都在各自独立的进程中运行，服务之间通过基于HTTP的RESTful API进行通信协作&lt;/strong&gt;。被拆分成的每一个小型服务都围绕着系统中的某一项或一些耦合度较高的业务功能进行构建， 并且每个服务都维护着自身的数据存储、业务开发、自动化测试案例以及独立部署机制。由于有了轻量级的通信协作基础， 所以这些微服务可以使用不同的语言来编写。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
